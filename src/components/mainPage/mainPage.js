@@ -1,0 +1,1 @@
+import './mainPage.scss';
