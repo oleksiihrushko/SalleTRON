@@ -1,127 +1,115 @@
-@import './hamburger/hamburgers';
+@import './hamburger/hamburgers.scss';
 
 .header {
+  @include for-phone-only {
     padding-top: 26px;
     padding-bottom: 24px;
+  }
+  @include for-tablet-up {
+    padding-top: 34px;
+    padding-bottom: 32px;
+  }
 
-    &__nav {
-        display: flex;
-        align-items: center;
-        vertical-align: baseline;
-        justify-content: space-between;
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include for-tablet-up {
+      display: flex;
+      flex-wrap: wrap;
+      vertical-align: space-between;
+    }
+  }
+
+  &__burger-menu {
+    @include for-tablet-up {
+      display: none;
+    }
+  }
+
+  &__logo-link {
+    display: block;
+    color: var(--color-secondary-texts);
+
+    @include for-tablet-up {
+      display: block;
+      color: var(--color-secondary-texts);
+      width: 10%;
+      order: -1;
+      margin-right: 30%;
+    }
+  }
+
+  &__input {
+    @include for-phone-only {
+      width: 20px;
+      background: transparent;
+      // border: none;
+      // background: url('./img/icon_search.png');
+      // background-position: right;
+      // background-repeat: no-repeat;
+    }
+    @include for-tablet-up {
+      width: 405px;
+      height: 44px;
+      border: 1px solid white;
+      order: 1;
+    }
+    @include for-tablet-only {
+      margin-top: 15px;
     }
 
-    &__logo-link {
-        display: block;
-        color: var(--color-secondary-texts);
-        align-self: center;
+    &:focus {
+      @include for-phone-only {
+        border-bottom: 1px solid var(--color-secondary-texts);
+      }
+    }
+  }
+
+  &__form {
+    @include for-phone-only {
+      display: none;
     }
 
-    &__input {
-        width: 20px;
-        background: transparent;
-        border: none;
-        // background: url('./icon_search.png');
-        background-position: right;
-        background-repeat: no-repeat;
+    @include for-tablet-up {
+      display: flex;
+      order: 0;
+    }
+  }
 
-        &:focus {
-            width: 120px;
-            border-bottom: 1px solid var(--color-secondary-texts);
-            background: none;
-            color: #fff;
-        }
+  &__form button {
+    @include for-tablet-up {
+      font-family: MontserratRegular;
+      font-size: 10px;
+      background: transparent;
+      border: none;
+      color: var(--color-secondary-texts);
+    }
+  }
+
+  &__avd-btn {
+    @include for-phone-only {
+      display: none;
     }
 
-    @mixin for-tablet-up {
-        
+    @include for-tablet-up {
+      background-color: var(--color-decor);
+      border: none;
+      width: 200px;
+      height: 44px;
+      color: #fff;
+      @include font($fs: 14px, $lh: 21px, $fw: 600);
     }
-
-    &__form {
-        display: none;
-
-    }
-
-    &__avd-btn {
-        display: none;
-    }
+  }
 }
 
-
-@media (min-width: 768px) {
-    .header {
-        padding-top: 34px;
-        padding-bottom: 32px;
-
-        &__nav {
-            display: flex;
-            flex-wrap: wrap;
-
-            vertical-align: space-between;
-            // text-align: center;
-            
-
-            // flex-direction: column;
-            // align-items: center;
-            // vertical-align: baseline;
-            // justify-content: space-between;
-        }
-
-        &__burger-menu {
-            display: none;
-        }
-
-        &__logo-link {
-            display: block;
-            color: var(--color-secondary-texts);
-            width: 50%;
-            order: -1;
-        }
-
-        &__input {
-            width: 405px;
-            height: 44px;
-            border: 1px solid white;
-            // background-image: url('./icon_search.png');
-            background-position: right;
-            background-repeat: no-repeat;
-            order: 1;
-
-            &:focus {
-                width: 405px;
-            }
-        }
-
-        &__form {
-            display: flex;
-            order: 0;    
-        }
-
-        &__form button {
-            // font-size: 10px;
-            background: transparent;
-            border: none;
-            color: var(--color-secondary-texts);
-        }
-
-        &__form button:first-child {
-
-        }
-
-        &__avd-btn {
-            font-family: 'MontserratBold';
-            font-size: 14px;
-            line-height: 21px;
-            display: block;
-            background-color: var(--color-decor);
-            border: none;
-            width: 200px;
-            height: 44px;
-            color: #fff;
-        }
-    }
+.navigationButtons {
+  display: none;
+  @include for-tablet-up {
+    display: block;
+    order: 3;
+    text-align: center;
+    align-items: center;
+  }
 }
-
-.form__register-btn {
-    border-right: 1px solid white;
-    }
