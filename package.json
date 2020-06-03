@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "hamburgers": "^1.1.3",
     "handlebars": "^4.7.3"
   }
 }
