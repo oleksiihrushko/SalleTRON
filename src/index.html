@@ -19,9 +19,9 @@
     </div>
     <div class="new-adv-modal-div">
       <form form action="#" class="new-adv-modal-form" method="post">
-        <h2 class="new-adv-modal-form-title">
-          Создать объявление
-        </h2>         
+        <!-- <div class="form-conteiner" -->
+            <h2 class="modal-form-title">Create an ad</h2> 
+
             <input
               class="new-adv-modal-form-name"
               type="text"
@@ -33,34 +33,22 @@
 
             <div class="div-inputs-file">
             <input type="file" name="name" class="off-text-input" id="idImg-1">
-            <label for="idImg-1" class="new-adv-modal-form-addimg1  new-adv-modal-form-addimg">
-              <!-- <img class="svg-cross" src="../src/components/newAdvModal/img/plus.svg" alt="cross"/> -->
-            </label>
+            <label for="idImg-1" class="new-adv-modal-form-addimg1  new-adv-modal-form-addimg">+</label>
 
             <input type="file" name="name" class="off-text-input" id="idImg-2">
-            <label for="idImg-2" class="new-adv-modal-form-addimg2  new-adv-modal-form-addimg">
-              <!-- <img class="svg-cross" src="../src/components/newAdvModal/img/plus.svg" alt="cross"/> -->
-            </label>
+            <label for="idImg-2" class="new-adv-modal-form-addimg2  new-adv-modal-form-addimg">+</label>
 
             <input type="file" name="name" class="off-text-input" id="idImg-3">
-            <label for="idImg-3" class="new-adv-modal-form-addimg3  new-adv-modal-form-addimg"> +
-              <!-- <img class="svg-cross" src="../src/components/newAdvModal/img/plus.svg" alt="cross"/> -->
-            </label>
+            <label for="idImg-3" class="new-adv-modal-form-addimg3  new-adv-modal-form-addimg">+</label>
 
             <input type="file" name="name" class="off-text-input" id="idImg-4">
-            <label for="idImg-4" class="new-adv-modal-form-addimg4  new-adv-modal-form-addimg">
-              <!-- <img class="svg-cross" src="../src/components/newAdvModal/img/plus.svg" alt="cross"/> -->
-            </label>
+            <label for="idImg-4" class="new-adv-modal-form-addimg4  new-adv-modal-form-addimg">+</label>
 
             <input type="file" name="name" class="off-text-input" id="idImg-5">
-            <label for="idImg-5" class="new-adv-modal-form-addimg5  new-adv-modal-form-addimg">
-              <!-- <img class="svg-cross" src="../src/components/newAdvModal/img/plus.svg" alt="cross"/> -->
-            </label>
+            <label for="idImg-5" class="new-adv-modal-form-addimg5  new-adv-modal-form-addimg">+</label>
 
             <input type="file" name="name" class="off-text-input" id="idImg-6">
-            <label for="idImg-6" class="new-adv-modal-form-addimg6  new-adv-modal-form-addimg">
-              <!-- <img class="svg-cross" src="../src/components/newAdvModal/img/plus.svg" alt="cross"/> -->
-            </label>
+            <label for="idImg-6" class="new-adv-modal-form-addimg6  new-adv-modal-form-addimg">+</label>
             </div>
 
             <input
@@ -68,11 +56,11 @@
             type="text"
             name="name"
             required
-            placeholder=" "
+            placeholder="Product description"
             minlength="2"
             />
 
-            <select name="new-adv-modal-form-categories">
+            <select name="form-categories" class="new-adv-modal-form-categories">
               <option>Property</option>
               <option>Transport</option>
               <option>Job</option>
@@ -89,8 +77,7 @@
             required
             placeholder="0.00 UAH"
             />
-            
-            
+             
             <input
               class="new-adv-modal-form-phone"
               type="tel"
@@ -100,14 +87,15 @@
               minlength="12"
             />
       
-        <div class="new-adv-modal-form-btn-div">
-          <button
+            <div class="new-adv-modal-form-btn-div">
+            <button
             class="new-adv-modal-form-btn"
             type="submit"
-          >
+            >
             Submit
-          </button>
-        </div>
+            </button>
+            </div>  
+        <!-- </div>     -->
       </form>
     </div>
   </main>

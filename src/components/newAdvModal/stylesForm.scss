@@ -1,9 +1,53 @@
-// .new-adv-modal-form-addimg {
-//     // display: none;
-//     width: 75px;
-//     height: 60px;
-//     background-color: rgb(244,246,251);
-// }
+.new-adv-modal-form {
+    width: 248px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+.modal-form-title {
+    margin-bottom: 25px;
+     text-align: center;
+    font-size: 18px;
+}
+.new-adv-modal-form-name {
+    margin-bottom: 20px;
+    width: 247px;
+    height: 50px;
+    padding-left: 18px;
+   
+}
+.new-adv-modal-form-product-descriptions {
+    margin-bottom: 20px;
+    width: 247px;
+    height: 50px;
+    padding-left: 18px;
+}
+.new-adv-modal-form-categories {
+    margin-bottom: 20px;
+    width: 247px;
+    height: 50px;
+    padding-left: 18px;
+}
+.new-adv-modal-form-cash {
+    margin-bottom: 20px;
+    width: 247px;
+    height: 50px;
+    padding-left: 18px;
+}
+.new-adv-modal-form-phone {
+    margin-bottom: 31px;
+    width: 247px;
+    height: 50px;
+    padding-left: 18px;
+}
+.new-adv-modal-form-btn {
+    width: 247px;
+    height: 50px;
+    background-color: #ff6b08;
+    color: white;
+
+}
 .off-text-input {
     display: none;
     
@@ -13,19 +57,21 @@
     width: 75px;
     height: 60px;
     background-color: rgb(244,246,251);
-    margin-right: 14px;
+    margin-right: 7px;
     margin-bottom: 11px;
     font-size: 24px;
+    text-align: center;
+    padding-top: 18px;
+    @include for-tablet-up {
+    }
 
-    
+
 }
 .div-inputs-file {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
-.svg-cros {
-    height: 11px;
-    width: 11px;
-}
+
