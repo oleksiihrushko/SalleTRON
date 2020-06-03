@@ -2,51 +2,86 @@
     width: 248px;
     margin: 0 auto;
     margin-top: 20px;
+    @include for-tablet-up {
+        width: 720px;
+        margin-top: 50px;
+        
+    }
 }
 
 
 .modal-form-title {
     margin-bottom: 25px;
-     text-align: center;
+    text-align: center;
     font-size: 18px;
+    @include for-tablet-up {
+        margin-bottom: 38px;
+        font-size: 22px;
+    }
 }
 .new-adv-modal-form-name {
     margin-bottom: 20px;
     width: 247px;
     height: 50px;
-    padding-left: 18px;
-   
+    padding-left: 16px;
+    @include for-tablet-up {
+        margin-bottom: 18px;
+        padding-right: 53px;
+        width: 460px;
+        
+    }
+    
 }
 .new-adv-modal-form-product-descriptions {
     margin-bottom: 20px;
     width: 247px;
     height: 50px;
-    padding-left: 18px;
+    padding-left: 16px;
+    @include for-tablet-up {
+        margin-bottom: 18px;
+        width: 460px;
+        
+    }
 }
 .new-adv-modal-form-categories {
     margin-bottom: 20px;
     width: 247px;
     height: 50px;
-    padding-left: 18px;
+    padding-left: 16px;
+    @include for-tablet-up {
+        margin-bottom: 18px;
+        width: 460px;
+        
+    }
 }
 .new-adv-modal-form-cash {
     margin-bottom: 20px;
     width: 247px;
     height: 50px;
-    padding-left: 18px;
+    padding-left: 16px;
+    @include for-tablet-up {
+        margin-bottom: 18px;
+        width: 460px;
+        
+    }
 }
 .new-adv-modal-form-phone {
     margin-bottom: 31px;
     width: 247px;
     height: 50px;
-    padding-left: 18px;
+    padding-left: 16px;
+    @include for-tablet-up {
+        margin-bottom: 37px;
+        width: 460px;
+        
+    }
 }
 .new-adv-modal-form-btn {
     width: 247px;
     height: 50px;
     background-color: #ff6b08;
     color: white;
-
+    
 }
 .off-text-input {
     display: none;
@@ -63,9 +98,8 @@
     text-align: center;
     padding-top: 18px;
     @include for-tablet-up {
-    }
-
-
+    }   
+    
 }
 .div-inputs-file {
     display: flex;
@@ -74,4 +108,52 @@
     margin-bottom: 10px;
 }
 
+.new-adv-modal-form-name-p{
+    display: none;
+    @include for-tablet-up {
+        display: inline-block;
+        padding-left: 40px;
+        margin-right: 25px;
+        
+    }
+}
+.new-adv-modal-form-categories-p{
+    display: none;
+    @include for-tablet-up {
+        display: inline-block;
+        padding-left: 58px ;       
+    }
+}
 
+.new-adv-modal-form-product-descriptions-p{
+    display: none;
+    @include for-tablet-up {
+        display: inline-block;
+        padding-left: 40px ;                
+    }
+}
+
+.new-adv-modal-form-cash-p{
+    display: none;
+    @include for-tablet-up {
+        display: inline-block;
+        padding-left: 40px ;      
+    }
+}
+
+.new-adv-modal-form-phone-p {
+    display: none;
+    @include for-tablet-up {
+        display: inline-block;
+        padding-left: 40px ;
+        
+    }
+}
+.new-adv-modal-form-addimg-p{
+    display: none;
+    @include for-tablet-up {
+        display: inline-block;
+        padding-left: 40px ;
+                        
+    }
+}
