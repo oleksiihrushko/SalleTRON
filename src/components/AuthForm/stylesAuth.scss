@@ -1,6 +1,7 @@
 .modalWindow {
+  font-family: 'MontserratSemiBold';
   padding-top: 48px;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 17px;
   padding-left: 16px;
   padding-right: 16px;
@@ -22,24 +23,46 @@
   box-shadow: 0px 2px 2px 0px rgba(29, 29, 27, 0.1);
   margin-bottom: 28px;
   font-family: 'MontserratBold';
+  font-size: 14px;
   color: var(--color-adv-secondary-bgrnd);
+  cursor: pointer;
+  position: relative;
+}
+
+.googleSvg {
+  position: absolute;
+  top: 17px;
+  right: 108px;
 }
 
 .spanGoogle {
   color: black;
+  padding-left: 15px;
 }
+
+.googleBtn:hover,
+.googleBtn:focus {
+  background-color: var(--color-decor);
+}
+
 
 .input {
   width: 246px;
   height: 60px;
   margin-bottom: 22px;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
+  padding-left: 18px;
+  font-size: 13px;
 }
 
 .input::placeholder {
   font-family: 'MontserratSemiBold';
-  padding-left: 18px;
+  font-size: 13px;
   color: var(--color-adv-secondary-bgrnd);
+}
+
+.passwordInput {
+  font-size: 18px;
 }
 
 .buttons {
@@ -64,6 +87,7 @@
   background-color: var(--color-decor);
   border: none;
   color: white;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -72,7 +96,24 @@
     height: 512px;
     display: block;
     margin: 0 auto;
+    padding: 50px;
     font-size: 13px;
-    padding: 50px 70px;
+  }
+
+  .googleBtn {
+    display: inline-block;
+  }
+
+  .input {
+    width: 422px;
+  }
+
+  .btn {
+    width: 200px;
+    height: 60px;
+  }
+
+  .passwordInput {
+    margin-bottom: 38px;
   }
 }
