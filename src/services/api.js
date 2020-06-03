@@ -60,20 +60,7 @@ export const addProduct = (productData) => {
 
 export const getProducts = async () => {
   const response = await axios(`/products.json`);
-  const categories = response.data;
-
-  const arr = [];
-  const values = Object.values(categories);
-  for (let value of values) {
-    const keys = Object.keys(value);
-    for (let key of keys) {
-      arr.push({
-        id: key,
-        ...value[key]
-      })
-    }
-  }
-  return arr;
+  return transformedData(response.data)
 };
 
 export const getProductsByCategory = async (category) => {
@@ -86,4 +73,19 @@ export const getProductById = async (id) => {
   const result = await getProducts()
   const filteredResult = result.find(item => item.id === id);
   return filteredResult;
+}
+
+const transformedData = (categories) => {
+  const arr = [];
+  const values = Object.values(categories);
+  for (let value of values) {
+    const keys = Object.keys(value);
+    for (let key of keys) {
+      arr.push({
+        id: key,
+        ...value[key]
+      })
+    }
+  }
+  return arr;
 }
