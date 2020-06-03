@@ -6,10 +6,7 @@ token = JSON.parse(localStorage.getItem('token'))
 axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'
 
 
-const registerForm = document.forms.register;
-const addProductForm = document.forms.addProduct;
-
-const authWithEmailAndPassword = async user => {
+export const authWithEmailAndPassword = async user => {
   const response = await axios.post(
     `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
       ...user,
@@ -33,7 +30,7 @@ const authWithEmailAndPassword = async user => {
   })
 };
 
-const getUser = async () => {
+export const getUser = async () => {
   const users = await axios.get('/users.json');
   const values = Object.values(users.data);
 
@@ -55,13 +52,13 @@ const getUser = async () => {
 // }
 // addUserFavorite("-M8u8LtvThmdE986NH_u")
 
-const addProduct = (productData) => {
+export const addProduct = (productData) => {
   axios.post(`/products/${productData.categories}.json?auth=${token}`, {
     ...productData
   });
 };
 
-const getProducts = async () => {
+export const getProducts = async () => {
   const response = await axios(`/products.json`);
   const categories = response.data;
 
@@ -79,13 +76,13 @@ const getProducts = async () => {
   return arr;
 };
 
-const getProductsByCategory = async (category) => {
+export const getProductsByCategory = async (category) => {
   const result = await getProducts()
   const filteredResult = result.filter(item => item.categories === category);
   return filteredResult;
 }
 
-const getProductById = async (id) => {
+export const getProductById = async (id) => {
   const result = await getProducts()
   const filteredResult = result.find(item => item.id === id);
   return filteredResult;
