@@ -1,7 +1,13 @@
+import './categoryListItemMarkup'
+
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.css';
 import Glide from '@glidejs/glide';
+import {
+  categoryListItemMarkup
+} from './categoryListItemMarkup';
 
+categoryListItemMarkup()
 const glide = new Glide('.glide', {
   type: 'carousel',
   perView: 4,
