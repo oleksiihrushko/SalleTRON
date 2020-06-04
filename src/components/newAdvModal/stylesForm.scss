@@ -11,6 +11,9 @@
         display: inline-block;
         padding: 40px;
     }
+    @include for-desktop-up {
+        width: 950px;
+    }
 }
 
 
@@ -26,6 +29,9 @@
         font-size: normal;    
         line-height: 22px; 
     }
+    @include for-desktop-up {
+
+    }
 }
 .new-adv-modal-form-name {
     margin-bottom: 20px;
@@ -36,9 +42,12 @@
     @include for-tablet-up {
         margin-bottom: 18px;
         // padding-right: 53px;
-        width: 460px;
-        
+        width: 460px;   
     }
+    @include for-desktop-up {
+        width: 600px;
+    }
+                
     
 }
 .new-adv-modal-form-product-descriptions {
@@ -182,9 +191,7 @@
         margin-right: 110px;
         font-family: 'MontserratSemiBold', sans-serif; 
         font-size: normal;
-        line-height: 14px;
-        
-        
+        line-height: 14px;  
     }
 }
 
