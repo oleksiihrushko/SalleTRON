@@ -58,6 +58,12 @@ export const addProduct = (productData) => {
   });
 };
 
+export const getCategoriesList = async () => {
+  const response = await axios(`/categories.json`);
+  return convertedCategoriesListData(response.data);
+};
+
+
 export const getProducts = async () => {
   const response = await axios(`/products.json`);
   return transformedData(response.data)
@@ -73,6 +79,17 @@ export const getProductById = async (id) => {
   const result = await getProducts()
   const filteredResult = result.find(item => item.id === id);
   return filteredResult;
+}
+
+const convertedCategoriesListData = (data) => {
+  const result = [];
+  for (const element in data) {
+    result.push({
+      ...data[element]
+    })
+  }
+  console.log(result);
+  return result;
 }
 
 const transformedData = (categories) => {
