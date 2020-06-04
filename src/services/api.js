@@ -1,95 +1,13 @@
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
+
 const apiKey = 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o';
-let token = '';
-token = JSON.parse(localStorage.getItem('token'))
-axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'
 
 
-export const authWithEmailAndPassword = async user => {
-  const response = await axios.post(
-    `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
-      ...user,
-      returnSecureToken: true,
-    },
-  );
-
-  localStorage.setItem('token', JSON.stringify(response.data.idToken));
-
-  const userData = {
-    id: response.data.localId,
-    email: response.data.email,
-    createdAt: Date.now(),
-    adv: [''],
-    favorites: [''],
-    token: JSON.stringify(response.data.idToken)
-  }
-
-  await axios.post(`/users.json?auth=${token}`, {
-    ...userData
-  })
-};
-
-export const getUser = async () => {
-  const users = await axios.get('/users.json');
-  const values = Object.values(users.data);
-
-  const result = values.find(user => user.token ===
-    (localStorage.getItem('token')));
-  return result;
-}
-
-// const addUserFavorite = (id) => {
-//   getUser().then(user => {
-//     console.log(user);
-//     const request = axios(`/users.json?${user.token}`);
-//     request.then(console.log)
-
-//     const record = axios.patch(`/users.json?${user.token}&auth=${token}`, {
-//       favorites: [id]
-//     })
-//   })
-// }
-// addUserFavorite("-M8u8LtvThmdE986NH_u")
-
-export const addProduct = (productData) => {
-  axios.post(`/products/${productData.categories}.json?auth=${token}`, {
-    ...productData
-  });
-};
-
-export const getCategoriesList = async () => {
-  const response = await axios(`/categories.json`);
-  return convertedCategoriesListData(response.data);
-};
-
-
-export const getProducts = async () => {
-  const response = await axios(`/products.json`);
-  return transformedData(response.data)
-};
-
-export const getProductsByCategory = async (category) => {
-  const result = await getProducts()
-  const filteredResult = result.filter(item => item.categories === category);
-  return filteredResult;
-}
-
-export const getProductById = async (id) => {
-  const result = await getProducts()
-  const filteredResult = result.find(item => item.id === id);
-  return filteredResult;
-}
-
-const convertedCategoriesListData = (data) => {
-  const result = [];
-  for (const element in data) {
-    result.push({
-      ...data[element]
-    })
-  }
-  console.log(result);
-  return result;
+const convertData = (data) => {
+  const [values] = Object.values(data.data);
+  return values;
 }
 
 const transformedData = (categories) => {
@@ -106,3 +24,169 @@ const transformedData = (categories) => {
   }
   return arr;
 }
+
+const getToken = () => {
+  return JSON.parse(localStorage.getItem('user')).token
+}
+
+const getId = () => {
+  return JSON.parse(localStorage.getItem('user')).id
+}
+
+
+const apiServices = {
+  // проверка того, что пользователь аутентифицирован
+  isAuth() {
+    return JSON.parse(localStorage.getItem('user')) ? true : false;
+  },
+
+  // функция отвечает за регистрацию нового юзера и запись юзера в БД
+  async signUpUser(user) {
+    const userData = {
+      id: '',
+      email: '',
+      createdAt: Date.now(),
+      adv: [''],
+      favorites: [''],
+    }
+
+    try {
+      const authResponse = await axios.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
+          ...user,
+          returnSecureToken: true,
+        },
+      );
+
+      userData.id = authResponse.data.localId;
+      userData.email = authResponse.data.email;
+
+      try {
+        const databaseResponse = await axios.post(`/users.json?auth=${authResponse.data.idToken}`, {
+          ...userData
+        });
+
+        localStorage.setItem('user', JSON.stringify({
+          token: authResponse.data.idToken,
+          id: databaseResponse.data.name,
+          favorites: [],
+        }));
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  // функция отвечает за аутентификацию юзера
+  async signInUser(user) {
+    try {
+      const authResponse = await axios.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+          ...user,
+          returnSecureToken: true,
+        },
+      );
+
+      try {
+        const databaseResponseId = await axios.get('/users.json')
+        const res = Object.entries(databaseResponseId.data);
+
+        const result = res.find((user) =>
+          (user[1].id === authResponse.data.localId));
+
+        localStorage.setItem('user', JSON.stringify({
+          token: authResponse.data.idToken,
+          id: result[0],
+          favorites: [],
+        }))
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  // найти юзера по id
+  async getUser() {
+    try {
+      const users = await axios.get('/users.json');
+      const values = Object.values(users.data);
+      return values.find(user => user.id ===
+        (JSON.parse(localStorage.getItem('user')).id));
+
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  // добавление товара в favorites
+  addUserFavorite(id) {
+    const favorites = JSON.parse(localStorage.getItem('user')).favorites;
+    favorites.push(id);
+
+    const userInfo = JSON.parse(localStorage.getItem('user'))
+    localStorage.setItem('user', JSON.stringify({
+      ...userInfo,
+      favorites
+    }))
+
+    try {
+      axios.patch(`/users/${getId()}/favorites.json/?auth=${getToken()}`, {
+        ...favorites
+      })
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  // добавить товар в БД
+  addProduct(productData) {
+    if (!isAuth()) return;
+
+    try {
+      axios.post(`/products/${productData.categories}.json?auth=${getToken()}`, {
+        ...productData
+      });
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  // получить список категорий
+  async getCategoriesList() {
+    const response = await axios('/categories.json');
+    return convertData(response);
+  },
+
+  // получить массив всех товаров
+  async getProducts() {
+    const response = await axios('/products.json');
+    return transformedData(response.data)
+  },
+
+  // получить массив товаров по категориям
+  async getProductsByCategory(category) {
+    const result = await getProducts()
+    const filteredResult = result.filter(item => item.categories === category);
+    return filteredResult;
+  },
+
+  // получить товар по id
+  async getProductById(id) {
+    const result = await getProducts()
+    const filteredResult = result.find(item => item.id === id);
+    return filteredResult;
+  }
+}
+
+export default apiServices;
