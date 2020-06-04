@@ -47,3 +47,9 @@ input.onchange = function () {
   };
   reader.readAsDataURL(file);
 };
+
+// const onAdvInit = () => {
+//   if (window.innerWidth < 768) {
+//     advMobile();
+//     return;
+//   }
