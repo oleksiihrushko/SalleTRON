@@ -33,6 +33,18 @@ const getId = () => {
   return JSON.parse(localStorage.getItem('user')).id
 }
 
+// const user = {
+//   email: '',
+//   password:'',
+// }
+
+// const product = {
+//   categories: '', // инпут селект
+//   description: '',
+//   images: [''],
+//   name: '',
+//   price: 0,
+// }
 
 const apiServices = {
   // проверка того, что пользователь аутентифицирован
@@ -113,19 +125,19 @@ const apiServices = {
     }
   },
 
-  // найти юзера по id
-  async getUser() {
-    try {
-      const users = await axios.get('/users.json');
-      const values = Object.values(users.data);
-      return values.find(user => user.id ===
-        (JSON.parse(localStorage.getItem('user')).id));
+  // // найти юзера по id
+  // async getUser() {
+  //   try {
+  //     const users = await axios.get('/users.json');
+  //     const values = Object.values(users.data);
+  //     return values.find(user => user.id ===
+  //       (JSON.parse(localStorage.getItem('user')).id));
 
-    } catch (error) {
-      console.log(error);
-      return;
-    }
-  },
+  //   } catch (error) {
+  //     console.log(error);
+  //     return;
+  //   }
+  // },
 
   // добавление товара в favorites
   addUserFavorite(id) {
@@ -148,9 +160,9 @@ const apiServices = {
     }
   },
 
-  // добавить товар в БД
+  // добавить товар в БД из формы
   addProduct(productData) {
-    if (!isAuth()) return;
+    if (!this.isAuth()) return;
 
     try {
       axios.post(`/products/${productData.categories}.json?auth=${getToken()}`, {
@@ -162,30 +174,45 @@ const apiServices = {
     }
   },
 
-  // получить список категорий
+  // получить список категорий, возвращает массив
   async getCategoriesList() {
     const response = await axios('/categories.json');
     return convertData(response);
   },
 
-  // получить массив всех товаров
+  // получить массив всех товаров, возвращает массив объктов с товарами
   async getProducts() {
-    const response = await axios('/products.json');
-    return transformedData(response.data)
+    try {
+      const response = await axios('/products.json');
+      return transformedData(response.data)
+    } catch (error) {
+      console.log(error);
+      return
+    }
   },
 
-  // получить массив товаров по категориям
+  // получить массив товаров по категориям, возвращает массив объктов с товарами
   async getProductsByCategory(category) {
-    const result = await getProducts()
-    const filteredResult = result.filter(item => item.categories === category);
-    return filteredResult;
+    try {
+      const result = await this.getProducts()
+      const filteredResult = result.filter(item => item.categories === category);
+      return filteredResult;
+    } catch (error) {
+      console.log(error);
+      return
+    }
   },
 
-  // получить товар по id
+  // получить товар по id, возвращает объект конкретного товара
   async getProductById(id) {
-    const result = await getProducts()
-    const filteredResult = result.find(item => item.id === id);
-    return filteredResult;
+    try {
+      const result = await this.getProducts()
+      const filteredResult = result.find(item => item.id === id);
+      return filteredResult;
+    } catch (error) {
+      console.log(error);
+      return
+    }
   }
 }
 
