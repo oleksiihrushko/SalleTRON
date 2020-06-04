@@ -16,7 +16,6 @@
     }
 }
 
-
 .modal-form-title {
     margin-bottom: 25px;
     text-align: center;
@@ -33,6 +32,7 @@
 
     }
 }
+
 .new-adv-modal-form-name {
     margin-bottom: 20px;
     width: 247px;
@@ -46,10 +46,9 @@
     }
     @include for-desktop-up {
         width: 600px;
-    }
-                
-    
+    }                   
 }
+
 .new-adv-modal-form-product-descriptions {
     margin-bottom: 20px;
     width: 247px;
@@ -57,10 +56,13 @@
     padding-left: 16px;
     @include for-tablet-up {
         margin-bottom: 18px;
-        width: 460px;
-        
+        width: 460px;  
     }
+    @include for-desktop-up {
+        width: 600px;
+    }   
 }
+
 .new-adv-modal-form-categories {
     margin-bottom: 20px;
     width: 247px;
@@ -68,10 +70,13 @@
     padding-left: 16px;
     @include for-tablet-up {
         margin-bottom: 18px;
-        width: 460px;
-        
+        width: 460px;   
     }
+    @include for-desktop-up {
+        width: 600px;
+    }   
 }
+
 .new-adv-modal-form-cash {
     margin-bottom: 20px;
     width: 247px;
@@ -79,10 +84,13 @@
     padding-left: 16px;
     @include for-tablet-up {
         margin-bottom: 18px;
-        width: 460px;
-        
+        width: 460px; 
     }
+    @include for-desktop-up {
+        width: 600px;
+    }   
 }
+
 .new-adv-modal-form-phone {
     margin-bottom: 31px;
     width: 247px;
@@ -90,10 +98,13 @@
     padding-left: 16px;
     @include for-tablet-up {
         margin-bottom: 37px;
-        width: 460px;
-        
+        width: 460px;   
     }
+    @include for-desktop-up {
+        width: 600px;
+    }   
 }
+
 .new-adv-modal-form-btn {
     width: 247px;
     height: 50px;
@@ -103,12 +114,15 @@
         height: 60px;
         width: 295px;
         margin-left: 165px;
-    }
-    
+    }  
+    @include for-desktop-up {
+        width: 294px;
+    }   
 }
+
 .off-text-input {
     display: none;
-    
+
 }
 .new-adv-modal-form-addimg {
     display: block;
@@ -126,9 +140,14 @@
         width: 69px;
         margin-right: 6px;
         margin-bottom: 16px;
-    }   
-    
+    }
+    @include for-desktop-up {
+        height: 59px;
+        width: 85px;
+        margin-right: 14px;
+    }        
 }
+
 // .div-inputs-file {
 //     display: flex;
 //     flex-wrap: wrap;
@@ -147,9 +166,9 @@
         font-family: 'MontserratSemiBold', sans-serif; 
         font-size: normal;
         line-height: 14px;
-        
     }
 }
+
 .new-adv-modal-form-product-descriptions-p{
     display: none;
     @include for-tablet-up {
@@ -160,6 +179,7 @@
         line-height: 14px; 
     }
 }
+
 .new-adv-modal-form-categories-p{
     display: none;
     @include for-tablet-up {
@@ -168,7 +188,6 @@
         font-family: 'MontserratSemiBold', sans-serif; 
         font-size: normal;
         line-height: 14px;
-      
     }
 }
 
@@ -179,8 +198,7 @@
         margin-right: 123px;
         font-family: 'MontserratSemiBold', sans-serif; 
         font-size: normal;
-        line-height: 14px;    
-        
+        line-height: 14px;       
     }
 }
 
@@ -193,6 +211,10 @@
         font-size: normal;
         line-height: 14px;  
     }
+    @include for-desktop-up {
+        margin-right: 110px;
+
+    }
 }
 
 .new-adv-modal-form-addimg-p{
@@ -203,6 +225,6 @@
         font-family: 'MontserratSemiBold', sans-serif; 
         font-size: normal;
         line-height: 14px;
-      
     }
 }
+
