@@ -1,0 +1,44 @@
+@import '../../css/mixins.scss';
+
+.navigationFilter {
+    display: flex;
+    justify-content: space-between;
+    background-color: #131f30;
+    color: rgb(206, 210, 209);
+    }
+    
+.navigationFilterListItem {
+      box-sizing: content-box;
+      text-align: center;
+      padding: 10px;
+      letter-spacing: 1px;
+      font-size: 12px;
+      line-height: 14px;
+      margin-bottom: 43px;
+      border: 2px solid  rgb(206, 210, 209);
+      opacity: 0.2;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 300ms linear
+  }
+  
+  .navigationFilterListItem:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  .navigationFilterList {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navigationButtons {
+    width: 10%;
+  }
+  
+  
+  .navigationFilterListItem:hover,
+  .navigationFilterListItem:focus {
+      border-color: #ff6b08;
+      color:#ff6b08 ;
+      opacity: 1;
+  }
