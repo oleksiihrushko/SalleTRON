@@ -176,11 +176,11 @@
 .burgerMenu {
   display: none;
   @include for-desktop-up {
-    border: 1px solid red;
     order: 3;
     // padding-top: 12px;
     height: 32px;
     display: block;
+    margin: 0;
     width: 90%;
     margin-top: 24px;
   }

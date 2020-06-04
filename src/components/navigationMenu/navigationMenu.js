@@ -2,13 +2,14 @@ import './navigationMenu.scss'
 import navigationCard from './navigation.hbs';
 import api from '../../services/api.js'
 
-const navigationFilter = document.querySelector('.navigationFilter');
+const navigationFilter = document.querySelector('.burgerMenu');
+
 
 //*=========== render list item
 
-const insert = (array) => {
-    console.log(array);
-    const markup =  navigationCard(array)
+const insert = (categoriesArr) => {
+    console.log(categoriesArr);
+    const markup =  navigationCard(categoriesArr)
     navigationFilter.insertAdjacentHTML('afterbegin', markup)
 }
 api.getCategoriesList().then(data => insert(data));
