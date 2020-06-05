@@ -8,7 +8,6 @@ const navigationFilter = document.querySelector('.burgerMenu');
 //*=========== render list item
 
 const insert = (categoriesArr) => {
-    console.log(categoriesArr);
     const markup =  navigationCard(categoriesArr)
     navigationFilter.insertAdjacentHTML('afterbegin', markup)
 }
