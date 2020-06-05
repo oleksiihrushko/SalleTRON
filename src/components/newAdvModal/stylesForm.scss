@@ -234,8 +234,11 @@
     }
 }
 
-.div-lable {
+.ul-img-lable {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.import-img {
+    pointer-events: none;
 }
