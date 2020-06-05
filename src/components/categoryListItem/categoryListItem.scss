@@ -132,7 +132,7 @@ button.next {
 
 button.next {
   @include for-tablet-up {
-    right: -18px;
+    right: 2px;
   }
 }
 
@@ -219,22 +219,6 @@ button.glide__bullet--active {
   display: none;
 }
 
-
-// button {
-//   appearance: none;
-//   border: none;
-// }
-
-// button,
-// button span {
-//   position: relative;
-// }
-
-// button span {
-//   white-space: nowrap;
-//   display: block;
-// }
-
 .button {
   padding: 0;
   background-color: var(--color-decor);
@@ -281,6 +265,11 @@ button.glide__bullet--active {
       text-shadow: none;
     }
   }
+
+}
+
+.button--inactive {
+  background-color: #fdb381;
 }
 
 @keyframes animation-rotate {
