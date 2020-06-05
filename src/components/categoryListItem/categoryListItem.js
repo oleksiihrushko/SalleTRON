@@ -43,6 +43,7 @@ export async function getCategory(category) {
   }, '');
 
   categoryList.insertAdjacentHTML('afterbegin', getLiMarkup(category, itemMarkup, categoryItems));
+
   glide.mount();
 
   const seeAllButton = document.querySelector('.category__btn-see-all');
@@ -50,12 +51,11 @@ export async function getCategory(category) {
 
   function showAllProducts() {
     const categoryContainer = document.querySelector('.replacableContainer')
-
     categoryContainer.innerHTML = innerMarkup(categoryItems, 0, products.visible);
 
     const loadMoreBtn = document.querySelector('.loadMoreBtn');
-    loadMoreBtn.classList.remove('hidden')
     loadMoreBtn.addEventListener('click', showMoreProducts)
+    loadMoreBtn.classList.remove('hidden')
 
     function showMoreProducts() {
       if (products.visible === categoryItems.length) {
@@ -85,4 +85,3 @@ function innerMarkup(categoryItems, start, end) {
           return acc += getItemMarkup(item)
         }, '')}`
 }
-getCategory('sport')
