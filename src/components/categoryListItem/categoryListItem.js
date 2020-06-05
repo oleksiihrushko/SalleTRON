@@ -25,7 +25,7 @@ export async function getCategory(category) {
     perView: 4,
     dots: '#dots',
     breakpoints: {
-      1280: {
+      1279: {
         perView: 2,
       },
       767: {
@@ -59,8 +59,8 @@ export async function getCategory(category) {
 
     function showMoreProducts() {
       loadMoreBtn.classList.add('button--loading')
-      const addedProducts = innerMarkup(categoryItems, products.visible, (products.visible + 1));
-      products.visible += 1;
+      const addedProducts = innerMarkup(categoryItems, products.visible, (products.visible + 12));
+      products.visible += 12;
 
       categoryContainer.insertAdjacentHTML('beforeend', addedProducts);
       loadMoreBtn.classList.remove('button--loading')
@@ -69,7 +69,7 @@ export async function getCategory(category) {
 }
 
 const products = {
-  visible: 1,
+  visible: 12,
 }
 
 function innerMarkup(categoryItems, start, end) {
