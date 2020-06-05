@@ -24,6 +24,7 @@ function checkValue(e) {
   if (valuePassword.length < 6) {
     errorPassword.textContent = 'Your password must be more than 5 symbols!';
   }
+  e.currentTarget.reset();
 
   if (
     valueEmail.includes('@') &&
@@ -34,5 +35,4 @@ function checkValue(e) {
     errorEmail.textContent = '';
     errorPassword.textContent = '';
   }
-  e.currentTarget.reset();
 }
