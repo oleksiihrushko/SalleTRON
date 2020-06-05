@@ -1,12 +1,17 @@
 import './header.scss';
 
-const btn = document.querySelector('.hamburger');
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.burgerMenu');
 
 const toggleBurger = e => {
+  e.preventDefault();
+  e.stopPropagation();
   if (!e.currentTarget) return;
   console.log(e.target.nodeName);
   if (e.currentTarget) {
-    btn.classList.toggle('is-active');
+    hamburger.classList.toggle('is-active');
+    nav.classList.toggle('expanded');
   }
 };
-btn.addEventListener('click', toggleBurger);
+
+hamburger.addEventListener('click', toggleBurger);
