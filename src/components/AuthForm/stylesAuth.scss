@@ -45,7 +45,6 @@
   background-color: var(--color-decor);
 }
 
-
 .input {
   width: 246px;
   height: 60px;
@@ -63,6 +62,14 @@
 
 .passwordInput {
   font-size: 18px;
+}
+
+.input:required:focus:valid:not(:placeholder-shown) {
+  outline: 1px solid green;
+}
+
+.input:required:focus:invalid:not(:placeholder-shown) {
+  outline: 1px solid red;
 }
 
 .buttons {
