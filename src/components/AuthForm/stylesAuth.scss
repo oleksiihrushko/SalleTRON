@@ -14,7 +14,7 @@
   margin-bottom: 20px;
 }
 
-.googleBtn {
+.authBtn {
   display: block;
   margin: 0 auto;
   width: 160px;
@@ -29,26 +29,36 @@
   position: relative;
 }
 
+.googleBtn {
+  margin-bottom: 10px;
+}
+
 .googleSvg {
   position: absolute;
   top: 17px;
   right: 108px;
 }
 
-.spanGoogle {
+.facebookSvg {
+  position: absolute;
+  top: 14px;
+  right: 115px;
+}
+
+.spanAuth {
   color: black;
   padding-left: 15px;
 }
 
-.googleBtn:hover,
-.googleBtn:focus {
+.authBtn:hover,
+.authBtn:focus {
   background-color: var(--color-decor);
 }
 
 .input {
   width: 246px;
   height: 60px;
-  margin-bottom: 22px;
+  margin-bottom: 10px;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
   padding-left: 18px;
   font-size: 13px;
@@ -60,16 +70,14 @@
   color: var(--color-adv-secondary-bgrnd);
 }
 
+.error {
+  margin-bottom: 10px;
+  color: red;
+  padding-left: 10px;
+}
+
 .passwordInput {
   font-size: 18px;
-}
-
-.input:required:focus:valid:not(:placeholder-shown) {
-  outline: 1px solid green;
-}
-
-.input:required:focus:invalid:not(:placeholder-shown) {
-  outline: 1px solid red;
 }
 
 .buttons {
@@ -111,7 +119,12 @@
     display: inline-block;
   }
 
+  .buttonsAuth {
+    display: flex;
+  }
+
   .input {
+    margin-bottom: 15px;
     width: 422px;
   }
 
@@ -121,6 +134,10 @@
   }
 
   .passwordInput {
-    margin-bottom: 38px;
+    margin-bottom: 20px;
+  }
+
+  .error {
+    margin-bottom: 15px;
   }
 }
