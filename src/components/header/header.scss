@@ -245,9 +245,13 @@ svg {
     transition: left 0.7s ease;
     background: #131f30;
     color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 
     font-size: 2rem;
     height: 100vh;
+    // height: 500px;
     left: -95vw;
     padding: 6rem 2rem 2rem 2rem;
     position: fixed;
@@ -271,13 +275,4 @@ svg {
 
 .burgerMenu.expanded {
   left: 0;
-}
-
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
