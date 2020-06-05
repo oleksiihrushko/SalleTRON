@@ -1,4 +1,5 @@
 import './css/styles.scss';
-import './services/api';
 import './components/mainPage/mainPage';
+import './components/navigationMenu/navigationMenu';
+import './services/api';
 import './components/header/header';
