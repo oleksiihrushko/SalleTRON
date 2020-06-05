@@ -61,13 +61,13 @@ export async function getCategory(category) {
       if (products.visible === categoryItems.length) {
         loadMoreBtn.disabled = true;
         loadMoreBtn.classList.replace('button', 'button--inactive');
-        loadMoreBtn.querySelector('span').textContent = 'Stop clicking, I\'m tired '
+        loadMoreBtn.querySelector('span').textContent = 'No more hereg'
         return;
       }
 
       loadMoreBtn.classList.add('button--loading')
-      const addedProducts = innerMarkup(categoryItems, products.visible, (products.visible + 1));
-      products.visible += 1;
+      const addedProducts = innerMarkup(categoryItems, products.visible, (products.visible + 12));
+      products.visible += 12;
 
       categoryContainer.insertAdjacentHTML('beforeend', addedProducts);
       loadMoreBtn.classList.remove('button--loading')
@@ -76,7 +76,7 @@ export async function getCategory(category) {
 }
 
 const products = {
-  visible: 1,
+  visible: 12,
 }
 
 function innerMarkup(categoryItems, start, end) {
