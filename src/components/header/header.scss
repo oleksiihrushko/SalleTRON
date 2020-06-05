@@ -204,7 +204,7 @@
     font-family: 'MontserratRegular', sans-serif;
     font-size: 14px;
     line-height: 21px;
-    letter-spacing: 30;
+    letter-spacing: 1px;
     // text-align: center;
     background: transparent;
     border: none;
@@ -280,4 +280,53 @@ svg {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.js-header__form {
+  display: block;
+& button {
+  padding: 0 14px;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  color: rgba($color: #fafafa, $alpha: 0.2);
+  //   color: var(--color-secondary-texts);
+  text-align: center;
+  position: relative;
+  &:hover,
+  &:hover svg {
+    color: var(--color-decor);
+    fill: var(--color-decor);
+  }
+  }
+
+}   
+.js-form__register-btn:after {
+    content: '';
+    border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+
+.js-navigationButtons {
+  display: block;
+}
+
+.js-navigationButton {
+  position: relative;
+  font-family: 'MontserratRegular', sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 1px;
+  // text-align: center;
+  background: transparent;
+  border: none;
+  color: rgba($color: #fafafa, $alpha: 0.2);
+  padding: 0 11px;
+  &:hover,
+  &:hover svg {
+    color: var(--color-decor);
+    fill: var(--color-decor);
+  }
 }

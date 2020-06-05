@@ -24,11 +24,13 @@
   
   .navigationFilterListItem:not(:last-child) {
     margin-right: 10px;
+    margin-bottom: 20px;
   }
   
   .navigationFilterList {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     color: #ced2d1;
   }
   
