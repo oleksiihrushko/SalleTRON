@@ -40,8 +40,7 @@ const insert = categoriesArr => {
   if (window.matchMedia('(max-width: 767px)').matches) {
     size = 'mobile';
     markup = mobileNavigationCard(categoriesArr);
-//   } else if (window.matchMedia('(max-width: 1199px)').matches) {
-//     size = 'tablet';
+
   } else {
     size = 'tablet';
     markup = navigationCard(categoriesArr);
