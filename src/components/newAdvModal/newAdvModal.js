@@ -36,9 +36,9 @@ if (e.target.nodeName === "LABEL") {
   
       reader.onload = function () {
         const b64 = reader.result;
-        console.log(img);
+        // console.log(img);
         img.src = b64;
-        console.log(b64);
+        // console.log(b64);
       };
       if (file) {
         reader.readAsDataURL(file);
