@@ -5,6 +5,7 @@ import api from '../../services/api.js';
 
 const navigationFilter = document.querySelector('.burgerMenu');
 
+
 //*=========== render list item
 let size = '';
 
@@ -62,18 +63,18 @@ api.getCategoriesList().then(data => {
 
 //*================== mobile version
 
-const onAdvInit = () => {
-  if (window.innerWidth < 768) {
-    const insert = categoriesArr => {
-      const markup = navigationCard(categoriesArr);
-      navigationFilter.insertAdjacentHTML('afterbegin', markup);
-    };
-    return;
-  } else {
-    const insert = categoriesArr => {
-      const markup = navigationCard(categoriesArr);
-      navigationFilter.insertAdjacentHTML('afterbegin', markup);
-    };
-  }
-  api.getCategoriesList().then(data => insert(data));
-};
+// const onAdvInit = () => {
+//   if (window.innerWidth < 768) {
+//     const insert = categoriesArr => {
+//       const markup = navigationCard(categoriesArr);
+//       navigationFilter.insertAdjacentHTML('afterbegin', markup);
+//     };
+//     return;
+//   } else {
+//     const insert = categoriesArr => {
+//       const markup = navigationCard(categoriesArr);
+//       navigationFilter.insertAdjacentHTML('afterbegin', markup);
+//     };
+//   }
+//   api.getCategoriesList().then(data => insert(data));
+// };
