@@ -13,74 +13,61 @@
 //
 // [x] random element gets changed within some period of time
 // [x] get api database
-// [] rerender at breakpoints
-// [] random
+// [x] rerender at breakpoints
+// [] debounce
+// [] data on rerender at breakpoints
+// [] random request
+// [] item card
 // [] beautify
 
 import { advSlider } from './siema';
-import {
-  renderMarkup,
-  mobileTemplate,
-  tabletUpTemplate,
-  getCurrentSize,
-} from './services';
 import { adChange } from './adChanger';
-import '../adv.scss';
 import apiServices from '../../../services/api';
+import { renderServices, resizeService } from './services';
+import '../adv.scss';
 
 const onAdvInit = () => {
-  let currentSize = '';
-
-  const onResize = data => {
-    console.log('onres', currentSize);
-    console.log(data);
-    const newSize = getCurrentSize();
-    console.log('new', newSize);
-    if (currentSize === newSize) return;
-
-    if (window.innerWidth < 768) {
-      renderMarkup(mobileTemplate(data, 5));
-      advSlider();
-      currentSize = 'sizeMobile';
-      return currentSize;
-    }
-
-    if (window.innerWidth > 767 && window.innerWidth < 1200) {
-      renderMarkup(tabletUpTemplate(data, 3));
-      currentSize = 'sizeTablet';
-      return currentSize;
-    }
-
-    renderMarkup(tabletUpTemplate(data, 6));
-    currentSize = 'sizeDesktop';
-    return currentSize;
-  };
-
   if (window.innerWidth < 768) {
+    resizeService.currentSize = resizeService.mobile;
     apiServices.getProducts().then(data => {
-      let currentSize = 'sizeMobile';
-      window.addEventListener('resize', () => onResize(data)); //FIXME:
-      renderMarkup(mobileTemplate(data, 5));
+      renderServices.recordAllGoods(data);
+      renderServices.renderMarkup(
+        renderServices.getMobileTemplate(renderServices.mobileElemNum),
+      );
+      window.addEventListener(
+        'resize',
+        resizeService.getDebouncedOnResize(data),
+      ); //FIXME:
       advSlider();
+      // adChange();
     });
-    // adChange();
     return;
   }
 
-  if (window.innerWidth > 767 && window.innerWidth < 1280) {
+  if (window.innerWidth > 767 && window.innerWidth < 1200) {
+    resizeService.currentSize = resizeService.tablet;
     apiServices.getProducts().then(data => {
-      let currentSize = 'sizeTablet';
-      window.addEventListener('resize', () => onResize(data)); //FIXME:
-      renderMarkup(tabletUpTemplate(data, 3));
+      renderServices.recordAllGoods(data);
+      renderServices.renderMarkup(
+        renderServices.getTabletUpTemplate(renderServices.tabletElemNum),
+      );
+      window.addEventListener(
+        'resize',
+        resizeService.getDebouncedOnResize(data),
+      ); //FIXME:
+      // adChange();
     });
-    // adChange();
     return;
   }
 
+  // console.log(333);
+  resizeService.currentSize = resizeService.desktop;
   apiServices.getProducts().then(data => {
-    let currentSize = 'sizeDesktop';
-    window.addEventListener('resize', () => onResize(data)); //FIXME:
-    renderMarkup(tabletUpTemplate(data, 6));
+    renderServices.recordAllGoods(data);
+    renderServices.renderMarkup(
+      renderServices.getTabletUpTemplate(renderServices.desktopElemNum),
+    );
+    window.addEventListener('resize', resizeService.getDebouncedOnResize(data)); //FIXME:
     // adChange();
   });
 };
