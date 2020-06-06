@@ -258,6 +258,13 @@ svg {
   }
   @include for-tablet-only {
     display: none;
+    padding: 10px 0;
+    position: absolute;
+    width: 100vw;
+    top: 177px;
+    left: 0;
+    background-color: #121d2e;
+    z-index: 5;
   }
 
   @include for-desktop-up {
@@ -267,6 +274,12 @@ svg {
     display: block;
     width: 90%;
     margin-top: 24px;
+  }
+}
+
+.filterIsActiveForTablet {
+  @include for-tablet-only {
+  display: block;
   }
 }
 

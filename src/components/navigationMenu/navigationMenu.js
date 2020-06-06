@@ -17,23 +17,18 @@ window.addEventListener('resize', () => {
         size === 'tablet' &&
         window.matchMedia('(max-width: 767px)').matches
       ) {
-        console.log(' tablet > mobile ');
         markup = mobileNavigationCard(categoriesArr);
         navigationFilter.innerHTML = markup;
         size = 'mobile';
       }
     else if (size === 'mobile' && !window.matchMedia('(max-width: 767px)').matches) {
-      console.log('mobile > tablet');
       markup = navigationCard(categoriesArr);
       navigationFilter.innerHTML = markup;
       size = 'tablet';
     } 
-
-    
+   
   };
   insert(categories)
-//   console.log(categories);
-  //   api.getCategoriesList().then(data => (categories = [...data]));
 });
 
 const insert = categoriesArr => {
@@ -53,7 +48,7 @@ api.getCategoriesList().then(data => {
   categories = [...data];
 });
 
-//*===============
+//*=============== openByCategory
 
 // const navigationFilterList = document.querySelector('.navigationFilterList');
 // navigationFilterList.addEventListener('click', (e) => {
@@ -61,20 +56,10 @@ api.getCategoriesList().then(data => {
 //! openCategory(e.target.value) ждём импорта от Жени
 // });
 
-//*================== mobile version
+//*================== reset
 
-// const onAdvInit = () => {
-//   if (window.innerWidth < 768) {
-//     const insert = categoriesArr => {
-//       const markup = navigationCard(categoriesArr);
-//       navigationFilter.insertAdjacentHTML('afterbegin', markup);
-//     };
-//     return;
-//   } else {
-//     const insert = categoriesArr => {
-//       const markup = navigationCard(categoriesArr);
-//       navigationFilter.insertAdjacentHTML('afterbegin', markup);
-//     };
-//   }
-//   api.getCategoriesList().then(data => insert(data));
-// };
+
+// const navigationButtonRestore = document.querySelector(."navigationButtonRestore");
+// navigationButtonRestore.addEventListener("click", (e) => {
+//   if (e.target.nodeName !== "BUTTON") return;
+//   showAllProducts(e.target.value) //! ресет

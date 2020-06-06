@@ -25,9 +25,10 @@
   @include for-phone-only {
     margin-bottom: 20px;
   }
+
 }
 .navigationFilterListItem:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 7px;
 }
 
 .navigationFilterList {
@@ -35,6 +36,9 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   color: #ced2d1;
+  @include for-tablet-only {
+   justify-content: center;
+  }
 }
 
 .navigationFilterListItem:hover,
@@ -43,3 +47,4 @@
   color: #ff6b08;
   opacity: 1;
 }
+
