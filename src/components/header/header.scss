@@ -225,6 +225,7 @@
 }
 
 .navigationButtonFilter {
+  margin-right: 30px;
   @include for-tablet-up {
     margin-right: 40px;
   }
@@ -257,6 +258,13 @@
   }
   @include for-tablet-only {
     display: none;
+    padding: 10px 0;
+    position: absolute;
+    width: 100vw;
+    top: 177px;
+    left: 0;
+    background-color: #121d2e;
+    z-index: 5;
   }
 
   @include for-desktop-up {
@@ -266,6 +274,12 @@
     display: block;
     width: 90%;
     margin-top: 24px;
+  }
+}
+
+.filterIsActiveForTablet {
+  @include for-tablet-only {
+  display: block;
   }
 }
 
@@ -283,34 +297,42 @@
 }
 
 .js-header__form {
-  display: block;
-& button {
-  padding: 0 14px;
-  font-size: 14px;
-  background: transparent;
-  border: none;
-  color: rgba($color: #fafafa, $alpha: 0.2);
-  //   color: var(--color-secondary-texts);
-  text-align: center;
-  position: relative;
-  &:hover,
-  &:hover svg {
-    color: var(--color-decor);
-    fill: var(--color-decor);
-  }
-  }
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  margin-bottom: 60px;
 
-}   
+  & button {
+    padding: 0 14px;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    //   color: var(--color-secondary-texts);
+    text-align: center;
+    position: relative;
+    &:hover,
+    &:hover svg {
+      color: var(--color-decor);
+      fill: var(--color-decor);
+    }
+  }
+}
+
 .js-form__register-btn:after {
-    content: '';
-    border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
-    height: 100%;
-    position: absolute;
-    right: 0;
+  content: '';
+  border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
+  height: 100%;
+  position: absolute;
+  right: 0;
 }
 
 .js-navigationButtons {
   display: block;
+  margin-bottom: 32px;
+  padding-left: 20px;
 }
 
 .js-navigationButton {
