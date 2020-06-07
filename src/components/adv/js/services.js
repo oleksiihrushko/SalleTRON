@@ -71,7 +71,10 @@ export const renderServices = {
     const makeMarkup2 = () => {
       const markup2 = array
         .map(
-          (item, idx) => `<li class="adv__adItem elem${idx}">
+          (
+            item,
+            idx,
+          ) => `<li class="adv__adItem elem${idx}" data-id="${item.id}">
     <img
     class="adv__adImg"
     src="${item.images[0]}"
@@ -109,10 +112,10 @@ export const renderServices = {
   getTabletUpTemplate(num) {
     // console.log('get', num);
     const array = this.checkElem(num);
-    // console.log(array);
+    console.log(array);
 
     const markup1 = `<ul class="adv__adList adv__adList--grid">
-    <li class="adv__adItem adv__adItem--grid1">
+    <li class="adv__adItem elem0" data-id="${array[0].id}">
       <img
         class="adv__adImg"
         src="${array[0].images[0]}"
@@ -132,7 +135,9 @@ export const renderServices = {
     const makeMarkup2 = () => {
       const markup2 = shortArr
         .map(
-          (item, idx) => ` <li class="adv__adItem adv__adItem--grid${idx + 2}">
+          (item, idx) => ` <li class="adv__adItem elem${idx + 1}" data-id="${
+            item.id
+          }">
 <img
   class="adv__adImg"
   src="${item.images[0]}"
