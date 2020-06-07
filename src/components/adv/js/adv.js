@@ -14,8 +14,8 @@
 // [x] random element gets changed within some period of time
 // [x] get api database
 // [x] rerender at breakpoints
-// [] debounce
-// [] data on rerender at breakpoints
+// [x] debounce
+// [x] data on rerender at breakpoints
 // [] random request
 // [] item card
 // [] beautify
@@ -37,9 +37,9 @@ const onAdvInit = () => {
       window.addEventListener(
         'resize',
         resizeService.getDebouncedOnResize(data),
-      ); //FIXME:
+      );
       advSlider();
-      // adChange();
+      adChange();
     });
     return;
   }
@@ -54,8 +54,8 @@ const onAdvInit = () => {
       window.addEventListener(
         'resize',
         resizeService.getDebouncedOnResize(data),
-      ); //FIXME:
-      // adChange();
+      );
+      adChange();
     });
     return;
   }
@@ -67,8 +67,8 @@ const onAdvInit = () => {
     renderServices.renderMarkup(
       renderServices.getTabletUpTemplate(renderServices.desktopElemNum),
     );
-    window.addEventListener('resize', resizeService.getDebouncedOnResize(data)); //FIXME:
-    // adChange();
+    window.addEventListener('resize', resizeService.getDebouncedOnResize(data));
+    adChange();
   });
 };
 

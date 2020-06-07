@@ -4,6 +4,7 @@ import { debounce } from 'lodash';
 export const renderServices = {
   allGoods: [],
   currentGoods: [],
+  elemIn: {},
   mobileElemNum: 5,
   tabletElemNum: 3,
   desktopElemNum: 6,
@@ -15,8 +16,32 @@ export const renderServices = {
   checkElem(num) {
     // console.log('before check', this.currentGoods);
     // console.log('before check', num);
+
+    if (this.currentGoods.length === 0) {
+      let i = 0;
+      // console.log(num);
+      while (i < num) {
+        let numElemIn = Math.ceil(Math.random() * this.allGoods.length) - 1;
+        // console.log(this.allGoods);
+        // console.log(random);
+        // console.log(this.allGoods[random].categories);
+        // console.log(this.currentGoods);
+        if (
+          this.currentGoods.find(
+            item => item.categories === this.allGoods[numElemIn].categories,
+          ) === undefined
+        ) {
+          this.currentGoods.push(this.allGoods[numElemIn]);
+          i += 1;
+          // console.log('i', i);
+          // console.log('res', this.currentGoods);
+        }
+      }
+      return this.currentGoods;
+    }
+
     if (this.currentGoods.length === num) {
-      console.log('=', this.currentGoods);
+      // console.log('=', this.currentGoods);
       return this.currentGoods;
     }
 
@@ -25,7 +50,7 @@ export const renderServices = {
         0,
         num,
       );
-      console.log('<', this.currentGoods);
+      // console.log('<', this.currentGoods);
       return this.currentGoods;
     }
 
@@ -37,8 +62,8 @@ export const renderServices = {
   },
 
   getMobileTemplate(num) {
-    // console.log('num', num);
     const array = this.checkElem(num);
+    console.log('elemInTemp', array);
 
     const markup1 = `<div class="adv__slider">
     <ul class="adv__adList siema">`;
@@ -46,7 +71,7 @@ export const renderServices = {
     const makeMarkup2 = () => {
       const markup2 = array
         .map(
-          item => `<li class="adv__adItem">
+          (item, idx) => `<li class="adv__adItem elem${idx}">
     <img
     class="adv__adImg"
     src="${item.images[0]}"
@@ -82,9 +107,9 @@ export const renderServices = {
   },
 
   getTabletUpTemplate(num) {
-    console.log('get', num);
+    // console.log('get', num);
     const array = this.checkElem(num);
-    console.log(array);
+    // console.log(array);
 
     const markup1 = `<ul class="adv__adList adv__adList--grid">
     <li class="adv__adItem adv__adItem--grid1">
