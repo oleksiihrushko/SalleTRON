@@ -87,7 +87,8 @@
       // background: transparent;
       border: 1px solid white;
       background-image: url('../../components/header/img/icons8-search-50.png');
-      background-position: 375px;
+      background-size: 25px;
+      background-position: 370px;
       background-repeat: no-repeat;
 
       padding: 12px 20px 12px 40px;
@@ -283,7 +284,7 @@
 
 .filterIsActiveForTablet {
   @include for-tablet-only {
-  display: block;
+    display: block;
   }
 }
 
