@@ -279,6 +279,7 @@ svg {
 
 .filterIsActiveForTablet {
   @include for-tablet-only {
+    
   display: block;
   }
 }
