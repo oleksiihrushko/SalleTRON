@@ -136,8 +136,8 @@ async function signInLogic(provider) {
   }
 }
 
-gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
-facebook.addEventListener('click', loginWithFB);
+// gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
+// facebook.addEventListener('click', loginWithFB);
 
 {
 // function signInLogic(provider) {
