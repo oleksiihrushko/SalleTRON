@@ -225,6 +225,7 @@
 }
 
 .navigationButtonFilter {
+  margin-right: 30px;
   @include for-tablet-up {
     margin-right: 40px;
   }
@@ -233,7 +234,7 @@
   }
 }
 
-svg {
+.navigationButtonIcon {
   position: absolute;
   fill: rgba($color: #fafafa, $alpha: 0.2);
   bottom: 0;
@@ -261,6 +262,13 @@ svg {
   }
   @include for-tablet-only {
     display: none;
+    padding: 10px 0;
+    position: absolute;
+    width: 100vw;
+    top: 177px;
+    left: 0;
+    background-color: #121d2e;
+    z-index: 5;
   }
 
   @include for-desktop-up {
@@ -270,6 +278,12 @@ svg {
     display: block;
     width: 90%;
     margin-top: 24px;
+  }
+}
+
+.filterIsActiveForTablet {
+  @include for-tablet-only {
+  display: block;
   }
 }
 
@@ -287,13 +301,27 @@ svg {
 }
 
 .js-header__form {
+<<<<<<< HEAD
   display: block;
+=======
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  margin-bottom: 60px;
+
+>>>>>>> dev
   & button {
     padding: 0 14px;
     font-size: 14px;
     background: transparent;
     border: none;
+<<<<<<< HEAD
     color: rgba($color: #fafafa, $alpha: 0.2);
+=======
+    color: #fff;
+>>>>>>> dev
     //   color: var(--color-secondary-texts);
     text-align: center;
     position: relative;
@@ -304,6 +332,10 @@ svg {
     }
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 .js-form__register-btn:after {
   content: '';
   border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
@@ -314,6 +346,8 @@ svg {
 
 .js-navigationButtons {
   display: block;
+  margin-bottom: 32px;
+  padding-left: 20px;
 }
 
 .js-navigationButton {
