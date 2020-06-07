@@ -4,29 +4,36 @@ import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.css';
 import Glide from '@glidejs/glide';
 import ItemModalHbs from './ItemModal.hbs';
+import tabletItemPictureMarkup from './tabletItemPictureMarkup.hbs'
+import apiService from '../../services/api';
+
 
 const modal = document.querySelector('.modal');
-modal.innerHTML = ItemModalHbs();
+apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
+  const glide = new Glide('.glide', {
+    type: 'carousel',
+    perView: 1,
+    dots: '#dots',
+  });
+  modal.innerHTML = ItemModalHbs(data);
+
+  glide.mount();
+  const tabletItemPicture = document.querySelector('.tablet_picture');
+  const sMarkup = `
+  <div class="itemModal__MainImageWrapper">
+      <img src="${data.images[0]}" alt="" class="itemModal__MainImage">
+  </div> 
+  `
+  tabletItemPicture.insertAdjacentHTML("beforeend", sMarkup)
+  tabletItemPicture.insertAdjacentHTML("beforeend", tabletItemPictureMarkup(data));
+});
+
+
+
+// modal.innerHTML = ItemModalHbs();
 
 // const sliderContainer = document.querySelector('.sliderContainer');
 // sliderContainer.innerHTML = getSlider();
-
-const glide = new Glide('.glide', {
-  type: 'carousel',
-  perView: 1,
-  dots: '#dots',
-});
-
-glide.mount();
-
-
-
-
-
-
-
-
-
 
 
 
