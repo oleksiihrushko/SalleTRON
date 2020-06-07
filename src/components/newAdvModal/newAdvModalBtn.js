@@ -14,34 +14,59 @@ const img6 = document.querySelector(".import-img-6");
 checkForm.addEventListener('submit', checkValue);
 
 const submitBtn = {
-    name : "",
-    description : "",
-    categories : "",
-    price : "",
-    phone : "",
-    img1 : "",
-    img2 : "",
-    img3 : "",
-    img4 : "",
-    img5 : "",
-    img6 : "", 
+    name : null,
+    description : null,
+    categories : null,
+    price : null,
+    phone : null,
+    img1 : null,
+    img2 : null,
+    img3 : null,
+    img4 : null,
+    img5 : null,
+    img6 : null, 
 }
  //console.log(submitBtn)
 
 function checkValue (e) {
     e.preventDefault();
     const valueForm = e.currentTarget.elements;
-    console.dir(valueForm)
-    console.log(inputName.value)
-    console.log(inputDescriptions.value)
-    console.log(inputCategories.value)
-    console.log(inputPrice.value)
-    console.log(inputPhone.value)
-    console.log(img1.value)
-    console.log(img2.value)
-    console.log(img3.value)
-    console.log(img4.value)
-    console.log(img5.value)
-    console.log(valueForm)
-
+    // console.dir(valueForm);
+    // console.log(inputName.value);
+    // console.log(inputDescriptions.value);
+    // console.log(inputCategories.value);
+    // console.log(inputPrice.value);
+    // console.log(inputPhone.value);
+    // console.log(img1.getAttribute("src"));
+    // console.log(img2.getAttribute("src"));
+    // console.log(img3.getAttribute("src"));
+    // console.log(img4.getAttribute("src"));
+    // console.log(img5.getAttribute("src"));
+    // console.log(img6.getAttribute("src"));
+    // console.log(valueForm);
+    submitBtn.name = inputName.value;
+    submitBtn.description = inputDescriptions.value;
+    submitBtn.categories = inputCategories.value;
+    submitBtn.price = inputPrice.value;
+    submitBtn.phone = inputPhone.value;
+    submitBtn.img1 = img1.getAttribute("src");
+    submitBtn.img2 = img2.getAttribute("src");
+    submitBtn.img3 = img3.getAttribute("src");
+    submitBtn.img4 = img4.getAttribute("src");
+    submitBtn.img5 = img5.getAttribute("src");
+    submitBtn.img6 = img6.getAttribute("src");
 }
+//console.log(submitBtn)
+
+// addProduct(submitBtn) {
+//     if (!this.isAuth()) return;
+
+//     try {
+//       axios.post(/products/${submitBtn.categories}.json?auth=${getToken()}, {
+//         ...submitBtn
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       return;
+//     }
+//   },
