@@ -8,11 +8,7 @@
 }
 
 .navigationFilterListItem {
-<<<<<<< HEAD
-  // box-sizing: content-box;
-=======
   box-sizing: content-box;
->>>>>>> dev
   text-align: center;
   padding: 9px 20px;
   letter-spacing: 1px;
@@ -24,47 +20,23 @@
   cursor: pointer;
   transition: all 300ms linear;
 }
-<<<<<<< HEAD
-
-.navigationFilterListItem:not(:last-child) {
-  margin-right: 10px;
-}
-
-.navigationFilterListItem:not(:last-child) {
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-
-=======
 
 .navigationFilterListItem {
   @include for-phone-only {
     margin-bottom: 20px;
   }
-
 }
 .navigationFilterListItem:not(:last-child) {
   margin-right: 7px;
 }
 
->>>>>>> dev
 .navigationFilterList {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   color: #ced2d1;
-<<<<<<< HEAD
-}
-
-.navigationFilterListItem:hover,
-.navigationFilterListItem:focus {
-  border-color: #ff6b08;
-  color: #ff6b08;
-  opacity: 1;
-}
-=======
   @include for-tablet-only {
-   justify-content: center;
+    justify-content: center;
   }
 }
 
@@ -74,5 +46,3 @@
   color: #ff6b08;
   opacity: 1;
 }
-
->>>>>>> dev
