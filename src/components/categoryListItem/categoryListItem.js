@@ -7,18 +7,17 @@ import {
   getItemMarkup,
   getLiMarkup
 } from './categoryListItemMarkup';
+import openItemModal from '../ItemModal/ItemModal'
 
 import './categoryListItem.scss';
 
-///////////////////////////////////////////////////////////////
 const categoryList = document.querySelector('.categoryList');
 
 categoryList.addEventListener('click', e => {
   if (e.target.nodeName === 'IMG' || e.target.nodeName === 'P') {
-    console.log(e.target.dataset.id); // заменить консоль лог функцией
+    openItemModal(e.target.dataset.id);
   }
 });
-////////////////////////////////////////////////////////////////
 
 export async function getCategoryListItem(category) {
   const categoryItems = await apiServices.getProductsByCategory(category);
