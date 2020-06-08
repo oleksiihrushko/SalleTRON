@@ -24,6 +24,4 @@ registrationModal.addEventListener('click', showModal);
 loginModal.addEventListener('click', showModal);
 // console.log(registrationModal);
 
-
-
 export default showModal;
