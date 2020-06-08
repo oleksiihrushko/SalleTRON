@@ -2,7 +2,6 @@ import axios from 'axios';
 import firebase from 'firebase';
 import hideMenue from './services';
 import refs from './refs';
-
 //===========user==============
 const user = {
   email: '',
@@ -102,14 +101,10 @@ const checkData = e => {
   signInWithPassword();
   resetUserData(e);
 };
-console.log(refs.login);
-console.log(refs.gooogle);
 
 export const userLogin = () => {
   getDataFromInput();
-
-  refs.login.addEventListener('submit', checkData);
-  // authForm.addEventListener('submit', checkData);
+  authForm.addEventListener('submit', checkData);
 };
 export const userSignUP = () => {
   getDataFromInput();
@@ -140,8 +135,8 @@ async function signInLogic(provider) {
   }
 }
 
-// refs.gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
-// refs.facebook.addEventListener('click', loginWithFB);
+// gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
+// facebook.addEventListener('click', loginWithFB);
 
 {
 // function signInLogic(provider) {
