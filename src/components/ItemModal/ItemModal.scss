@@ -2,6 +2,9 @@
 
 .modal {
   background-color: white;
+  width: 320px;
+  // width: 100%;
+  height: 1000px;
 }
 
 .btnBack {
@@ -174,13 +177,22 @@
 // }
 
 @media (min-width: 768px) {
+  .modal {
+    width: 720px;
+    height: 600px;
+  }
+
+  .modal__content-text {
+    width: 294px;
+  }
+
   .btnClose {
     display: flex;
     position: relative;
     left: 298px;
     background: none;
     border: none;
-    padding-top: 15px;
+    margin-top: 15px;
   }
 
   .itemModal__slider {
@@ -220,11 +232,16 @@
 }
 
 // @mixin for-tablet-only
-// @media (min-width: 768px) and (max-width: 1199px) {
+// @media (min-width: 768px) and (max-width: 1279px) {
 // }
 
 // @mixin for-desktop-up 
 @media (min-width: 1280px) {
+  .modal {
+    width: 1025px;
+    height: 615px;
+  }
+
   .tablet_picture {
     padding: 80px 45px 10px 97px;
   }
@@ -235,7 +252,7 @@
 
   .btnClose {
     left: 470px;
-    padding-top: 53px;
+    margin-top: 53px;
   }
 
   .modal__content-text {
