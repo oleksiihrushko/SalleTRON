@@ -1,5 +1,9 @@
 @import '../../css/mixins.scss';
 
+.modal {
+  background-color: white;
+}
+
 .btnBack {
   background: none;
   border: none;
@@ -220,7 +224,7 @@
 // }
 
 // @mixin for-desktop-up 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .tablet_picture {
     padding: 80px 45px 10px 97px;
   }
