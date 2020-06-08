@@ -46,11 +46,12 @@ api.getCategoriesList().then(data => {
 
 //*=============== openByCategory
 
-// const navigationFilterList = document.querySelector('.navigationFilterList');
-// navigationFilterList.addEventListener('click', (e) => {
-//     if (e.target.nodeName !== "LI") return;
-//! openCategory(e.target.value) ждём импорта от Жени
-// });
+const navigationFilterList = document.querySelector('.navigationFilterList');
+navigationFilterList.addEventListener('click', (e) => {
+  e.preventDefault();
+    if (e.target.nodeName !== "LI") return;
+ api.getProductsByCategory().then(e.target.value) 
+});
 
 //*================== reset
 
