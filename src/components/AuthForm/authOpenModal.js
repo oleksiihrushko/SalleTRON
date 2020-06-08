@@ -5,9 +5,9 @@ import * as basicLightbox from 'basiclightbox';
 import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import authFormLogic from './authFormLogic';
 
-const closeModalBtn = document.querySelector(
-  'button[data-action="close-modal"]',
-);
+// const closeModalBtn = document.querySelector(
+//   'button[data-action="close-modal"]',
+// );
 
 const showModal = () => {
   const instance = basicLightbox.create(
@@ -20,7 +20,7 @@ const showModal = () => {
   authFormLogic();
 };
 
-closeModalBtn.addEventListener('click', showModal);
+// closeModalBtn.addEventListener('click', showModal);
 
 const loginModal = document.querySelector('.login-btn');
 const registrationModal = document.querySelector('.form__register-btn');
