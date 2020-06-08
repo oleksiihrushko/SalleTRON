@@ -102,10 +102,14 @@ const checkData = e => {
   signInWithPassword();
   resetUserData(e);
 };
+console.log(refs.login);
+console.log(refs.gooogle);
 
 export const userLogin = () => {
   getDataFromInput();
-  authForm.addEventListener('submit', checkData);
+
+  refs.login.addEventListener('submit', checkData);
+  // authForm.addEventListener('submit', checkData);
 };
 export const userSignUP = () => {
   getDataFromInput();
@@ -136,8 +140,8 @@ async function signInLogic(provider) {
   }
 }
 
-// gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
-// facebook.addEventListener('click', loginWithFB);
+// refs.gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
+// refs.facebook.addEventListener('click', loginWithFB);
 
 {
 // function signInLogic(provider) {
