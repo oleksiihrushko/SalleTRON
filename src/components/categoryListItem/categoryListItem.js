@@ -16,65 +16,70 @@ categoryList.addEventListener('click', e => {
 });
 
 export async function getCategoryListItem(category) {
-  const categoryItems = await apiServices.getProductsByCategory(category);
+  try {
+    const categoryItems = await apiServices.getProductsByCategory(category);
 
-  const products = {
-    visible: 12,
-  };
 
-  const itemMarkup = categoryItems.reduce((acc, item) => {
-    acc += markup.getItemMarkup(item);
-    return acc;
-  }, '');
+    const products = {
+      visible: 12,
+    };
 
-  categoryList.insertAdjacentHTML('beforeend', markup.mainMarkup(category, itemMarkup, categoryItems));
-  const categoryContainer = document.querySelector(`[data-replace=${category}]`);
-  categoryContainer.innerHTML = markup.withSlider(category, itemMarkup, categoryItems)
-  getSlider();
+    const itemMarkup = categoryItems.reduce((acc, item) => {
+      acc += markup.getItemMarkup(item);
+      return acc;
+    }, '');
 
-  categoryContainer.addEventListener('click', seeAllProducts)
+    categoryList.insertAdjacentHTML('beforeend', markup.mainMarkup(category, itemMarkup, categoryItems));
+    const categoryContainer = document.querySelector(`[data-replace=${category}]`);
+    categoryContainer.innerHTML = markup.withSlider(category, itemMarkup, categoryItems)
+    getSlider();
 
-  function seeAllProducts(e) {
-    if (e.target.dataset.btnseeall === `${category}`) {
-      const categoryCont = document.querySelector(`[data-replace=${e.target.dataset.btnseeall}]`);
-      categoryCont.innerHTML = markup.withoutSlider(e.target.dataset.btnseeall);
+    categoryContainer.addEventListener('click', seeAllProducts)
 
-      const categoryContent = document.querySelector(`[data-content=${e.target.dataset.btnseeall}]`);
-      categoryContent.innerHTML = innerMarkup(
-        categoryItems,
-        0,
-        products.visible,
-      );
-
-      const loadMoreBtn = document.querySelector(`[data-loadmore=${e.target.dataset.btnseeall}]`);
-      loadMoreBtn.addEventListener('click', loadMoreProducts);
-      endOfCategoryHandler(categoryItems, loadMoreBtn, products)
-
-      function loadMoreProducts() {
-        loadMoreBtn.classList.add('button--loading');
-
-        const addedProducts = innerMarkup(
-          categoryItems,
-          products.visible,
-          products.visible + 12,
-        );
-        products.visible += 12;
+    function seeAllProducts(e) {
+      if (e.target.dataset.btnseeall === `${category}`) {
+        const categoryCont = document.querySelector(`[data-replace=${e.target.dataset.btnseeall}]`);
+        categoryCont.innerHTML = markup.withoutSlider(e.target.dataset.btnseeall);
 
         const categoryContent = document.querySelector(`[data-content=${e.target.dataset.btnseeall}]`);
-        categoryContent.insertAdjacentHTML('beforeend', addedProducts);
-        loadMoreBtn.classList.remove('button--loading');
-        endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+        categoryContent.innerHTML = innerMarkup(
+          categoryItems,
+          0,
+          products.visible,
+        );
+
+        const loadMoreBtn = document.querySelector(`[data-loadmore=${e.target.dataset.btnseeall}]`);
+        loadMoreBtn.addEventListener('click', loadMoreProducts);
+        endOfCategoryHandler(categoryItems, loadMoreBtn, products)
+
+        function loadMoreProducts() {
+          loadMoreBtn.classList.add('button--loading');
+
+          const addedProducts = innerMarkup(
+            categoryItems,
+            products.visible,
+            products.visible + 12,
+          );
+          products.visible += 12;
+
+          const categoryContent = document.querySelector(`[data-content=${e.target.dataset.btnseeall}]`);
+          categoryContent.insertAdjacentHTML('beforeend', addedProducts);
+          loadMoreBtn.classList.remove('button--loading');
+          endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+        }
+      }
+
+      if (e.target.dataset.btnseeless === `${category}`) {
+        const categoryCont = document.querySelector(`[data-replace=${e.target.dataset.btnseeless}]`);
+        categoryCont.innerHTML = markup.withSlider(e.target.dataset.btnseeless, itemMarkup, categoryItems);
+        getSlider()
       }
     }
-
-    if (e.target.dataset.btnseeless === `${category}`) {
-      const categoryCont = document.querySelector(`[data-replace=${e.target.dataset.btnseeless}]`);
-      categoryCont.innerHTML = markup.withSlider(e.target.dataset.btnseeless, itemMarkup, categoryItems);
-      getSlider()
-    }
+  } catch (error) {
+    console.log(error);
+    return
   }
 }
-
 
 function getSlider() {
   const sliders = document.querySelectorAll('.glide');
