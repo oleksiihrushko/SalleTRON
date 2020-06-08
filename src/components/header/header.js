@@ -1,5 +1,5 @@
 import './header.scss';
-import apiServices from '../../services/api';
+// import apiServices from '../../services/api';
 
 const hamburger = document.querySelector('.hamburger');
 const burgerMenu = document.querySelector('.header__burgerMenu');
