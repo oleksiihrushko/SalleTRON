@@ -1,16 +1,16 @@
-const refs = {
-    // loginMenueList: document.querySelector('.loginMenueList'),
-    // content: document.querySelector('.content'),
-    home: document.querySelector('[data-page="home"]'),
-  
-    login : document.querySelector('.login'),
-    registration : document.querySelector('.registration'),
-    
-    logOut: document.querySelector('[data-page="logOut"]'),  //Дима должен добавить в меню + функцию hideMenue
-  
-    gooogle: document.querySelector('#gooogle'),
-    facebook: document.querySelector('#facebook'),
-  };
+import { loginWithGoogle, loginWithFB } from "./authServises";
+import showModal from "../AuthForm/authOpenModal";
 
-
-  export default refs;
+export function addButtonListeners() {
+  const refs = {
+     authForm: document.forms.authForm,
+ 
+     login: document.querySelector('.login'),
+     registration: document.querySelector('.registration'),
+ 
+     googleBtn: document.querySelector('.googleBtn'),
+     facebookBtn: document.querySelector('.facebookBtn'),
+   };
+   refs.googleBtn.addEventListener('click', loginWithGoogle);
+   refs.facebookBtn.addEventListener('click', loginWithFB);
+ }

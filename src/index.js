@@ -7,7 +7,12 @@ import './services/api';
 import './components/header/header';
 
 import './components/authentication/authServises'
+<<<<<<< HEAD
 =======
 
 import './components/AuthForm/authOpenModal';
 >>>>>>> AuthForm
+=======
+
+import './components/AuthForm/authOpenModal';
+>>>>>>> authentication
