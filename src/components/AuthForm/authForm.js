@@ -1,5 +1,6 @@
 const getAuthForm = () => {
-  return `    <form class="js-form">
+  return `   
+  <form class="js-form" name="authForm">
       <input
         name="email"
         type="text"
@@ -20,7 +21,8 @@ const getAuthForm = () => {
         <button class="login btn">Log in</button>
         <button class="registration btn">New account</button>
       </div>
-    </form>`;
+    </form>
+`;
 };
 
 export default getAuthForm;

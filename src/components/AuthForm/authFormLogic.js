@@ -1,13 +1,14 @@
-import getAuthForm from './authForm';
-
 const authFormLogic = () => {
   const checkForm = document.querySelector('.js-form');
   checkForm.addEventListener('submit', checkValue);
   function checkValue(e) {
+    e.preventDefault();
     const errorEmail = document.querySelector('.errorEmail');
     const errorPassword = document.querySelector('.errorPassword');
 
-    e.preventDefault();
+    errorEmail.textContent = '';
+    errorPassword.textContent = '';
+
     const valueEmail = e.currentTarget.elements.email.value;
     if (!(valueEmail.includes('@') && valueEmail.includes('.'))) {
       errorEmail.textContent = 'Incorrect e-mail!';
