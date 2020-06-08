@@ -1,3 +1,4 @@
+import './stylesAuth.scss';
 import getAuthForm from './authForm';
 
 const openModal = () => {
