@@ -7,6 +7,11 @@
 
 .replacableContainer {
   margin-bottom: 20px;
+  // display: flex;
+  // flex-wrap: wrap;
+}
+
+.category__content {
   display: flex;
   flex-wrap: wrap;
 }
