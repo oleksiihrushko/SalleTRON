@@ -6,7 +6,6 @@ import * as basicLightbox from 'basiclightbox';
 import { addButtonListeners } from '../authentication/refs';
 
 const showModal = () => {
-  
   const instance = basicLightbox.create(
     `<div>
       <div class="modal">${openModal()}</div>
