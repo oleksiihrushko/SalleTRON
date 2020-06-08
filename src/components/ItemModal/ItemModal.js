@@ -6,16 +6,31 @@ import Glide from '@glidejs/glide';
 import ItemModalHbs from './ItemModal.hbs';
 import tabletItemPictureMarkup from './tabletItemPictureMarkup.hbs'
 import apiService from '../../services/api';
+import * as basicLightbox from 'basiclightbox'
 
 
-const modal = document.querySelector('.modal');
-apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
+// const modal = document.querySelector('.modal');
+const openItemModal = (id) => {
+
+apiService.getProductById(id).then(data => {
   const glide = new Glide('.glide', {
     type: 'carousel',
     perView: 1,
     dots: '#dots',
   });
-  modal.innerHTML = ItemModalHbs(data);
+  // modal.innerHTML = ItemModalHbs(data);
+
+const instance = basicLightbox.create(`
+    <div>${ItemModalHbs(data)}</div>
+`, {
+  closable: false
+})
+
+instance.show()
+const closeItemModalBtn = document.querySelector('.btnClose')
+closeItemModalBtn.addEventListener('click', ()=>instance.close());
+
+
 
   glide.mount();
   const tabletItemPicture = document.querySelector('.tablet_picture');
@@ -27,7 +42,8 @@ apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
   tabletItemPicture.insertAdjacentHTML("beforeend", sMarkup)
   tabletItemPicture.insertAdjacentHTML("beforeend", tabletItemPictureMarkup(data));
 });
-
+}
+export default openItemModal;
 
 
 // modal.innerHTML = ItemModalHbs();
@@ -50,9 +66,14 @@ apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
 //   if (e.target.nodeName !== 'IMG') return;
 
 // // ! копия с https://basiclightbox.electerious.com/
-// // !     const instance = basicLightbox.create(`
-// // !       <img src="assets/images/image.png" width="800" height="600">
-// // !       `) 
+// import * as basicLightbox from 'basiclightbox'
+
+// const instance = basicLightbox.create(`
+// <img src="{{this}}" alt="" class="itemSliderPicture"></img>
+// `)
+
+// // <img class="modal__img" src="{{this}}" alt="" width="280" height="308">
+// instance.show()
 
 //   const instance = basicLightbox.create(genereteMarkup(textObj))
 //   instance.show()
