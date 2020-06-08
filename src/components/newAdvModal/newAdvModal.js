@@ -49,7 +49,7 @@ if (e.target.nodeName === "LABEL") {
  }
 }
 
-const onAdvInit = () => {
+const placeholderOFF = () => {
     if (window.innerWidth > 768) {
         const prodNameOff = document.querySelector(".new-adv-modal-form-name");
         prodNameOff.setAttribute("placeholder", "");
@@ -65,4 +65,4 @@ const onAdvInit = () => {
         return;
       }
 }
-onAdvInit();
+placeholderOFF();
