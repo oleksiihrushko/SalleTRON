@@ -263,12 +263,7 @@
 
 .filterIsActiveForTablet {
   @include for-tablet-only {
-<<<<<<< HEAD
-    
-  display: block;
-=======
     display: block;
->>>>>>> dev
   }
 }
 
