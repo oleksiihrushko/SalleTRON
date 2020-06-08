@@ -26,23 +26,11 @@ const submitBtn = {
     img5 : null,
     img6 : null, 
 }
- //console.log(submitBtn)
 
 function checkValue (e) {
     e.preventDefault();
     const valueForm = e.currentTarget.elements;
     // console.dir(valueForm);
-    // console.log(inputName.value);
-    // console.log(inputDescriptions.value);
-    // console.log(inputCategories.value);
-    // console.log(inputPrice.value);
-    // console.log(inputPhone.value);
-    // console.log(img1.getAttribute("src"));
-    // console.log(img2.getAttribute("src"));
-    // console.log(img3.getAttribute("src"));
-    // console.log(img4.getAttribute("src"));
-    // console.log(img5.getAttribute("src"));
-    // console.log(img6.getAttribute("src"));
     // console.log(valueForm);
     submitBtn.name = inputName.value;
     submitBtn.description = inputDescriptions.value;

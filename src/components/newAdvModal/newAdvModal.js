@@ -18,7 +18,6 @@ imgMarkup += `
 
 }
 
-      
 document.querySelector(".ul-img-lable").insertAdjacentHTML('beforeend',imgMarkup)
 let img;      
 const listImg = document.querySelector(".ul-img-lable");
@@ -49,3 +48,21 @@ if (e.target.nodeName === "LABEL") {
   }
  }
 }
+
+const onAdvInit = () => {
+    if (window.innerWidth > 768) {
+        const prodNameOff = document.querySelector(".new-adv-modal-form-name");
+        prodNameOff.setAttribute("placeholder", "");
+
+        const prodDescriptOff = document.querySelector(".new-adv-modal-form-product-descriptions");
+        prodDescriptOff.setAttribute("placeholder", "");
+
+        // const priceOff = document.querySelector(".new-adv-modal-form-cash");
+        // priceOff.setAttribute("placeholder", "");
+
+        // const phoneOff = document.querySelector(".new-adv-modal-form-phone");
+        // phoneOff.setAttribute("placeholder", "");
+        return;
+      }
+}
+onAdvInit();
