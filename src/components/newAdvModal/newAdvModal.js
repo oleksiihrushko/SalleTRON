@@ -49,20 +49,24 @@ if (e.target.nodeName === "LABEL") {
  }
 }
 
+const prodNameOff = document.querySelector(".new-adv-modal-form-name");
+const prodDescriptOff = document.querySelector(".new-adv-modal-form-product-descriptions");
 const placeholderOFF = () => {
     if (window.innerWidth > 768) {
-        const prodNameOff = document.querySelector(".new-adv-modal-form-name");
         prodNameOff.setAttribute("placeholder", "");
-
-        const prodDescriptOff = document.querySelector(".new-adv-modal-form-product-descriptions");
         prodDescriptOff.setAttribute("placeholder", "");
-
-        // const priceOff = document.querySelector(".new-adv-modal-form-cash");
-        // priceOff.setAttribute("placeholder", "");
-
-        // const phoneOff = document.querySelector(".new-adv-modal-form-phone");
-        // phoneOff.setAttribute("placeholder", "");
         return;
       }
 }
 placeholderOFF();
+
+const img1Plus = document.querySelector(".new-adv-modal-form-addimg1");
+const img2Plus = document.querySelector(".new-adv-modal-form-addimg2");
+const img3Plus = document.querySelector(".new-adv-modal-form-addimg3");
+const img4Plus = document.querySelector(".new-adv-modal-form-addimg4");
+const img5Plus = document.querySelector(".new-adv-modal-form-addimg5");
+const img6Plus = document.querySelector(".new-adv-modal-form-addimg6");
+
+
+console.dir(img2Plus)
+console.dir(img1Plus)
