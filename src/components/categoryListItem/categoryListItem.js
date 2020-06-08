@@ -5,8 +5,7 @@ import Glide from '@glidejs/glide';
 import apiServices from '../../services/api';
 import {
   getItemMarkup,
-  getLiMarkup,
-  sliderMarkup
+  getLiMarkup
 } from './categoryListItemMarkup';
 
 import './categoryListItem.scss';

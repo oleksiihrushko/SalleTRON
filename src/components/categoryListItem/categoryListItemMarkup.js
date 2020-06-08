@@ -26,15 +26,12 @@ export function getLiMarkup(category, itemMarkup, categoryItems) {
       <h3 class='category__name'>${capitalize(`${category}`)}</h3>
   
       <button class="category__btn-see-all" data-btnReplace=${category}>See all</button>
-
       <div class='replacableContainer' data-replace=${category}>
       ${sliderMarkup(category, itemMarkup, categoryItems)}
       </div> 
       <button class='button loadMoreBtn hidden' data-loadmore=${category} id='call-to-action'>
       <span class='loadMoreBtnText'>Click for magic</span>
       </button>
-
-
     `;
 }
 
@@ -46,7 +43,6 @@ export function sliderMarkup(category, itemMarkup, categoryItems) {
               ${itemMarkup}
               </div>
             </div>
-
             <div class="glide__arrows" data-glide-el="controls">
               <button button class = "glide__arrow glide__arrow--left prev" data-glide-dir="<">
                   <svg class="svg-arrow" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background: new 0 0 477.175 477.175;" xml:space="preserve"> 
@@ -59,7 +55,6 @@ export function sliderMarkup(category, itemMarkup, categoryItems) {
                   </svg>
               </button>
             </div>
-
             <div class="glide__bullets" data-glide-el="controls[nav]">
               ${categoryItems
                 .map(
