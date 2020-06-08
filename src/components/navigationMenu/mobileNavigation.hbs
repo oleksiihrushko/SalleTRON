@@ -1,19 +1,18 @@
-form class="headerform js-headerform">
-    <button class="headerform-register js-formregister-btn" type="button" name="register">Registration</button>
-    <button class="headerform-login js-formlogin-btn" type="button" name="login">Login</button>
-    <button class="headerform-logout js-formlogout-btn" type="button" name="login">Logout</button>
+<form class="header__form js-header__form">
+    <button class="header__form-register js-form__register-btn" type="button" name="register">Registration</button>
+    <button class="header__form-login js-form__login-btn" type="button" name="login">Login</button>
+    <button class="header__form-logout js-form__logout-btn" type="button" name="login">Logout</button>
 </form>
-
-<div class="headerfilters js-navigationButtons">
-    <button class="headerfilters-btn buttonFilter js-navigationButton">
-        <svg class="headerfilters-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<div class="header__filters js-navigationButtons">
+    <button class="header__filters-btn buttonFilter js-navigationButton">
+        <svg class="header__filters-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M0 0h24v24H0z" fill="none" />
             <path
                 d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
         </svg>
         <span>Filter</span>
     </button>
-    <button class="headerfilters-btn buttonRestore js-navigationButton">
+    <button class="header__filters-btn buttonRestore js-navigationButton">
         <svg class="header__filters-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -22,7 +21,6 @@ form class="headerform js-headerform">
         <span>Reset</span>
     </button>
 </div>
-
 <ul class="navigationFilterList">
     {{#each this}}
     <li class="navigationFilterListItem">{{this}}</li>

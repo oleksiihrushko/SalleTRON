@@ -2,7 +2,7 @@ import './header.scss';
 import apiServices from '../../services/api';
 
 const hamburger = document.querySelector('.hamburger');
-const burgerMenu = document.querySelector('.headerburgerMenu');
+const burgerMenu = document.querySelector('.header__burgerMenu');
 const filterBtn = document.querySelector('.buttonFilter');
 const searchBar = document.querySelector('.headersearch');
 hamburger.addEventListener('click', toggleBurger);

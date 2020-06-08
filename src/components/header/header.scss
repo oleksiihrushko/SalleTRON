@@ -43,6 +43,7 @@
   // --- header__burgerMenu ---
   &__burgerMenu {
     @include for-phone-only {
+      z-index: 8;
       transition: left 0.8s ease-in-out;
       background: #131f30;
       color: white;
