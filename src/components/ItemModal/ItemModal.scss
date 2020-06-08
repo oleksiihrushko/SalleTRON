@@ -1,6 +1,8 @@
 @import '../../css/mixins.scss';
-// font-family: 'MontserratRegular', sans-serif;
-// font-family: 'MontserratSemiBold', sans-serif;
+
+.modal {
+  background-color: white;
+}
 
 .btnBack {
   background: none;
@@ -167,20 +169,19 @@
   display: none;
 }
 
-
 // @mixin for-phone-only {
 //   @media (max-width: 767px) {}
 // }
 
-
 @media (min-width: 768px) {
-.btnClose {
-  display: block;
-  background: none;
-  border: none;
-  padding: 38px 0 15px 298px;
-
-}
+  .btnClose {
+    display: flex;
+    position: relative;
+    left: 298px;
+    background: none;
+    border: none;
+    padding-top: 15px;
+  }
 
   .itemModal__slider {
     display: none;
@@ -212,29 +213,32 @@
     display: none;
   }
 
-  // .modal__title {
-  // }
-  // .modal__img {
-  // display: flex;
-  // justify-content: space-between; centr
-  // flex-wrap: wrap;
-  // flex-direction: row-reverse;
-  // align-items: baseline;
-  // width: 532px;
-  // margin: 0 auto;
-
+  .itemSliderPictureWrapper {
+    padding-top: 10px;
+    text-align: center;
+  }
 }
 
-
-
-// @mixin for-tablet-only {
-//   @media (min-width: 768px) and (max-width: 1199px) {
-//     @content;
-//   }
+// @mixin for-tablet-only
+// @media (min-width: 768px) and (max-width: 1199px) {
 // }
 
-// @mixin for-desktop-up {
-//   @media (min-width: 1200px) {
-//     @content;
-//   }
-// }
+// @mixin for-desktop-up 
+@media (min-width: 1280px) {
+  .tablet_picture {
+    padding: 80px 45px 10px 97px;
+  }
+
+  .itemSliderPictureWrapper {
+    padding-top: 16px;
+  }
+
+  .btnClose {
+    left: 470px;
+    padding-top: 53px;
+  }
+
+  .modal__content-text {
+    width: 412px;
+  }
+}
