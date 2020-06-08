@@ -5,7 +5,7 @@ import api from '../../services/api.js';
 
 const navigationFilter = document.querySelector('.header__burgerMenu');
 
-//*=========== render list item
+//=========== render list item
 let size = '';
 
 let categories = [];
@@ -44,14 +44,13 @@ api.getCategoriesList().then(data => {
   categories = [...data];
 });
 
-//*=============== openByCategory
+//=============== openByCategory
 
-const navigationFilterList = document.querySelector('.navigationFilterList');
-navigationFilterList.addEventListener('click', (e) => {
-  e.preventDefault();
-    if (e.target.nodeName !== "LI") return;
- api.getProductsByCategory().then(e.target.value) 
-});
+// const navigationFilterList = document.querySelector('.navigationFilterList');
+// navigationFilterList.addEventListener('click', (e) => {
+//     if (e.target.nodeName !== "LI") return;
+//! openCategory(e.target.value) ждём импорта от Жени
+// });
 
 //*================== reset
 
