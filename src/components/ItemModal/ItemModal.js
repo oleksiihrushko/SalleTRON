@@ -50,9 +50,14 @@ apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
 //   if (e.target.nodeName !== 'IMG') return;
 
 // // ! копия с https://basiclightbox.electerious.com/
-// // !     const instance = basicLightbox.create(`
-// // !       <img src="assets/images/image.png" width="800" height="600">
-// // !       `) 
+// import * as basicLightbox from 'basiclightbox'
+
+// const instance = basicLightbox.create(`
+// <img src="{{this}}" alt="" class="itemSliderPicture"></img>
+// `)
+
+// // <img class="modal__img" src="{{this}}" alt="" width="280" height="308">
+// instance.show()
 
 //   const instance = basicLightbox.create(genereteMarkup(textObj))
 //   instance.show()
