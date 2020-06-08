@@ -1,30 +1,26 @@
 import './header.scss';
+// import apiServices from '../../services/api';
 
 const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('.burgerMenu');
+const burgerMenu = document.querySelector('.header__burgerMenu');
+const filterBtn = document.querySelector('.buttonFilter');
+hamburger.addEventListener('click', toggleBurger);
+filterBtn.addEventListener('click', toggleTabletFilter);
 
-const toggleBurger = e => {
+function toggleBurger(e) {
   e.preventDefault();
   e.stopPropagation();
   if (!e.currentTarget) return;
-  console.log(e.target.nodeName);
   if (e.currentTarget) {
     hamburger.classList.toggle('is-active');
-    nav.classList.toggle('expanded');
+    burgerMenu.classList.toggle('expanded');
   }
-};
+}
 
-hamburger.addEventListener('click', toggleBurger);
-
-const  filterBtn = document.querySelector(".navigationButtonFilter")
-const burgerMenu = document.querySelector(".burgerMenu")
-
-filterBtn.addEventListener("click", e => {
+function toggleTabletFilter(e) {
   e.preventDefault();
   if (!e.currentTarget) return;
-  console.log(e.target.nodeName);
   if (e.currentTarget) {
-    burgerMenu.classList.toggle('filterIsActiveForTablet')
+    burgerMenu.classList.toggle('filterIsActiveForTablet');
   }
-})
-
+}
