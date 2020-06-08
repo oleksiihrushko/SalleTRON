@@ -14,18 +14,10 @@ export const renderServices = {
   },
 
   checkElem(num) {
-    // console.log('before check', this.currentGoods);
-    // console.log('before check', num);
-
     if (this.currentGoods.length === 0) {
       let i = 0;
-      // console.log(num);
       while (i < num) {
         let numElemIn = Math.ceil(Math.random() * this.allGoods.length) - 1;
-        // console.log(this.allGoods);
-        // console.log(random);
-        // console.log(this.allGoods[random].categories);
-        // console.log(this.currentGoods);
         if (
           this.currentGoods.find(
             item => item.categories === this.allGoods[numElemIn].categories,
@@ -33,15 +25,12 @@ export const renderServices = {
         ) {
           this.currentGoods.push(this.allGoods[numElemIn]);
           i += 1;
-          // console.log('i', i);
-          // console.log('res', this.currentGoods);
         }
       }
       return this.currentGoods;
     }
 
     if (this.currentGoods.length === num) {
-      // console.log('=', this.currentGoods);
       return this.currentGoods;
     }
 
@@ -50,20 +39,17 @@ export const renderServices = {
         0,
         num,
       );
-      // console.log('<', this.currentGoods);
       return this.currentGoods;
     }
 
     if (this.currentGoods.length > num) {
       this.currentGoods = this.currentGoods.slice(0, num);
-      // console.log('>', this.currentGoods);
       return this.currentGoods;
     }
   },
 
   getMobileTemplate(num) {
     const array = this.checkElem(num);
-    console.log('elemInTemp', array);
 
     const markup1 = `<div class="adv__slider">
     <ul class="adv__adList siema">`;
@@ -110,9 +96,7 @@ export const renderServices = {
   },
 
   getTabletUpTemplate(num) {
-    // console.log('get', num);
     const array = this.checkElem(num);
-    console.log(array);
 
     const markup1 = `<ul class="adv__adList adv__adList--grid">
     <li class="adv__adItem elem0" data-id="${array[0].id}">
@@ -164,6 +148,20 @@ export const renderServices = {
   renderMarkup(markup) {
     const advBlockRef = document.querySelector('.advBlock');
     advBlockRef.innerHTML = markup;
+    const advListRef = advBlockRef.querySelector('.adv__adList');
+    advListRef.addEventListener(
+      'click',
+      this.returnCallback(productId => console.log(productId)), //!!! см. ниже комментарии
+      // 1. импортировать в этот файл ф-цию, которая показывает карточку товара;
+      // 2. вместо "console.log" на 154 строке вписать имя ф-ции, которая показывает карточку товара
+    );
+  },
+
+  returnCallback(callback) {
+    return e => {
+      const id = e.target.closest('li').dataset.id;
+      callback(id);
+    };
   },
 };
 
@@ -193,12 +191,10 @@ export const resizeService = {
   },
 
   onResize(data) {
-    // console.log(111);
     const newSize = this.getSize();
     if (this.currentSize === newSize) return;
 
     if (window.innerWidth < 768) {
-      // console.log('< 768');
       renderServices.renderMarkup(
         renderServices.getMobileTemplate(renderServices.mobileElemNum),
       );
@@ -208,7 +204,6 @@ export const resizeService = {
     }
 
     if (window.innerWidth > 767 && window.innerWidth < 1200) {
-      // console.log('< 1200');
       renderServices.renderMarkup(
         renderServices.getTabletUpTemplate(renderServices.tabletElemNum),
       );
@@ -216,7 +211,6 @@ export const resizeService = {
       return this.currentSize;
     }
 
-    // console.log('> 1200');
     renderServices.renderMarkup(
       renderServices.getTabletUpTemplate(renderServices.desktopElemNum),
     );
