@@ -1,8 +1,7 @@
 import axios from 'axios';
 import firebase from 'firebase';
 import hideMenue from './services';
-import refs from './refs';
-
+// import refs from './refs';
 //===========user==============
 const user = {
   email: '',
@@ -115,11 +114,11 @@ export const userSignUP = () => {
 //======Login with Google and FB===========================================
 firebase.initializeApp(firebaseConfig);
 
-const loginWithGoogle = () => {
+export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   signInLogic(provider)
 };
-const loginWithFB = () => {
+export const loginWithFB = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   signInLogic(provider)
 };
@@ -136,8 +135,8 @@ async function signInLogic(provider) {
   }
 }
 
-// gooogle.addEventListener('click', loginWithGoogle);  // продумать снимать слушал=тели или нет. если да то в самом колбеке
-// facebook.addEventListener('click', loginWithFB);
+// export default loginWithGoogle loginWithFB
+
 
 {
 // function signInLogic(provider) {

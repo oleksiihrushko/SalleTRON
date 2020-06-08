@@ -3,8 +3,8 @@
   padding-top: 48px;
   font-size: 10px;
   line-height: 17px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
   background-color: white;
   padding-bottom: 40px;
 }
@@ -33,16 +33,16 @@
   margin-bottom: 10px;
 }
 
-#google_svg {
+.googleSvg {
   position: absolute;
-  top: 16px;
-  left: 35px;
+  top: 17px;
+  right: 108px;
 }
 
-#facebook_svg {
+.facebookSvg {
   position: absolute;
-  top: 13px;
-  left: 22px;
+  top: 14px;
+  right: 115px;
 }
 
 .spanAuth {
@@ -56,7 +56,7 @@
 }
 
 .input {
-  width: 100%;
+  width: 246px;
   height: 60px;
   margin-bottom: 10px;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
@@ -86,7 +86,7 @@
 }
 
 .btn {
-  width: 125px;
+  width: 112px;
   height: 50px;
   background-color: white;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
