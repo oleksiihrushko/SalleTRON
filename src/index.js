@@ -6,3 +6,5 @@ import './services/api';
 import './components/header/header';
 
 import './components/authentication/authServises'
+
+import './components/AuthForm/authOpenModal';
