@@ -1,9 +1,8 @@
 import './stylesAuth.scss';
 import openModal from './forOpenModal';
-
-import * as basicLightbox from 'basiclightbox';
-import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import authFormLogic from './authFormLogic';
+import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css';
+import * as basicLightbox from 'basiclightbox';
 
 // const closeModalBtn = document.querySelector(
 //   'button[data-action="close-modal"]',
@@ -12,7 +11,7 @@ import authFormLogic from './authFormLogic';
 const showModal = () => {
   const instance = basicLightbox.create(
     `<div>
-    <div class="modal">${openModal()}</div>
+      <div class="modal">${openModal()}</div>
     </div>`,
   );
 
