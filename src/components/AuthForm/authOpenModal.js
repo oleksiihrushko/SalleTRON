@@ -1,3 +1,4 @@
+import './stylesAuth.scss';
 import openModal from './forOpenModal';
 
 import * as basicLightbox from 'basiclightbox';
