@@ -264,8 +264,3 @@ const apiServices = {
 };
 
 export default apiServices;
-
-apiServices.signInUser({ email: 'master-3210@i.ua', password: '111111' });
-// apiServices.addUserFavorite('-M8zgqzxq0ZHiAo3xxzY');
-// apiServices.addUserFavorite('-M8zhwlZRyu5k7x911SA');
-// apiServices.deleteUserFavorite('-M8zgqzxq0ZHiAo3xxzY');
