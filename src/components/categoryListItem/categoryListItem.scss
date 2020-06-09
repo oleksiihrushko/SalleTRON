@@ -7,8 +7,12 @@
 
 .replacableContainer {
   margin-bottom: 20px;
+}
+
+.category__content {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .category__name {
@@ -133,13 +137,13 @@ button.next {
 
 button.next {
   @include for-tablet-up {
-    right: -2px;
+    right: -16px;
   }
 }
 
 button.prev {
   @include for-tablet-up {
-    left: -10px;
+    left: -16px;
   }
 }
 
