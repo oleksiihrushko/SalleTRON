@@ -10,3 +10,4 @@ import './components/adv/js/adv';
 import './components/categoryListItem/categoryListItem';
 import './components/categoryListItem/renderCategoryList';
 import './components/footer/footer';
+import './components/basket/basket';

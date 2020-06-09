@@ -3,6 +3,8 @@
 @import './mixins.scss';
 @import './variables.scss';
 
+@import '../components/basket/basket.scss';
+
 html {
   box-sizing: border-box;
 }
