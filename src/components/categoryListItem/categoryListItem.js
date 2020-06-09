@@ -64,7 +64,7 @@ export async function getCategoryListItem(category) {
 
   function seeAllProducts(e) {
     const categoryContainer = document.querySelector(
-      `[data-replace=${e.target.dataset.btnreplace}]`,
+      `[data-replace=${e.target.dataset.btnreplace}]`, 
     );
 
     categoryContainer.innerHTML = innerMarkup(
