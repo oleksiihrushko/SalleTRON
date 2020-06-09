@@ -9,11 +9,11 @@
   margin-bottom: 20px;
 }
 
-.category__content {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
+// .category__content {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-bottom: 40px;
+// }
 
 .category__name {
   display: inline-block;
@@ -23,8 +23,7 @@
   line-height: 24px;
   letter-spacing: 0.32px;
   margin-bottom: 20px;
-  font-family: 'Montserrat';
-  font-weight: bold;
+  font-family: montserratBold;
 }
 
 .category__btn-see-all,
@@ -36,7 +35,7 @@
   color: var(--color-decor);
   line-height: 14px;
   letter-spacing: 0.24px;
-  font-family: 'Montserrat';
+  font-family: montserratRegular;
 }
 
 .category__descr {
@@ -45,18 +44,22 @@
   color: var(--color-secondary-texts);
   line-height: 18px;
   letter-spacing: 0.24px;
-  font-family: 'Montserrat';
+  font-family: montserratRegular;
 
   @include for-tablet-up {
     width: 420px;
   }
 }
 
-.category__list {
-  @include for-tablet-up {
-    display: flex;
-    position: relative;
-  }
+// .category__list {
+//   @include for-tablet-up {
+//     display: flex;
+//     position: relative;
+//   }
+// }
+
+div.glide-slide {
+  max-width: 280px;
 }
 
 .category__list-item {
@@ -103,8 +106,7 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.24px;
-  font-weight: bold;
-  font-family: 'Montserrat';
+  font-family: montserratBold;
 }
 
 .category__list-item-name {
