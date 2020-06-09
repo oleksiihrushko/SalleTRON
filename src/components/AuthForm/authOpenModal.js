@@ -18,8 +18,8 @@ const showModal = () => {
 };
 
 const loginModal = document.querySelector('.header__form-login');
-const registrationModal = document.querySelector('.header__form-register');
-registrationModal.addEventListener('click', showModal);
+// const registrationModal = document.querySelector('.header__form-register');
+// registrationModal.addEventListener('click', showModal);
 loginModal.addEventListener('click', showModal);
 
 export default showModal;

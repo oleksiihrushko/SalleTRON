@@ -252,6 +252,12 @@
   }
 }
 
+.activeStatus {
+  fill: var(--color-decor);
+  color: var(--color-decor);
+  transition: all 0.3s ease-in-out;
+}
+
 .buttonFilter {
   margin-right: 30px;
   @include for-tablet-up {
