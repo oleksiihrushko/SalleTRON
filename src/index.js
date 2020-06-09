@@ -9,3 +9,4 @@ import './components/AuthForm/authOpenModal';
 import './components/adv/js/adv';
 import './components/categoryListItem/categoryListItem';
 import './components/categoryListItem/renderCategoryList';
+import './components/footer/footer';
