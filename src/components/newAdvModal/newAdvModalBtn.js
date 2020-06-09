@@ -12,7 +12,7 @@ const img4 = document.querySelector(".import-img-4");
 const img5 = document.querySelector(".import-img-5");
 const img6 = document.querySelector(".import-img-6");
 checkForm.addEventListener('submit', checkValue);
-
+console.log(img6);
 const submitBtn = {
     name : null,
     description : null,
@@ -44,7 +44,6 @@ function checkValue (e) {
     submitBtn.img5 = img5.getAttribute("src");
     submitBtn.img6 = img6.getAttribute("src");
 }
-//console.log(submitBtn)
 
 // addProduct(submitBtn) {
 //     if (!this.isAuth()) return;
@@ -58,3 +57,24 @@ function checkValue (e) {
 //       return;
 //     }
 //   },
+let downImgNumber = {number : 0};
+const listImg = document.querySelector(".ul-img-lable");
+
+const detectImg = (e) => {
+downImgNumber = Number(e.target.dataset.id);
+console.dir(listImg);
+if (Number(e.target.dataset.id) === listImg.children.length - 1) return; 
+listImg.children[downImgNumber + 1].children[1].classList.remove("new-adv-modal-form-diseibl-img");
+listImg.children[downImgNumber + 1].children[1].classList.add("new-adv-modal-form-addimg-plus");
+
+}
+listImg.addEventListener("change", detectImg);
+
+//     console.log(arryImg);
+//     for (let i = 1; i < arryImg.length; i += 1) {
+//         console.log(111);   
+//      if (arryImg[i-1].files.length > 0 && arryImg[i].files.length === 0) {
+//        arryImg[i].nextElementSibling.classList.replace(".new-adv-modal-form-diseibl-img", ".new-adv-modal-form-activ-img");
+//        return;  
+//     }
+//  }

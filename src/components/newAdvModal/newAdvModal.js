@@ -10,8 +10,8 @@ let imgMarkup = '';
 for (let i = 1; i < 7; i += 1 ) {
 imgMarkup += `
 <li>
-  <input type="file"name="name" class="off-text-input" id='idImg-${i}'>
-  <label data-labelID="${i}" for="idImg-${i}" class="new-adv-modal-form-addimg${i}  new-adv-modal-form-addimg">
+  <input type="file"name="name" class="off-text-input" id="idImg-${i}" data-id="${i}">
+  <label data-labelID="${i}" for="idImg-${i}" class="new-adv-modal-form-addimg${i}  new-adv-modal-form-addimg new-adv-modal-form-diseibl-img">
     <img class="import-img import-img-${i}" src="#" alt="" width="75" height="60">
   </label>
 </li>`;
