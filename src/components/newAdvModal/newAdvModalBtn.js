@@ -12,7 +12,7 @@ const img4 = document.querySelector(".import-img-4");
 const img5 = document.querySelector(".import-img-5");
 const img6 = document.querySelector(".import-img-6");
 checkForm.addEventListener('submit', checkValue);
-console.log(img6);
+
 const submitBtn = {
     name : null,
     description : null,
@@ -30,8 +30,6 @@ const submitBtn = {
 function checkValue (e) {
     e.preventDefault();
     const valueForm = e.currentTarget.elements;
-    // console.dir(valueForm);
-    // console.log(valueForm);
     submitBtn.name = inputName.value;
     submitBtn.description = inputDescriptions.value;
     submitBtn.categories = inputCategories.value;
@@ -62,7 +60,7 @@ const listImg = document.querySelector(".ul-img-lable");
 
 const detectImg = (e) => {
 downImgNumber = Number(e.target.dataset.id);
-console.dir(listImg);
+// console.dir(listImg);
 if (Number(e.target.dataset.id) === listImg.children.length - 1) return; 
 listImg.children[downImgNumber + 1].children[1].classList.remove("new-adv-modal-form-diseibl-img");
 listImg.children[downImgNumber + 1].children[1].classList.add("new-adv-modal-form-addimg-plus");

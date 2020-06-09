@@ -1,4 +1,6 @@
 import './stylesForm.scss';
+
+// import * as basicLightbox from 'basiclightbox';
   //=======================================
   // const onAdvInit = () => {
     //   if (window.innerWidth < 768) {
@@ -23,7 +25,6 @@ let img;
 const listImg = document.querySelector(".ul-img-lable");
 listImg.addEventListener("click", newLi);
 function newLi (e) {
-// console.log(e.target.nodeName);
 if (e.target.nodeName === "LABEL") {
   const labelID = e.target.dataset.labelid;
   img = document.querySelector(`.import-img-${labelID}`);
@@ -35,9 +36,7 @@ if (e.target.nodeName === "LABEL") {
   
       reader.onload = function () {
         const b64 = reader.result;
-        // console.log(img);
         img.src = b64;
-        // console.log(b64);
       };
       if (file) {
         reader.readAsDataURL(file);
@@ -60,13 +59,4 @@ const placeholderOFF = () => {
 }
 placeholderOFF();
 
-const img1Plus = document.querySelector(".new-adv-modal-form-addimg1");
-const img2Plus = document.querySelector(".new-adv-modal-form-addimg2");
-const img3Plus = document.querySelector(".new-adv-modal-form-addimg3");
-const img4Plus = document.querySelector(".new-adv-modal-form-addimg4");
-const img5Plus = document.querySelector(".new-adv-modal-form-addimg5");
-const img6Plus = document.querySelector(".new-adv-modal-form-addimg6");
 
-
-console.dir(img2Plus)
-console.dir(img1Plus)
