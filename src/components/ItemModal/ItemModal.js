@@ -4,12 +4,12 @@ import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.css';
 import Glide from '@glidejs/glide';
 import ItemModalHbs from './ItemModal.hbs';
-import tabletItemPictureMarkup from './tabletItemPictureMarkup.hbs'
+import tabletItemPictureMarkup from './tabletItemPictureMarkup.hbs';
 import apiService from '../../services/api';
 
-
 const modal = document.querySelector('.modal');
-apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
+
+apiService.getProductById('-M8ziQASJcnc2-vQMKbE').then(data => {
   const glide = new Glide('.glide', {
     type: 'carousel',
     perView: 1,
@@ -23,19 +23,20 @@ apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
   <div class="itemModal__MainImageWrapper">
       <img src="${data.images[0]}" alt="" class="itemModal__MainImage">
   </div> 
-  `
-  tabletItemPicture.insertAdjacentHTML("beforeend", sMarkup)
-  tabletItemPicture.insertAdjacentHTML("beforeend", tabletItemPictureMarkup(data));
+  `;
+  tabletItemPicture.insertAdjacentHTML('beforeend', sMarkup);
+  tabletItemPicture.insertAdjacentHTML(
+    'beforeend',
+    tabletItemPictureMarkup(data),
+  );
 });
 
-
+console.dir(modal);
 
 // modal.innerHTML = ItemModalHbs();
 
 // const sliderContainer = document.querySelector('.sliderContainer');
 // sliderContainer.innerHTML = getSlider();
-
-
 
 // textObj = {
 //   name: 'musicBox',
@@ -52,7 +53,7 @@ apiService.getProductById("-M8ziQASJcnc2-vQMKbE").then(data => {
 // // ! копия с https://basiclightbox.electerious.com/
 // // !     const instance = basicLightbox.create(`
 // // !       <img src="assets/images/image.png" width="800" height="600">
-// // !       `) 
+// // !       `)
 
 //   const instance = basicLightbox.create(genereteMarkup(textObj))
 //   instance.show()

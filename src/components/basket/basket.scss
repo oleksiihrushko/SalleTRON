@@ -13,12 +13,12 @@
   overflow: scroll;
   overflow-x:hidden;
   
-  @include for-tablet-up {
+  @media (min-width: 768px) {
     width: 690px;
     max-height: 90vh;
   }
   
-  @include for-desktop-up {
+  @media (min-width: 1280px) {
     width: 960px;
   }
 }
@@ -59,7 +59,7 @@
   margin: 0 auto;
   margin-bottom: 5px;
 
-  @include for-desktop-up {
+  @media (min-width: 1280px) {
     margin: 0;
   }
 }
@@ -68,14 +68,14 @@
   font-size: 15px;
   margin-bottom: 8px;
   
-  @include for-tablet-up {
+  @media (min-width: 768px) {
     margin-bottom: 0;
     max-width: 300px;
     overflow: hidden;
     padding-left: 20px;
   }
 
-  @include for-desktop-up {
+  @media (min-width: 1280px) {
     max-width: 400px;
   }
 }
@@ -90,12 +90,12 @@
     font-family: MontserratRegular;
   }
 
-  @include for-tablet-up {
+  @media (min-width: 768px) {
     position: relative;
     top: 60px;
   }
 
-  @include for-desktop-up {
+  @media (min-width: 1280px) {
     top: 0;
   }
 }
@@ -106,12 +106,12 @@
 }
 
 .quantity {
-  @include for-tablet-up {
-  position: relative;
-  left: 68px;
+  @media (min-width: 768px) {
+    position: relative;
+    left: 68px;
   }
 
-  @include for-desktop-up {
+  @media (min-width: 1280px) {
     left: 0;
   }
 }
