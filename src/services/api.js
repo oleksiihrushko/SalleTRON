@@ -119,7 +119,7 @@ const apiServices = {
         );
 
         const userFavorites = await axios.get(
-          `/users/${getId()}/favorites.json`,
+          `/users/${result[0]}/favorites.json`,
         );
 
         localStorage.setItem(
@@ -179,15 +179,16 @@ const apiServices = {
   },
 
   deleteUserFavorite(id) {
-    const favorites = JSON.parse(localStorage.getItem('user')).favorites;
-    let filteredFavorites = favorites.filter(favorite => favorite !== id);
+    const favorites = JSON.parse(localStorage.getItem('user')).favorites.filter(
+      favorite => favorite !== id,
+    );
 
     const userInfo = JSON.parse(localStorage.getItem('user'));
     localStorage.setItem(
       'user',
       JSON.stringify({
         ...userInfo,
-        filteredFavorites,
+        favorites,
       }),
     );
 
@@ -263,3 +264,8 @@ const apiServices = {
 };
 
 export default apiServices;
+
+apiServices.signInUser({ email: 'master-3210@i.ua', password: '111111' });
+// apiServices.addUserFavorite('-M8zgqzxq0ZHiAo3xxzY');
+// apiServices.addUserFavorite('-M8zhwlZRyu5k7x911SA');
+// apiServices.deleteUserFavorite('-M8zgqzxq0ZHiAo3xxzY');
