@@ -20,7 +20,7 @@ const openModal = () => {
           </div>
           <p class="textAuth text">Or enter with e-mail and password:</p>
           ${getAuthForm()}
-        </div>;`;
+        </div>`;
 };
 
 export default openModal;
