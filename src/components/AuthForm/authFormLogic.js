@@ -35,6 +35,7 @@ const authFormLogic = () => {
     ) {
       errorEmail.textContent = '';
       errorPassword.textContent = '';
+      
     }
   }
 };
