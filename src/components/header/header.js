@@ -7,7 +7,7 @@ const filterBtn = document.querySelector('.buttonFilter');
 const searchBar = document.querySelector('.header__search');
 hamburger.addEventListener('click', toggleBurger);
 filterBtn.addEventListener('click', toggleTabletFilter);
-searchBar.addEventListener('input', searchData);
+// searchBar.addEventListener('input', searchData);
 // searchBar.addEventListener('input', searchCategory);
 
 function toggleBurger(e) {
