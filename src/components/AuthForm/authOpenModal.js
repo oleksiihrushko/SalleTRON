@@ -5,7 +5,7 @@ import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
 import { addButtonListeners } from '../authentication/refs';
 
-const showModal = () => {
+function showModal() {
   const instance = basicLightbox.create(
     `<div>
       <div class="modal">${openModal()}</div>
@@ -15,20 +15,13 @@ const showModal = () => {
   instance.show();
   authFormLogic();
   addButtonListeners();
-};
+  
+  document
+    .querySelector('.closeModalWindow')
+    .addEventListener('click', instance.close);
+}
 
 const loginModal = document.querySelector('.header__form-login');
-const registrationModal = document.querySelector('.registration');
-registrationModal.addEventListener('click', showModal);
 loginModal.addEventListener('click', showModal);
-
-const closeModalWindowBtn = document.querySelector('.closeModalWindow');
-console.log(closeModalWindowBtn)
-
-// const closeModalAuthForm = () => {
-//   remove.instance.show();
-// }
-
-// closeModalWindowBtn.addEventListener('click', closeModalAuthForm);
 
 export default showModal;
