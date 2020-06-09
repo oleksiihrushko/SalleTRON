@@ -110,10 +110,12 @@ const apiServices = {
         const result = res.find((user) =>
           (user[1].id === authResponse.data.localId));
 
+        const userFavorites = await axios.get(`/users/${getId()}/favorites.json`);
+
         localStorage.setItem('user', JSON.stringify({
           token: authResponse.data.idToken,
           id: result[0],
-          favorites: [],
+          favorites: userFavorites.data,
         }))
       } catch (error) {
         console.log(error);
@@ -142,17 +144,38 @@ const apiServices = {
   // добавление товара в favorites
   addUserFavorite(id) {
     const favorites = JSON.parse(localStorage.getItem('user')).favorites;
+
     favorites.push(id);
 
-    const userInfo = JSON.parse(localStorage.getItem('user'))
+    const userInfo = JSON.parse(localStorage.getItem('user'));
     localStorage.setItem('user', JSON.stringify({
       ...userInfo,
       favorites
     }))
-
     try {
       axios.patch(`/users/${getId()}/favorites.json/?auth=${getToken()}`, {
         ...favorites
+      })
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  deleteUserFavorite(id) {
+    const favorites = JSON.parse(localStorage.getItem('user')).favorites;
+    console.log(favorites);
+    let filteredFavorites = favorites.filter(favorite => favorite !== id);
+
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem('user', JSON.stringify({
+      ...userInfo,
+      filteredFavorites
+    }))
+
+    try {
+      axios.put(`/users/${getId()}/favorites.json/?auth=${getToken()}`, {
+        ...filteredFavorites
       })
     } catch (error) {
       console.log(error);
@@ -217,3 +240,10 @@ const apiServices = {
 }
 
 export default apiServices;
+
+// apiServices.addUserFavorite('-M8ziu2smN5hG6M2Do8Q')
+// apiServices.deleteUserFavorite('-M8ziQASJcnc2-vQMKbE')
+apiServices.signInUser({
+  email: 'asdasd@qwe.qwe',
+  password: 'qweqwe'
+})
