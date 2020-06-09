@@ -33,7 +33,7 @@ export async function getCategoryListItem(category) {
       markup.mainMarkup(category, itemMarkup, categoryItems),
     );
     const categoryContainer = document.querySelector(
-      `[data-replace=${category}]`,
+      `[data-replace=${e.target.dataset.btnreplace}]`,
     );
     categoryContainer.innerHTML = markup.withSlider(
       category,
