@@ -23,5 +23,6 @@ function showModal() {
 
 const loginModal = document.querySelector('.header__form-login');
 loginModal.addEventListener('click', showModal);
+// console.log(registrationModal);
 
 export default showModal;
