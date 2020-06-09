@@ -4,13 +4,12 @@ axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
 
 const apiKey = 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o';
 
-
-const convertData = (data) => {
+const convertData = data => {
   const [values] = Object.values(data.data);
   return values;
-}
+};
 
-const transformedData = (categories) => {
+const transformedData = categories => {
   const arr = [];
   const values = Object.values(categories);
   for (let value of values) {
@@ -18,20 +17,20 @@ const transformedData = (categories) => {
     for (let key of keys) {
       arr.push({
         id: key,
-        ...value[key]
-      })
+        ...value[key],
+      });
     }
   }
   return arr;
-}
+};
 
 const getToken = () => {
-  return JSON.parse(localStorage.getItem('user')).token
-}
+  return JSON.parse(localStorage.getItem('user')).token;
+};
 
 const getId = () => {
-  return JSON.parse(localStorage.getItem('user')).id
-}
+  return JSON.parse(localStorage.getItem('user')).id;
+};
 
 // const user = {
 //   email: '',
@@ -60,11 +59,12 @@ const apiServices = {
       createdAt: Date.now(),
       adv: [''],
       favorites: [''],
-    }
+    };
 
     try {
       const authResponse = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`,
+        {
           ...user,
           returnSecureToken: true,
         },
@@ -74,15 +74,21 @@ const apiServices = {
       userData.email = authResponse.data.email;
 
       try {
-        const databaseResponse = await axios.post(`/users.json?auth=${authResponse.data.idToken}`, {
-          ...userData
-        });
+        const databaseResponse = await axios.post(
+          `/users.json?auth=${authResponse.data.idToken}`,
+          {
+            ...userData,
+          },
+        );
 
-        localStorage.setItem('user', JSON.stringify({
-          token: authResponse.data.idToken,
-          id: databaseResponse.data.name,
-          favorites: [],
-        }));
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            token: authResponse.data.idToken,
+            id: databaseResponse.data.name,
+            favorites: [],
+          }),
+        );
       } catch (error) {
         console.log(error);
         return;
@@ -97,24 +103,33 @@ const apiServices = {
   async signInUser(user) {
     try {
       const authResponse = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`,
+        {
           ...user,
           returnSecureToken: true,
         },
       );
 
       try {
-        const databaseResponseId = await axios.get('/users.json')
+        const databaseResponseId = await axios.get('/users.json');
         const res = Object.entries(databaseResponseId.data);
 
-        const result = res.find((user) =>
-          (user[1].id === authResponse.data.localId));
+        const result = res.find(
+          user => user[1].id === authResponse.data.localId,
+        );
 
-        localStorage.setItem('user', JSON.stringify({
-          token: authResponse.data.idToken,
-          id: result[0],
-          favorites: [],
-        }))
+        const userFavorites = await axios.get(
+          `/users/${getId()}/favorites.json`,
+        );
+
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            token: authResponse.data.idToken,
+            id: result[0],
+            favorites: userFavorites.data,
+          }),
+        );
       } catch (error) {
         console.log(error);
         return;
@@ -142,18 +157,44 @@ const apiServices = {
   // добавление товара в favorites
   addUserFavorite(id) {
     const favorites = JSON.parse(localStorage.getItem('user')).favorites;
+
     favorites.push(id);
 
-    const userInfo = JSON.parse(localStorage.getItem('user'))
-    localStorage.setItem('user', JSON.stringify({
-      ...userInfo,
-      favorites
-    }))
-
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        ...userInfo,
+        favorites,
+      }),
+    );
     try {
       axios.patch(`/users/${getId()}/favorites.json/?auth=${getToken()}`, {
-        ...favorites
-      })
+        ...favorites,
+      });
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  },
+
+  deleteUserFavorite(id) {
+    const favorites = JSON.parse(localStorage.getItem('user')).favorites;
+    let filteredFavorites = favorites.filter(favorite => favorite !== id);
+
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        ...userInfo,
+        filteredFavorites,
+      }),
+    );
+
+    try {
+      axios.put(`/users/${getId()}/favorites.json/?auth=${getToken()}`, {
+        ...filteredFavorites,
+      });
     } catch (error) {
       console.log(error);
       return;
@@ -165,9 +206,12 @@ const apiServices = {
     if (!this.isAuth()) return;
 
     try {
-      axios.post(`/products/${productData.categories}.json?auth=${getToken()}`, {
-        ...productData
-      });
+      axios.post(
+        `/products/${productData.categories}.json?auth=${getToken()}`,
+        {
+          ...productData,
+        },
+      );
     } catch (error) {
       console.log(error);
       return;
@@ -184,36 +228,38 @@ const apiServices = {
   async getProducts() {
     try {
       const response = await axios('/products.json');
-      return transformedData(response.data)
+      return transformedData(response.data);
     } catch (error) {
       console.log(error);
-      return
+      return;
     }
   },
 
   // получить массив товаров по категориям, возвращает массив объктов с товарами
   async getProductsByCategory(category) {
     try {
-      const result = await this.getProducts()
-      const filteredResult = result.filter(item => item.categories === category);
+      const result = await this.getProducts();
+      const filteredResult = result.filter(
+        item => item.categories === category,
+      );
       return filteredResult;
     } catch (error) {
       console.log(error);
-      return
+      return;
     }
   },
 
   // получить товар по id, возвращает объект конкретного товара
   async getProductById(id) {
     try {
-      const result = await this.getProducts()
+      const result = await this.getProducts();
       const filteredResult = result.find(item => item.id === id);
       return filteredResult;
     } catch (error) {
       console.log(error);
-      return
+      return;
     }
-  }
-}
+  },
+};
 
 export default apiServices;
