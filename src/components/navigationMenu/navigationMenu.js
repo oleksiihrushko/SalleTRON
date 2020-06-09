@@ -5,7 +5,7 @@ import api from '../../services/api.js';
 
 const navigationFilter = document.querySelector('.header__burgerMenu');
 
-//*=========== render list item
+//=========== render list item
 let size = '';
 
 let categories = [];
@@ -44,17 +44,29 @@ api.getCategoriesList().then(data => {
   categories = [...data];
 });
 
-//*=============== openByCategory
+//=============== openByCategory
 
 // const navigationFilterList = document.querySelector('.navigationFilterList');
 // navigationFilterList.addEventListener('click', (e) => {
 //     if (e.target.nodeName !== "LI") return;
-//! openCategory(e.target.value) ждём импорта от Жени
+// const eObj = {
+//   target: {
+//     dataset: {
+//       btnreplace: e.target.value
+//     }
+//   }
+// }
+//! openCategory(eObj) ждём импорта от Жени
 // });
 
 //*================== reset
 
-// const navigationButtonRestore = document.querySelector(."navigationButtonRestore");
-// navigationButtonRestore.addEventListener("click", (e) => {
-//   if (e.target.nodeName !== "BUTTON") return;
-//   showAllProducts(e.target.value) //! ресет
+const navigationButtonRestore = document.querySelector('.buttonRestore');
+navigationButtonRestore.addEventListener('click', e => {
+  if (e.target.nodeName !== 'BUTTON') return;
+  // console.log("рестор");
+  api.getCategoriesList().then(data => {
+    insert(data);
+    categories = [...data];
+  });
+});

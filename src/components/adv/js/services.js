@@ -1,5 +1,6 @@
 import { advSlider } from './siema';
 import { debounce } from 'lodash';
+import openItemModal from '../../ItemModal/ItemModal';
 
 export const renderServices = {
   allGoods: [],
@@ -151,9 +152,7 @@ export const renderServices = {
     const advListRef = advBlockRef.querySelector('.adv__adList');
     advListRef.addEventListener(
       'click',
-      this.returnCallback(productId => console.log(productId)), //!!! см. ниже комментарии
-      // 1. импортировать в этот файл ф-цию, которая показывает карточку товара;
-      // 2. вместо "console.log" на 154 строке вписать имя ф-ции, которая показывает карточку товара
+      this.returnCallback(productId => openItemModal(productId)),
     );
   },
 
