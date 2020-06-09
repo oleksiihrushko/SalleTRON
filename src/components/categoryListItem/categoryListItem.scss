@@ -9,11 +9,11 @@
   margin-bottom: 20px;
 }
 
-// .category__content {
-//   display: flex;
-//   flex-wrap: wrap;
-//   margin-bottom: 40px;
-// }
+.category__content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
 
 .category__name {
   display: inline-block;
@@ -51,12 +51,12 @@
   }
 }
 
-// .category__list {
-//   @include for-tablet-up {
-//     display: flex;
-//     position: relative;
-//   }
-// }
+.category__list {
+  @include for-tablet-up {
+    display: flex;
+    position: relative;
+  }
+}
 
 div.glide-slide {
   max-width: 280px;
@@ -277,7 +277,6 @@ button.glide__bullet--active {
       text-shadow: none;
     }
   }
-
 }
 
 .button--inactive {
