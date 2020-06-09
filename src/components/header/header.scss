@@ -94,7 +94,7 @@
     }
     @include for-tablet-only {
       margin-bottom: 15px;
-      width: 10%;
+      width: 25%;
       margin-right: 20%;
     }
     @include for-desktop-up {
@@ -251,6 +251,12 @@
   }
 }
 
+.activeStatus {
+  fill: var(--color-decor);
+  color: var(--color-decor);
+  transition: all 0.3s ease-in-out;
+}
+
 .buttonFilter {
   margin-right: 20px;
   @include for-tablet-up {
@@ -299,7 +305,7 @@
   }
 }
 
-.js-form__register-btn:after {
+.header__form-login:after {
   content: '';
   border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
   height: 100%;
