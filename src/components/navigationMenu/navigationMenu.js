@@ -49,7 +49,14 @@ api.getCategoriesList().then(data => {
 // const navigationFilterList = document.querySelector('.navigationFilterList');
 // navigationFilterList.addEventListener('click', (e) => {
 //     if (e.target.nodeName !== "LI") return;
-//! openCategory(e.target.value) ждём импорта от Жени
+  // const eObj = {
+  //   target: {
+  //     dataset: {
+  //       btnreplace: e.target.value
+  //     }
+  //   }
+  // }
+//! openCategory(eObj) ждём импорта от Жени
 // });
 
 //*================== reset
