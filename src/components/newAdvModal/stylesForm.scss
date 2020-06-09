@@ -21,6 +21,7 @@
     margin-bottom: 25px;
     text-align: center;
     font-size: 18px;
+    margin-top: 45px;
     @include for-tablet-up {
         margin-bottom: 38px;
         font-size: 22px;
@@ -28,6 +29,7 @@
         font-family: 'MontserratSemiBold', sans-serif; 
         font-size: normal;    
         line-height: 22px; 
+        margin-top: 0px;
     }
     @include for-desktop-up {
 
@@ -116,6 +118,7 @@
     height: 50px;
     background-color: #ff6b08;
     color: white;
+    margin-bottom: 45px;
     @include for-tablet-up {
         height: 60px;
         width: 295px;
@@ -249,5 +252,15 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 15px;
+}
 
+.new-adv-modal-div {
+    width: 320px;
+    background-color: white;
+    @include for-tablet-up {
+        width: 720px;
+    }
+    @include for-desktop-up {
+        width: 950px;
+    }
 }
