@@ -194,7 +194,7 @@ const apiServices = {
 
     try {
       axios.put(`/users/${getId()}/favorites.json/?auth=${getToken()}`, {
-        ...filteredFavorites,
+        ...favorites,
       });
     } catch (error) {
       console.log(error);
@@ -264,3 +264,10 @@ const apiServices = {
 };
 
 export default apiServices;
+
+// apiServices.signUpUser({
+//   // email: 'master-3210@i.ua',
+//   password: '111111',
+// });
+// apiServices.addUserFavorite('-M8zgqzxq0ZHiAo3xxzY');
+// apiServices.addUserFavorite('-M8zjIwtAEnNsbT7pTqa');
