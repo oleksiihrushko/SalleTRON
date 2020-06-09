@@ -119,7 +119,7 @@ const apiServices = {
         );
 
         const userFavorites = await axios.get(
-          `/users/${result[0]}/favorites.json`,
+          `/users/${getId()}/favorites.json`,
         );
 
         localStorage.setItem(
@@ -179,16 +179,15 @@ const apiServices = {
   },
 
   deleteUserFavorite(id) {
-    const favorites = JSON.parse(localStorage.getItem('user')).favorites.filter(
-      favorite => favorite !== id,
-    );
+    const favorites = JSON.parse(localStorage.getItem('user')).favorites;
+    let filteredFavorites = favorites.filter(favorite => favorite !== id);
 
     const userInfo = JSON.parse(localStorage.getItem('user'));
     localStorage.setItem(
       'user',
       JSON.stringify({
         ...userInfo,
-        favorites,
+        filteredFavorites,
       }),
     );
 
