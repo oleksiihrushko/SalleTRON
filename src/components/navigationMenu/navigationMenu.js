@@ -2,6 +2,8 @@ import './navigationMenu.scss';
 import navigationCard from './navigation.hbs';
 import mobileNavigationCard from './mobileNavigation.hbs';
 import api from '../../services/api.js';
+import {seeAllProducts } from '../categoryListItem/categoryListItem'
+
 
 const navigationFilter = document.querySelector('.header__burgerMenu');
 
@@ -47,25 +49,25 @@ api.getCategoriesList().then(data => {
 
 //=============== openByCategory
 
-// const navigationFilterList = document.querySelector('.navigationFilterList');
-// navigationFilterList.addEventListener('click', (e) => {
-//     if (e.target.nodeName !== "LI") return;
-// const eObj = {
-//   target: {
-//     dataset: {
-//       btnreplace: e.target.value
-//     }
-//   }
-// }
-//! openCategory(eObj) ждём импорта от Жени
-// });
+const navigationFilterList = document.querySelector('.navigationFilterList');
+navigationFilterList.addEventListener('click', e => {
+  if (e.target.nodeName !== 'LI') return;
+  const eObj = {
+    target: {
+      dataset: {
+        btnreplace: e.target.value,
+      },
+    },
+  };
+
+  openCategory(eObj);
+});
 
 //*================== reset
 
 const navigationButtonRestore = document.querySelector('.buttonRestore');
 navigationButtonRestore.addEventListener('click', e => {
   if (e.target.nodeName !== 'BUTTON') return;
-  // console.log("рестор");
   api.getCategoriesList().then(data => {
     insert(data);
     categories = [...data];
