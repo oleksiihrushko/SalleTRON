@@ -3,32 +3,29 @@ import navigationCard from './navigation.hbs';
 import mobileNavigationCard from './mobileNavigation.hbs';
 import api from '../../services/api.js';
 
-const navigationFilter = document.querySelector('.burgerMenu');
+const navigationFilter = document.querySelector('.header__burgerMenu');
 
-
-//*=========== render list item
+//=========== render list item
 let size = '';
 
 let categories = [];
 window.addEventListener('resize', () => {
   const insert = categoriesArr => {
     let markup = '';
-    if (
-        size === 'tablet' &&
-        window.matchMedia('(max-width: 767px)').matches
-      ) {
-        markup = mobileNavigationCard(categoriesArr);
-        navigationFilter.innerHTML = markup;
-        size = 'mobile';
-      }
-    else if (size === 'mobile' && !window.matchMedia('(max-width: 767px)').matches) {
+    if (size === 'tablet' && window.matchMedia('(max-width: 767px)').matches) {
+      markup = mobileNavigationCard(categoriesArr);
+      navigationFilter.innerHTML = markup;
+      size = 'mobile';
+    } else if (
+      size === 'mobile' &&
+      !window.matchMedia('(max-width: 767px)').matches
+    ) {
       markup = navigationCard(categoriesArr);
       navigationFilter.innerHTML = markup;
       size = 'tablet';
-    } 
-   
+    }
   };
-  insert(categories)
+  insert(categories);
 });
 
 const insert = categoriesArr => {
@@ -36,7 +33,6 @@ const insert = categoriesArr => {
   if (window.matchMedia('(max-width: 767px)').matches) {
     size = 'mobile';
     markup = mobileNavigationCard(categoriesArr);
-
   } else {
     size = 'tablet';
     markup = navigationCard(categoriesArr);
@@ -48,7 +44,7 @@ api.getCategoriesList().then(data => {
   categories = [...data];
 });
 
-//*=============== openByCategory
+//=============== openByCategory
 
 // const navigationFilterList = document.querySelector('.navigationFilterList');
 // navigationFilterList.addEventListener('click', (e) => {
@@ -57,7 +53,6 @@ api.getCategoriesList().then(data => {
 // });
 
 //*================== reset
-
 
 // const navigationButtonRestore = document.querySelector(."navigationButtonRestore");
 // navigationButtonRestore.addEventListener("click", (e) => {

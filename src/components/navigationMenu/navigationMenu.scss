@@ -1,10 +1,18 @@
 @import '../../css/mixins.scss';
 
 .navigationFilter {
-  // display: block;
-  // justify-content: flex-start;
   background-color: #131f30;
   color: #ced2d1;
+}
+
+.navigationFilterList {
+  display: flex;
+  flex-wrap: wrap;
+  color: #ced2d1;
+  @include for-tablet-only {
+    justify-content: center;
+    padding: 20px 39px;
+  }
 }
 
 .navigationFilterListItem {
@@ -18,33 +26,22 @@
   opacity: 0.2;
   border-radius: 40px;
   cursor: pointer;
-  transition: all 300ms linear;
-}
 
-.navigationFilterListItem {
   @include for-phone-only {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
-
-}
-.navigationFilterListItem:not(:last-child) {
-  margin-right: 7px;
-}
-
-.navigationFilterList {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  color: #ced2d1;
   @include for-tablet-only {
-   justify-content: center;
+    margin-top: 10px;
+  }
+  &:not(:last-child) {
+    margin-right: 13px;
+  }
+  &:hover,
+  &:focus {
+    transform: translateY(1px) scale(1.05);
+    transition: all 0.3s ease-in-out;
+    border-color: #ff6b08;
+    color: #ff6b08;
+    opacity: 1;
   }
 }
-
-.navigationFilterListItem:hover,
-.navigationFilterListItem:focus {
-  border-color: #ff6b08;
-  color: #ff6b08;
-  opacity: 1;
-}
-
