@@ -3,9 +3,8 @@ import '@glidejs/glide/dist/css/glide.theme.css';
 import Glide from '@glidejs/glide';
 
 import apiServices from '../../services/api';
-import { getItemMarkup, getLiMarkup } from './categoryListItemMarkup';
+import markup from './categoryListItemMarkup';
 import openItemModal from '../ItemModal/ItemModal';
-
 import './categoryListItem.scss';
 
 const categoryList = document.querySelector('.categoryList');
@@ -17,107 +16,123 @@ categoryList.addEventListener('click', e => {
 });
 
 export async function getCategoryListItem(category) {
-  const categoryItems = await apiServices.getProductsByCategory(category);
+  try {
+    const categoryItems = await apiServices.getProductsByCategory(category);
 
-  const products = {
-    visible: 12,
-  };
+    const products = {
+      visible: 12,
+    };
 
-  const itemMarkup = categoryItems.reduce((acc, item) => {
-    acc += getItemMarkup(item);
-    return acc;
-  }, '');
+    const itemMarkup = categoryItems.reduce((acc, item) => {
+      acc += markup.getItemMarkup(item);
+      return acc;
+    }, '');
 
-  const categoryItem = document.createElement('div');
-  categoryList.append(categoryItem);
-
-  function getSlider() {
-    categoryItem.innerHTML = getLiMarkup(category, itemMarkup, categoryItems);
-
-    const sliders = document.querySelectorAll('.glide');
-
-    for (let i = 0; i < sliders.length; i += 1) {
-      const glide = new Glide(sliders[i], {
-        type: 'carousel',
-        perView: 4,
-        dots: '#dots',
-        autoplay: 6000,
-        breakpoints: {
-          1279: {
-            gap: 26,
-            perView: 2,
-          },
-          767: {
-            gap: 30,
-            perView: 1,
-          },
-        },
-      });
-      glide.mount();
-    }
-  }
-
-  getSlider();
-
-  const seeAllButton = document.querySelector(`[data-btnReplace=${category}]`);
-  seeAllButton.addEventListener('click', seeAllProducts);
-
-  function seeAllProducts(e) {
+    categoryList.insertAdjacentHTML(
+      'beforeend',
+      markup.mainMarkup(category, itemMarkup, categoryItems),
+    );
     const categoryContainer = document.querySelector(
-      `[data-replace=${e.target.dataset.btnreplace}]`, 
+      `[data-replace=${category}]`,
     );
-
-    categoryContainer.innerHTML = innerMarkup(
+    categoryContainer.innerHTML = markup.withSlider(
+      category,
+      itemMarkup,
       categoryItems,
-      0,
-      products.visible,
     );
+    getSlider();
 
-    const loadMoreBtn = document.querySelector(
-      `[data-loadmore=${e.target.dataset.btnreplace}]`,
-    );
-    loadMoreBtn.addEventListener('click', loadMoreProducts);
-    loadMoreBtn.classList.remove('hidden');
+    categoryContainer.addEventListener('click', seeAllProducts);
 
-    endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+    function seeAllProducts(e) {
+      if (e.target.dataset.btnseeall === `${category}`) {
+        const categoryCont = document.querySelector(
+          `[data-replace=${e.target.dataset.btnseeall}]`,
+        );
+        categoryCont.innerHTML = markup.withoutSlider(
+          e.target.dataset.btnseeall,
+        );
 
-    function loadMoreProducts() {
-      loadMoreBtn.classList.add('button--loading');
-      const addedProducts = innerMarkup(
-        categoryItems,
-        products.visible,
-        products.visible + 12,
-      );
-      products.visible += 12;
+        const categoryContent = document.querySelector(
+          `[data-content=${e.target.dataset.btnseeall}]`,
+        );
+        categoryContent.innerHTML = innerMarkup(
+          categoryItems,
+          0,
+          products.visible,
+        );
 
-      categoryContainer.insertAdjacentHTML('beforeend', addedProducts);
-      loadMoreBtn.classList.remove('button--loading');
-      endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+        const loadMoreBtn = document.querySelector(
+          `[data-loadmore=${e.target.dataset.btnseeall}]`,
+        );
+        loadMoreBtn.addEventListener('click', loadMoreProducts);
+        endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+
+        function loadMoreProducts() {
+          loadMoreBtn.classList.add('button--loading');
+
+          const addedProducts = innerMarkup(
+            categoryItems,
+            products.visible,
+            products.visible + 12,
+          );
+          products.visible += 12;
+
+          const categoryContent = document.querySelector(
+            `[data-content=${e.target.dataset.btnseeall}]`,
+          );
+          categoryContent.insertAdjacentHTML('beforeend', addedProducts);
+          loadMoreBtn.classList.remove('button--loading');
+          endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+        }
+      }
+
+      if (e.target.dataset.btnseeless === `${category}`) {
+        const categoryCont = document.querySelector(
+          `[data-replace=${e.target.dataset.btnseeless}]`,
+        );
+        categoryCont.innerHTML = markup.withSlider(
+          e.target.dataset.btnseeless,
+          itemMarkup,
+          categoryItems,
+        );
+        getSlider();
+      }
     }
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+}
 
-    const seeAllButton = document.querySelector(
-      `[data-btnReplace=${category}]`,
-    );
-    seeAllButton.textContent = 'See less';
-    seeAllButton.addEventListener('click', seeLessProducts);
+function getSlider() {
+  const sliders = document.querySelectorAll('.glide');
 
-    function seeLessProducts() {
-      loadMoreBtn.classList.add('hidden');
-      getSlider();
-      const seeAllButton = document.querySelector(
-        `[data-btnReplace=${category}]`,
-      );
-      seeAllButton.textContent = 'See all';
-      seeAllButton.addEventListener('click', seeAllProducts);
-      seeAllButton.removeEventListener('click', seeLessProducts);
-    }
+  for (let i = 0; i < sliders.length; i += 1) {
+    const glide = new Glide(sliders[i], {
+      type: 'carousel',
+      perView: 4,
+      dots: '#dots',
+      autoplay: 6000,
+      breakpoints: {
+        1279: {
+          gap: 26,
+          perView: 2,
+        },
+        767: {
+          gap: 30,
+          perView: 1,
+        },
+      },
+    });
+    glide.mount();
   }
 }
 
 function innerMarkup(categoryItems, start, end) {
   return `
   ${categoryItems.slice(start, end).reduce((acc, item) => {
-    return (acc += getItemMarkup(item));
+    return (acc += markup.getItemMarkup(item));
   }, '')}`;
 }
 
