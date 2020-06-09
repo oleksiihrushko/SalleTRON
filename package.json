@@ -49,8 +49,8 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "@glidejs/glide": "^3.4.1",
     "axios": "^0.19.2",
+    "@glidejs/glide": "^3.4.1",
     "basiclightbox": "^5.0.3",
     "core-js": "^3.6.4",
     "debounce": "^1.2.0",

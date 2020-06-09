@@ -1,12 +1,44 @@
-// import refs from "./refs";
+export const addToLocalStorage = (token, userID) => {
+  localStorage.setItem(
+    'user',
+    JSON.stringify({
+      token: token,
+      id: userID,
+    }),
+  );
+};
 
-// export const hideMenue = () => {
-//     const checkStorage = localStorage.getItem('user');
-//     checkStorage ? refs.login.classList.add('hide') : refs.login.classList.remove('hide');
-//     checkStorage ? refs.registration.classList.add('hide') : refs.registration.classList.remove('hide');
-//     !checkStorage ? refs.logOut.classList.add('hide'): refs.logOut.classList.remove('hide');
+export const logErrors = error => {
+  console.error(error);
+  console.dir(error.response.data.error);
+  console.error(error.response.data.error.message);
+
   
-//     refs.content.innerHTML = getHomePage();
-//   };
+};
 
-//   export default hideMenue
+export function hideMenue() {
+  const refs = {
+    login: document.querySelector('.header__form-login'),
+    logout: document.querySelector('.header__form-logout'),
+  };
+  const checkStorage = localStorage.getItem('user');
+
+  checkStorage
+    ? refs.login.classList.add('hide')
+    : refs.login.classList.remove('hide');
+  !checkStorage
+    ? refs.logout.classList.add('hide')
+    : refs.logout.classList.remove('hide');
+}
+
+export const logOut = ()=>{
+const clearLocalStorage = () => {
+  // localStorage.removeItem('user');
+  localStorage.setItem('user', '');
+    hideMenue();
+
+};
+document
+  .querySelector('.header__form-logout')
+  .addEventListener('click', clearLocalStorage);
+}
