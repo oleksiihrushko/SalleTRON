@@ -44,7 +44,7 @@ export async function getCategoryListItem(category) {
 
     categoryContainer.addEventListener('click', seeAllProducts);
 
-    function seeAllProducts(e) {
+    export function seeAllProducts(e) {
       if (e.target.dataset.btnseeall === `${category}`) {
         const categoryCont = document.querySelector(
           `[data-replace=${e.target.dataset.btnseeall}]`,
