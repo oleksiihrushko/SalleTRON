@@ -2,16 +2,13 @@
 
 .modal {
   background-color: white;
-  width: 320px;
-  // width: 100%;
-  height: 1000px;
+  width: 100vw;
 }
 
 .btnBack {
   background: none;
   border: none;
-  padding-top: 35px;
-  padding-bottom: 20px;
+  margin: 35px 0 20px;
 }
 
 .btnClose {
@@ -26,6 +23,7 @@
   color: #000000;
   text-align: left;
   padding-bottom: 10px;
+
 }
 
 .modal__code {
@@ -41,52 +39,52 @@
   font-family: 'MontserratBold', sans-serif;
   letter-spacing: 0.36px;
   color: var(--color-decor);
-  padding-bottom: 30px;
+  padding-bottom: 125px;
 }
 
 .glidebullets {
   padding-top: 20px;
-  padding-bottom: 27px;
+  padding-bottom: 115px;
   text-align: center;
 }
 
-.modal__color-blue {
-  margin-right: 16px;
-  display: inline-block;
-  background-color: #b9eefe;
-  width: 25px;
-  height: 23px;
-  border: 0;
-  cursor: pointer;
-}
+// .modal__color-blue {
+//   margin-right: 16px;
+//   display: inline-block;
+//   background-color: #b9eefe;
+//   width: 25px;
+//   height: 23px;
+//   border: 0;
+//   cursor: pointer;
+// }
 
-.modal__color-blue::after {
-  position: absolute;
-  content: "";
-  transform: translate(-13px, 22px);
-  background-color: #333333;
-  width: 25px;
-  height: 1px;
-}
+// .modal__color-blue::after {
+//   position: absolute;
+//   content: "";
+//   transform: translate(-13px, 22px);
+//   background-color: #333333;
+//   width: 25px;
+//   height: 1px;
+// }
 
-.modal__color-turquoise {
-  display: inline-block;
-  background-color: #a02655;
-  width: 25px;
-  height: 23px;
-  border: 0;
-  cursor: pointer;
-}
+// .modal__color-turquoise {
+//   display: inline-block;
+//   background-color: #a02655;
+//   width: 25px;
+//   height: 23px;
+//   border: 0;
+//   cursor: pointer;
+// }
 
-.modal__color-item {
-  @include font(8px, 10px, 500);
-  font-family: 'MontserratSemiBold', sans-serif;
-  letter-spacing: 0.72px;
-  color: #878686;
-  padding-top: 18px;
-  padding-bottom: 36px;
-  text-transform: uppercase;
-}
+// .modal__color-item {
+//   @include font(8px, 10px, 500);
+//   font-family: 'MontserratSemiBold', sans-serif;
+//   letter-spacing: 0.72px;
+//   color: #878686;
+//   padding-top: 18px;
+//   padding-bottom: 36px;
+//   text-transform: uppercase;
+// }
 
 .modal__buyItem {
   @include font(16px, 19px, 700);
@@ -118,21 +116,21 @@
   display: block;
   position: absolute;
   content: '';
-  transform: translate(92px, -15px);
+  transform: translate(122px, -15px);
 }
 
 .modal__share-item-toshare {
   display: block;
   position: absolute;
   content: '';
-  transform: translate(210px, -15px);
+  transform: translate(238px, -15px);
 }
 
 .modal__share-item {
   @include font(12px, 14px, 500);
   font-family: 'MontserratSemiBold', sans-serif;
   letter-spacing: 1.08px;
-  padding-left: 35px;
+  padding-left: 60px;
   padding-right: 10px;
 }
 
@@ -239,7 +237,7 @@
 @media (min-width: 1280px) {
   .modal {
     width: 1025px;
-    height: 615px;
+    height: 675px;
   }
 
   .tablet_picture {
