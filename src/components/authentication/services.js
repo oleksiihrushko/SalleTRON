@@ -10,10 +10,10 @@ export const addToLocalStorage = (token, userID) => {
 
 export const logErrors = error => {
   console.error(error);
-  console.error(error.code);
-  console.error(error.message);
-  console.error(error.email);
-  console.error(error.credential);
+  console.dir(error.response.data.error);
+  console.error(error.response.data.error.message);
+
+  
 };
 
 export function hideMenue() {
@@ -33,15 +33,13 @@ export function hideMenue() {
   !checkStorage
     ? refs.logout.classList.add('hide')
     : refs.logout.classList.remove('hide');
-
-  // refs.content.innerHTML = getHomePage();
 }
 
 export const logOut = ()=>{
 const clearLocalStorage = () => {
   // localStorage.removeItem('user');
   localStorage.setItem('user', '');
-//   refs.content.innerHTML = getHomePage();  //написать функцию которая будет возвращять mainpage
+    hideMenue();
 
 };
 document

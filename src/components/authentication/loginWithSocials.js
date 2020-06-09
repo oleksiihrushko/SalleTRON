@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import { firebaseConfig } from './authServises';
-
+import { logErrors, addToLocalStorage, hideMenue } from './services';
 //======Login with Google and FB===========================================
 firebase.initializeApp(firebaseConfig);
 
