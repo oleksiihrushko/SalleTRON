@@ -23,8 +23,7 @@ const markup = {
 
   mainMarkup(category) {
     return `
-    <div class = "category container" data-categoryname=${category}>
-      <h3 class='category__name'>${capitalize(`${category}`)}</h3>
+    <div class = "category container">
       <div class='replacableContainer' data-replace=${category}></div> 
     </div>
     `;
@@ -32,7 +31,8 @@ const markup = {
 
   withoutSlider(category) {
     return `
-          <button class="category__btn-see-less" data-btnseeless=${category}>See less</button>
+          <h3 class='category__name'>${capitalize(`${category}`)}</h3>
+          <button class="category__btn category__btn-see-less" data-btnseeless=${category}>See less</button>
           <div class='category__content' data-content=${category}></div>
           <button class='button loadMoreBtn' data-loadmore=${category} id='call-to-action'>
               <span class='loadMoreBtnText'>Click for magic</span>
@@ -42,7 +42,8 @@ const markup = {
 
   withSlider(category, itemMarkup, categoryItems) {
     return `
-        <button class="category__btn-see-all" data-btnseeall=${category}>See all</button>
+        <h3 class='category__name'>${capitalize(`${category}`)}</h3>
+        <button class="category__btn category__btn-see-all" data-btnseeall=${category}>See all</button>
 
         <div class="glide">
           <div data-glide-el="track" class="glide__track">

@@ -19,7 +19,6 @@ export async function getCategoryListItem(category) {
   try {
     const categoryItems = await apiServices.getProductsByCategory(category);
 
-
     const products = {
       visible: 12,
     };
@@ -29,28 +28,45 @@ export async function getCategoryListItem(category) {
       return acc;
     }, '');
 
-    categoryList.insertAdjacentHTML('beforeend', markup.mainMarkup(category, itemMarkup, categoryItems));
-    const categoryContainer = document.querySelector(`[data-replace=${category}]`);
-    categoryContainer.innerHTML = markup.withSlider(category, itemMarkup, categoryItems)
+    categoryList.insertAdjacentHTML(
+      'beforeend',
+      markup.mainMarkup(category, itemMarkup, categoryItems),
+    );
+    const categoryContainer = document.querySelector(
+      `[data-replace=${category}]`,
+    );
+    categoryContainer.innerHTML = markup.withSlider(
+      category,
+      itemMarkup,
+      categoryItems,
+    );
     getSlider();
 
-    categoryContainer.addEventListener('click', seeAllProducts)
+    categoryContainer.addEventListener('click', seeAllProducts);
 
     function seeAllProducts(e) {
       if (e.target.dataset.btnseeall === `${category}`) {
-        const categoryCont = document.querySelector(`[data-replace=${e.target.dataset.btnseeall}]`);
-        categoryCont.innerHTML = markup.withoutSlider(e.target.dataset.btnseeall);
+        const categoryCont = document.querySelector(
+          `[data-replace=${e.target.dataset.btnseeall}]`,
+        );
+        categoryCont.innerHTML = markup.withoutSlider(
+          e.target.dataset.btnseeall,
+        );
 
-        const categoryContent = document.querySelector(`[data-content=${e.target.dataset.btnseeall}]`);
+        const categoryContent = document.querySelector(
+          `[data-content=${e.target.dataset.btnseeall}]`,
+        );
         categoryContent.innerHTML = innerMarkup(
           categoryItems,
           0,
           products.visible,
         );
 
-        const loadMoreBtn = document.querySelector(`[data-loadmore=${e.target.dataset.btnseeall}]`);
+        const loadMoreBtn = document.querySelector(
+          `[data-loadmore=${e.target.dataset.btnseeall}]`,
+        );
         loadMoreBtn.addEventListener('click', loadMoreProducts);
-        endOfCategoryHandler(categoryItems, loadMoreBtn, products)
+        endOfCategoryHandler(categoryItems, loadMoreBtn, products);
 
         function loadMoreProducts() {
           loadMoreBtn.classList.add('button--loading');
@@ -62,7 +78,9 @@ export async function getCategoryListItem(category) {
           );
           products.visible += 12;
 
-          const categoryContent = document.querySelector(`[data-content=${e.target.dataset.btnseeall}]`);
+          const categoryContent = document.querySelector(
+            `[data-content=${e.target.dataset.btnseeall}]`,
+          );
           categoryContent.insertAdjacentHTML('beforeend', addedProducts);
           loadMoreBtn.classList.remove('button--loading');
           endOfCategoryHandler(categoryItems, loadMoreBtn, products);
@@ -70,14 +88,20 @@ export async function getCategoryListItem(category) {
       }
 
       if (e.target.dataset.btnseeless === `${category}`) {
-        const categoryCont = document.querySelector(`[data-replace=${e.target.dataset.btnseeless}]`);
-        categoryCont.innerHTML = markup.withSlider(e.target.dataset.btnseeless, itemMarkup, categoryItems);
-        getSlider()
+        const categoryCont = document.querySelector(
+          `[data-replace=${e.target.dataset.btnseeless}]`,
+        );
+        categoryCont.innerHTML = markup.withSlider(
+          e.target.dataset.btnseeless,
+          itemMarkup,
+          categoryItems,
+        );
+        getSlider();
       }
     }
   } catch (error) {
     console.log(error);
-    return
+    return;
   }
 }
 
@@ -108,8 +132,8 @@ function getSlider() {
 function innerMarkup(categoryItems, start, end) {
   return `
   ${categoryItems.slice(start, end).reduce((acc, item) => {
-      return (acc += markup.getItemMarkup(item));
-    }, '')}`;
+    return (acc += markup.getItemMarkup(item));
+  }, '')}`;
 }
 
 function endOfCategoryHandler(categoryItems, loadMoreBtn, products) {
