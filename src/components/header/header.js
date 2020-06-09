@@ -9,12 +9,10 @@ const burgerMenu = document.querySelector('.header__burgerMenu');
 const filterBtn = document.querySelector('.buttonFilter');
 const searchBar = document.querySelector('.header__search');
 const categoryList = document.querySelector('.categoryList');
-const navigationFilterListItem = document.querySelector(
-  '.navigationFilterListItem',
-);
 
 hamburger.addEventListener('click', toggleBurger);
 filterBtn.addEventListener('click', toggleTabletFilter);
+searchBar.addEventListener('input', lodash.debounce(searchCategory, 500));
 // searchBar.addEventListener('input', searchData);
 
 function toggleBurger(e) {
@@ -26,44 +24,16 @@ function toggleBurger(e) {
     burgerMenu.classList.toggle('expanded');
   }
 }
+
 function toggleTabletFilter(e) {
   e.preventDefault();
+  e.stopPropagation();
   if (!e.currentTarget) return;
   if (e.currentTarget) {
     burgerMenu.classList.toggle('filterIsActiveForTablet');
   }
 }
 // ---------------------------------------------------------------------------
-// searchBar.addEventListener(
-//   'input',
-//   lodash.debounce(e => {
-//     const inputValue = e.target.value;
-//     if (inputValue === '') return;
-//     categoryList.innerHTML = '';
-
-//     apiServices.getProducts().then(data => {
-//       data.filter(product => {
-//         if (
-//           product.categories.toLowerCase().includes(inputValue.toLowerCase())
-//         ) {
-//           if (inputValue.length >= 3) {
-//             categoryList.insertAdjacentHTML(
-//               'beforeend',
-//               searchBarHbs({ product }),
-//             );
-//             console.log(product);
-//           }
-//           return;
-//         }
-//       });
-//     });
-//   }, 1000),
-// );
-
-// ---------------------------------------------------------------------------
-
-searchBar.addEventListener('input', searchCategory);
-
 async function searchCategory(e) {
   let isFound = false;
   categoryList.innerHTML = '';
@@ -103,6 +73,34 @@ async function searchCategory(e) {
     });
   }
 }
+
+// ---------------------------------------------------------------------------
+// searchBar.addEventListener(
+//   'input',
+//   lodash.debounce(e => {
+//     const inputValue = e.target.value;
+//     if (inputValue === '') return;
+//     categoryList.innerHTML = '';
+
+//     apiServices.getProducts().then(data => {
+//       data.filter(product => {
+//         if (
+//           product.categories.toLowerCase().includes(inputValue.toLowerCase())
+//         ) {
+//           if (inputValue.length >= 3) {
+//             categoryList.insertAdjacentHTML(
+//               'beforeend',
+//               searchBarHbs({ product }),
+//             );
+//             console.log(product);
+//           }
+//           return;
+//         }
+//       });
+//     });
+//   }, 1000),
+// );
+
 // ---------------------------------------------------------------------- Andrii
 // let isFound = false;
 
