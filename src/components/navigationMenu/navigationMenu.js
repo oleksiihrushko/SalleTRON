@@ -37,7 +37,8 @@ const insert = categoriesArr => {
     size = 'tablet';
     markup = navigationCard(categoriesArr);
   }
-  navigationFilter.insertAdjacentHTML('afterbegin', markup);
+  // navigationFilter.insertAdjacentHTML('afterbegin', markup);
+  navigationFilter.innerHTML = markup;
 };
 api.getCategoriesList().then(data => {
   insert(data);
