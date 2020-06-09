@@ -1,6 +1,7 @@
 import './header.scss';
 import apiServices from '../../services/api';
 import searchBarHbs from './searchBar.hbs';
+import { paginationCategore } from '../categoryListItem/renderCategoryList';
 import lodash from 'lodash';
 
 const hamburger = document.querySelector('.hamburger');
@@ -61,16 +62,15 @@ function toggleTabletFilter(e) {
 
 // ---------------------------------------------------------------------------
 
-let isFound = false;
-
 searchBar.addEventListener('input', searchCategory);
 
 async function searchCategory(e) {
+  let isFound = false;
+  categoryList.innerHTML = '';
   const inputValue = e.target.value;
   if (inputValue === '') {
-    //---------------------------------------------
+    paginationCategore(2);
   }
-  categoryList.innerHTML = '';
 
   const getCategoryData = await apiServices.getCategoriesList();
   await getCategoryData.forEach(category => {
