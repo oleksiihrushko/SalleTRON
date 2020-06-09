@@ -18,7 +18,6 @@ export const logErrors = error => {
 
 export function hideMenue() {
   const refs = {
-    register: document.querySelector('.header__form-register'),
     login: document.querySelector('.header__form-login'),
     logout: document.querySelector('.header__form-logout'),
   };
@@ -27,9 +26,6 @@ export function hideMenue() {
   checkStorage
     ? refs.login.classList.add('hide')
     : refs.login.classList.remove('hide');
-  checkStorage
-    ? refs.register.classList.add('hide')
-    : refs.register.classList.remove('hide');
   !checkStorage
     ? refs.logout.classList.add('hide')
     : refs.logout.classList.remove('hide');
