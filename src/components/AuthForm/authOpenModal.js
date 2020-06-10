@@ -3,7 +3,7 @@ import openModal from './forOpenModal';
 import authFormLogic from './authFormLogic';
 import '../../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
-import { addButtonListeners } from '../authentication/refs';
+import { addButtonListeners , closeWindowOnLogin } from '../authentication/refs';
 
 function showModal() {
   const instance = basicLightbox.create(
@@ -15,7 +15,7 @@ function showModal() {
   instance.show();
   authFormLogic();
   addButtonListeners();
-
+  closeWindowOnLogin(instance)
   document
     .querySelector('.closeModalWindow')
     .addEventListener('click', instance.close);

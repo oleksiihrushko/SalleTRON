@@ -53,6 +53,10 @@ const apiServices = {
 
   // функция отвечает за регистрацию нового юзера и запись юзера в БД
   async signUpUser(user) {
+    const authStatus = {
+      statusCheck: null,
+    };
+
     const userData = {
       id: '',
       email: '',
@@ -69,6 +73,7 @@ const apiServices = {
           returnSecureToken: true,
         },
       );
+        authStatus.statusCheck = authResponse;
 
       userData.id = authResponse.data.localId;
       userData.email = authResponse.data.email;
@@ -97,10 +102,14 @@ const apiServices = {
       console.log(error);
       return;
     }
+    return authStatus;
   },
 
   // функция отвечает за аутентификацию юзера
   async signInUser(user) {
+    const authStatus = {
+      statusCheck: null,
+    };
     try {
       const authResponse = await axios.post(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`,
@@ -109,7 +118,8 @@ const apiServices = {
           returnSecureToken: true,
         },
       );
-
+     
+      authStatus.statusCheck = authResponse;
       try {
         const databaseResponseId = await axios.get('/users.json');
         const res = Object.entries(databaseResponseId.data);
@@ -138,6 +148,7 @@ const apiServices = {
       console.log(error);
       return;
     }
+    return authStatus
   },
 
   // // найти юзера по id
