@@ -11,14 +11,14 @@
   color: #ced2d1;
   @include for-tablet-only {
     justify-content: center;
-    padding: 20px 39px;
+    padding: 20px 20px;
   }
 }
 
 .navigationFilterListItem {
   box-sizing: content-box;
   text-align: center;
-  padding: 9px 20px;
+  padding: 9px 15px;
   letter-spacing: 1px;
   font-size: 12px;
   line-height: 8px;
@@ -34,7 +34,7 @@
     margin-top: 10px;
   }
   &:not(:last-child) {
-    margin-right: 13px;
+    margin-right: 7px;
   }
   &:hover,
   &:focus {
@@ -44,4 +44,10 @@
     color: #ff6b08;
     opacity: 1;
   }
+}
+
+.elementIsActive {
+  border-color: #ff6b08;
+  color: #ff6b08;
+  opacity: 1;
 }
