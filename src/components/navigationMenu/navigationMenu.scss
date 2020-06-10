@@ -34,7 +34,7 @@
     margin-top: 10px;
   }
   &:not(:last-child) {
-    margin-right: 13px;
+    margin-right: 7px;
   }
   &:hover,
   &:focus {
@@ -44,4 +44,10 @@
     color: #ff6b08;
     opacity: 1;
   }
+}
+
+.elementIsActive {
+  border-color: #ff6b08;
+  color: #ff6b08;
+  opacity: 1;
 }

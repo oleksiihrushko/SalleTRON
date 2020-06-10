@@ -3,13 +3,13 @@ import navigationCard from './navigation.hbs';
 import mobileNavigationCard from './mobileNavigation.hbs';
 import api from '../../services/api.js';
 import { paginationCategore } from '../categoryListItem/renderCategoryList';
-import searchBarHbs from '../header/searchBar.hbs'
+import searchBarHbs from '../header/searchBar.hbs';
 
 const navigationFilter = document.querySelector('.header__burgerMenu');
 const categoryList = document.querySelector('.categoryList');
 
 //=========== render list item
-let size = '';
+// let size = '';
 
 let categories = [];
 // window.addEventListener('resize', () => {
@@ -34,10 +34,10 @@ let categories = [];
 const insert = categoriesArr => {
   let markup = '';
   if (window.matchMedia('(max-width: 767px)').matches) {
-    size = 'mobile';
+
     markup = mobileNavigationCard(categoriesArr);
   } else {
-    size = 'tablet';
+
     markup = navigationCard(categoriesArr);
   }
 
@@ -52,18 +52,21 @@ api.getCategoriesList().then(data => {
     if (e.target.nodeName !== 'LI') return;
     categoryList.innerHTML = "";
     api.getProductsByCategory(e.target.innerHTML).then(res => {
-      console.log(res);
       categoryList.insertAdjacentHTML('beforeend', searchBarHbs(res));
     });
   });
-});
 
+});
 
 //*================== reset
 
 const navigationButtonRestore = document.querySelector('.buttonRestore');
 navigationButtonRestore.addEventListener('click', e => {
   if (e.target.nodeName !== 'BUTTON') return;
+  api.getCategoriesList().then(data => {
+    insert(data);
+    categories = [...data];
   categoryList.innerHTML = '';
   paginationCategore(2);
-});
+})
+})
