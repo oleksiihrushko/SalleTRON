@@ -86,3 +86,39 @@ button:focus {
 h1 {
   @include font(14px, 20px, 400);
 }
+
+.header__logo-img {
+  width: 50px;
+  position: relative;
+  top: 0px;
+  left: 10px;
+  @include for-phone-only {
+  }
+  @include for-tablet-up {
+    top: 8px;
+    left: 0px;
+  }
+  @include for-desktop-up {
+    top: -20px;
+    left: -55px;
+  }
+}
+
+.logo_text {
+  @include font(14px, 20px, 400);
+
+  color: var(--color-decor);
+
+  @include for-tablet-up {
+    @include font(18px, 20px, 400);
+    position: relative;
+    top: -28px;
+    left: 60px;
+  }
+
+  @include for-desktop-up {
+    @include font(18px, 20px, 400);
+    top: -58px;
+    left: 22px;
+  }
+}
