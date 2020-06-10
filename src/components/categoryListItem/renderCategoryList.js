@@ -4,8 +4,10 @@ import { getCategoryListItem } from './categoryListItem';
 export const categoriesCount = { count: 0 };
 
 const renderBtn = document.querySelector('.renderBtn');
+const spinner = document.querySelector('.spinner');
 
 export function paginationCategore(num) {
+  spinner.classList.add('spinner__show');
   apiService.getCategoriesList().then(data => {
     for (let i = categoriesCount.count; i < num + categoriesCount.count; i++) {
       if (data[i]) {
@@ -16,6 +18,7 @@ export function paginationCategore(num) {
     }
 
     categoriesCount.count += num;
+    spinner.classList.remove('spinner__show');
   });
 }
 
