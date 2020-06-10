@@ -15,7 +15,7 @@ function showModal() {
   instance.show();
   authFormLogic();
   addButtonListeners();
-  
+
   document
     .querySelector('.closeModalWindow')
     .addEventListener('click', instance.close);
