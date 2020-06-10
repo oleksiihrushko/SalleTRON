@@ -13,7 +13,7 @@
   }
   @include for-desktop-up {
     padding-top: 35px;
-    padding-bottom: 35px;
+    padding-bottom: 20px;
   }
   // --- header__nav ---
   &__nav {
@@ -62,7 +62,7 @@
       padding: 10px 0;
       position: absolute;
       width: 100vw;
-      top: 232px;
+      top: 169px;
       left: 0;
       background-color: #121d2e;
       z-index: 5;
@@ -101,7 +101,7 @@
       width: 82px;
       height: 44px;
       text-align: center;
-      margin-right: 20px;
+      margin-right: 50px;
     }
     &-img {
       @include for-phone-only {
@@ -170,7 +170,7 @@
     }
     @include for-desktop-up {
       order: 0;
-      margin-right: 250px;
+      margin-right: 330px;
     }
     &:focus {
       @include for-phone-only {
