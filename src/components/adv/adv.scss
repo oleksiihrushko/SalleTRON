@@ -26,33 +26,26 @@
 .adv__productDiscription {
   width: 280px;
   position: absolute;
-  top: 112px;
   left: 50%;
-  transform: translateX(-140px);
-  @include for-tablet-up {
-    transform: translateX(-100%);
-    top: 80px;
-  }
+  top: 50%;
+  transform: translate(-120%, -50%);
 }
 
 .adv__adItem:not(:first-child) .adv__productDiscription {
   @include for-tablet-up {
     width: 140px;
     position: absolute;
-    transform: translateX(0px);
-    top: 60px;
-    left: 50px;
   }
 }
 
 .adv__adImg {
   position: absolute;
   display: block;
-  max-width: 50%;
+  max-width: 40%;
   max-height: 80%;
   top: 50%;
-  right: 10%;
   transform: translateY(-50%);
+  right: 8%;
 }
 
 .adv__productName {
