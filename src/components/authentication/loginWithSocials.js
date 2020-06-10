@@ -1,8 +1,26 @@
 import firebase from 'firebase';
-import { firebaseConfig } from './authServises';
+
+// import { firebaseConfig } from './authServises';
 import { logErrors, addToLocalStorage, hideMenue } from './services';
+import axios from 'axios';
+import { stateOfAuth } from './refs';
+// import { firebaseConfig } from './authServises';
+
+// axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
+
 //======Login with Google and FB===========================================
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o',
+  authDomain: 'salletronbase.firebaseapp.com',
+  databaseURL: 'https://salletronbase.firebaseio.com',
+  projectId: 'salletronbase',
+  storageBucket: 'salletronbase.appspot.com',
+  messagingSenderId: '555686357871',
+  appId: '1:555686357871:web:7845e33c12341a4949969a',
+};
+
 firebase.initializeApp(firebaseConfig);
+// console.log(firebaseConfig);
 
 export const loginWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -13,46 +31,74 @@ export const loginWithFB = () => {
   signInLogic(provider);
 };
 
+const setTOlocalStorage = (id, token, favorites = []) => {
+  localStorage.setItem(
+    'user',
+    JSON.stringify({
+      id,
+      token,
+      favorites,
+    }),
+  );
+};
+
 async function signInLogic(provider) {
+  const userData = {
+    id: '',
+    email: '',
+    createdAt: Date.now(),
+    adv: [''],
+    favorites: [''],
+  };
+
   try {
     const result = await firebase.auth().signInWithPopup(provider);
-    const token = result.credential.accessToken;
-    const userID = result.user.uid;
-    addToLocalStorage(token, userID);
+    const token = result.user.xa;
+    // console.log('result', result);
+
+    userData.id = result.user.uid;
+    userData.email = result.user.email;
+    try {
+      const getUsers = await axios.get('/users.json');
+      // console.log('getUsers',getUsers);
+
+      if (getUsers.data === null) {
+        const createNewUser = await axios.post(
+          `https://salletronbase.firebaseio.com/users.json?auth=${token}`,
+          { ...userData },
+        );
+        setTOlocalStorage(createNewUser.data.name, token);
+        stateOfAuth.instance.close();
+      }
+
+      if (getUsers.data !== null) {
+        const usersEntries = Object.entries(getUsers.data);
+        const userExist = usersEntries.find(
+          user => user[1].id === result.user.uid,
+        );
+        console.log('userExist76', userExist);
+
+        if (userExist === undefined) {
+          const createNewUser = await axios.post(
+            `https://salletronbase.firebaseio.com/users.json?auth=${token}`,
+            { ...userData },
+          );
+          setTOlocalStorage(createNewUser.data.name, token);
+          stateOfAuth.instance.close();
+        }
+        if (userExist !== undefined) {
+          console.log('userExist', userExist);
+          setTOlocalStorage(userExist[0], token, userExist[1].favorites);
+          stateOfAuth.instance.close();
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
     hideMenue();
   } catch (error) {
+    console.log('catch');
+
     logErrors(error);
   }
-}
-
-
-
-// export default loginWithGoogle loginWithFB
-
-{
-  // console.log(FB);
-  // FB.getLoginStatus(function(response) {
-  //   statusChangeCallback(response);
-  // });
-  // {
-  //   status: 'connected',
-  //   authResponse: {
-  //       accessToken: '...',
-  //       expiresIn:'...',
-  //       signedRequest:'...',
-  //       userID:'...'
-  //   }
-  // }
-  // status сообщает о состоянии входа человека в приложение. Состояние может принимать одно из следующих значений:
-  // connected — человек выполнил вход на Facebook и в ваше приложение.
-  // not_authorized — человек выполнил вход на Facebook, но не вошел в приложение.
-  // unknown — человек не вошел на Facebook, поэтому неизвестно, выполнен ли вход в приложение, либо FB.logout() был вызван раньше и поэтому не может подключиться к Facebook.
-  // authResponse будет добавлен, если статус — connected и состоит из следующих элементов:
-  // accessToken — содержит маркер доступа для пользователя приложения.
-  // expiresIn — указывает UNIX-время, когда срок действия маркера истечет и его нужно будет обновить.
-  // signedRequest — параметр подписи, содержащий сведения о пользователе приложения.
-  // userID — указывает ID пользователя приложения.
-  // Когда состояние входа определено, можно выбрать один из следующих вариантов:
-  // Если человек вошел на Facebook и в приложение, предоставьте ему возможность работать с приложением как зарегистрированному пользователю.
-  // Если человек не вошел в приложение или на Facebook, предложите ему диалог «Вход» с элементом FB.login() или покажите кнопку «Вход».
 }
