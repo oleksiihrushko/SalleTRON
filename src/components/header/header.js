@@ -13,8 +13,7 @@ const categoryList = document.querySelector('.categoryList');
 hamburger.addEventListener('click', toggleBurger);
 filterBtn.addEventListener('click', toggleTabletFilter);
 searchBar.addEventListener('input', lodash.debounce(searchCategory, 500));
-// searchBar.addEventListener('input', searchData);
-
+// ---------------------------------------------------------------------------
 function toggleBurger(e) {
   e.preventDefault();
   e.stopPropagation();
@@ -24,7 +23,7 @@ function toggleBurger(e) {
     burgerMenu.classList.toggle('expanded');
   }
 }
-
+// ---------------------------------------------------------------------------
 function toggleTabletFilter(e) {
   e.preventDefault();
   e.stopPropagation();
@@ -35,9 +34,9 @@ function toggleTabletFilter(e) {
 }
 // ---------------------------------------------------------------------------
 async function searchCategory(e) {
+  const inputValue = e.target.value;
   let isFound = false;
   categoryList.innerHTML = '';
-  const inputValue = e.target.value;
   if (inputValue === '') {
     paginationCategore(2);
   }
@@ -72,103 +71,3 @@ async function searchCategory(e) {
     });
   }
 }
-
-// ---------------------------------------------------------------------------
-// searchBar.addEventListener(
-//   'input',
-//   lodash.debounce(e => {
-//     const inputValue = e.target.value;
-//     if (inputValue === '') return;
-//     categoryList.innerHTML = '';
-
-//     apiServices.getProducts().then(data => {
-//       data.filter(product => {
-//         if (
-//           product.categories.toLowerCase().includes(inputValue.toLowerCase())
-//         ) {
-//           if (inputValue.length >= 3) {
-//             categoryList.insertAdjacentHTML(
-//               'beforeend',
-//               searchBarHbs({ product }),
-//             );
-//             console.log(product);
-//           }
-//           return;
-//         }
-//       });
-//     });
-//   }, 1000),
-// );
-
-// ---------------------------------------------------------------------- Andrii
-// let isFound = false;
-
-// searchBar.addEventListener(
-//   'input',
-//   lodash.debounce(e => {
-//     const inputValue = e.target.value;
-//     // console.log(inputValue);
-//     if (inputValue === '') return;
-
-//     apiServices.getCategoriesList().then(data => {
-//       data.forEach(category => {
-//         if (category.toLowerCase().includes(inputValue.toLowerCase())) {
-//           if (inputValue.length >= 3) {
-//             apiServices
-//               .getProductsByCategory(category)
-//               .then(data => console.log(data));
-//             isFound = true;
-//           }
-//           return;
-//         }
-//       });
-//     });
-
-//     if (!isFound) {
-//       apiServices.getProducts().then(data => {
-//         data.filter(product => {
-//           if (
-//             product.categories.toLowerCase().includes(inputValue.toLowerCase())
-//           ) {
-//             if (inputValue.length >= 3) {
-//               categoryList.insertAdjacentHTML(
-//                 'beforeend',
-//                 searchBarHbs({ product }),
-//               );
-//               console.log(product);
-//             }
-//             return;
-//           }
-//         });
-//       });
-//     }
-//   }, 500),
-// );
-
-// ---------------------------------------------------------------------------
-// apiServices.getProducts().then(data => {
-//   const productData = data.filter(product =>
-//     product.name.toLowerCase().includes(inputValue.toLowerCase()),
-//   );
-//   console.log(productData);
-// });
-// ---------------------------------------------------------------------------
-
-// function searchData(e) {
-//   const inputValue = e.currentTarget.value;
-//   if (inputValue === '') return;
-
-//   apiServices.getCategoriesList().then(data => {
-//     data.forEach(item => {
-//       if (item.toLowerCase().includes(inputValue.toLowerCase())) {
-//         if (inputValue.length >= 3) {
-//           console.log('ok');
-//         }
-//         // else {
-//         //   console.log('no result');
-//         // }
-//         return;
-//       }
-//     });
-//   });
-// }
