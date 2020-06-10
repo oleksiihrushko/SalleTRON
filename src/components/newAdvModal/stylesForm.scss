@@ -135,21 +135,75 @@
     @include for-tablet-up {
         height: 60px;
         width: 295px;
-        margin-left: 165px;
+        margin-left: 175px;
 
     }  
     @include for-desktop-up {
         width: 294px;
     }  
-    &:hover,
-    &:focus {
-        background-color: rgb(233, 93, 0);
-        transform: translateY(1px) scale(1.05);
-        transition: all 0.3s ease-in-out;
-        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-      } 
+    // &:hover,
+    // &:focus {
+    //     background-color: rgb(233, 93, 0);
+    //     transform: translateY(1px) scale(1.05);
+    //     transition: all 0.3s ease-in-out;
+    //     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    //     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    //   }       
 }
+
+.new-adv-modal-form-btn {
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+.new-adv-modal-form-btn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.new-adv-modal-form-btn:active {
+    color: #000
+}
+.new-adv-modal-form-btn:active:after {
+    background: transparent;
+}
+.new-adv-modal-form-btn:hover:before {
+    opacity: 1;
+}
+.new-adv-modal-form-btn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff6b08;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
 
 
 .off-text-input {
@@ -283,7 +337,7 @@
 
 .new-adv-modal-div {
     width: 320px;
-    background-color: white;
+    background-color: rgb(223, 215, 215);
     @include for-tablet-up {
         width: 720px;
     }
