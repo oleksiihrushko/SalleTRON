@@ -11,14 +11,14 @@
   color: #ced2d1;
   @include for-tablet-only {
     justify-content: center;
-    padding: 20px 39px;
+    padding: 20px 20px;
   }
 }
 
 .navigationFilterListItem {
   box-sizing: content-box;
   text-align: center;
-  padding: 9px 20px;
+  padding: 9px 15px;
   letter-spacing: 1px;
   font-size: 12px;
   line-height: 8px;

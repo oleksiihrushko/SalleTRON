@@ -2,11 +2,14 @@ import './navigationMenu.scss';
 import navigationCard from './navigation.hbs';
 import mobileNavigationCard from './mobileNavigation.hbs';
 import api from '../../services/api.js';
-import { paginationCategore } from '../categoryListItem/renderCategoryList';
+import { paginationCategore, categoriesCount, checkForStartOfData } from '../categoryListItem/renderCategoryList';
 import searchBarHbs from '../header/searchBar.hbs';
+import {getCategoryListItem} from '../categoryListItem/categoryListItem'
 
 const navigationFilter = document.querySelector('.header__burgerMenu');
 const categoryList = document.querySelector('.categoryList');
+
+
 
 //=========== render list item
 // let size = '';
@@ -52,7 +55,7 @@ api.getCategoriesList().then(data => {
     if (e.target.nodeName !== 'LI') return;
     categoryList.innerHTML = "";
     api.getProductsByCategory(e.target.innerHTML).then(res => {
-      categoryList.insertAdjacentHTML('beforeend', searchBarHbs(res));
+      categoryList.innerHTML = searchBarHbs(res);
     });
   });
 
@@ -60,13 +63,28 @@ api.getCategoriesList().then(data => {
 
 //*================== reset
 
+// const createList = async () => {
+//   const list = await api.getCategoriesList();
+//   const result = list.slice(0, 2)
+//   // console.log(result);
+//   result.map(category => getCategoryListItem (category))
+//   count = 0;
+// }
+
+
 const navigationButtonRestore = document.querySelector('.buttonRestore');
 navigationButtonRestore.addEventListener('click', e => {
-  if (e.target.nodeName !== 'BUTTON') return;
-  api.getCategoriesList().then(data => {
-    insert(data);
-    categories = [...data];
-  categoryList.innerHTML = '';
+  categoryList.innerHTML = ""
+  // console.log(e.target);
+  // if (e.target.nodeName === 'BUTTON' && e.target.dataset.button === 'filterbutton') 
+  categoriesCount.count = 0; 
+  checkForStartOfData();
   paginationCategore(2);
+  // createList();
+
+
+  // api.getCategoriesList().then(data => {
+  //   insert(data);
+  //   categories = [...data];
 })
-})
+// })

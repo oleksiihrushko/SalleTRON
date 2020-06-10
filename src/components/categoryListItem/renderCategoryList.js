@@ -1,21 +1,21 @@
 import apiService from '../../services/api';
 import { getCategoryListItem } from './categoryListItem';
 
-let count = 0;
+export const categoriesCount = { count: 0 };
 
 const renderBtn = document.querySelector('.renderBtn');
 
 export function paginationCategore(num) {
   apiService.getCategoriesList().then(data => {
-    for (let i = count; i < num + count; i++) {
+    for (let i = categoriesCount.count; i < num + categoriesCount.count; i++) {
       if (data[i]) {
         getCategoryListItem(data[i]);
       }
       renderBtn.classList.remove('button--loading');
-      checkForEndOfData(data, num, count);
+      checkForEndOfData(data, num, categoriesCount.count);
     }
 
-    count += num;
+    categoriesCount.count += num;
   });
 }
 
@@ -33,4 +33,10 @@ function checkForEndOfData(data, num, count) {
     renderBtn.classList.replace('button', 'button--inactive');
     renderBtn.querySelector('span').textContent = 'No more categories';
   }
+}
+
+export function checkForStartOfData() {
+  renderBtn.disabled = false;
+  renderBtn.classList.replace('button--inactive', 'button');
+  renderBtn.querySelector('span').textContent = 'More categories';
 }
