@@ -86,9 +86,8 @@
 }
 
 .error {
-  margin-bottom: 10px;
   color: red;
-  padding-left: 10px;
+  text-indent: 10px;
 }
 
 .passwordInput {
@@ -139,8 +138,12 @@
   }
 
   .input {
-    margin-bottom: 15px;
+    // margin-bottom: 30px;
     width: 422px;
+  }
+
+  .error {
+    height: 30px;
   }
 
   .btn {
@@ -152,7 +155,4 @@
     margin-bottom: 20px;
   }
 
-  .error {
-    margin-bottom: 15px;
-  }
 }
