@@ -49,6 +49,7 @@ async function searchCategory(e) {
       inputValue.length >= 3
     ) {
       apiServices.getProductsByCategory(category).then(res => {
+        console.log(res);
         categoryList.insertAdjacentHTML('beforeend', searchBarHbs(res));
       });
       isFound = true;
@@ -58,18 +59,16 @@ async function searchCategory(e) {
 
   if (!isFound) {
     apiServices.getProducts().then(data => {
-      data.filter(product => {
-        if (product.name.toLowerCase().includes(inputValue.toLowerCase())) {
-          if (inputValue.length >= 3) {
-            categoryList.insertAdjacentHTML(
-              'beforeend',
-              searchBarHbs({ product }),
-            );
-            console.log(product);
-          }
-          return;
-        }
-      });
+      if (inputValue.length >= 3) {
+        const filteredProducts = data.filter(product =>
+          product.name.toLowerCase().includes(inputValue.toLowerCase()),
+        );
+        categoryList.insertAdjacentHTML(
+          'beforeend',
+          searchBarHbs(filteredProducts),
+        );
+      }
+      return;
     });
   }
 }

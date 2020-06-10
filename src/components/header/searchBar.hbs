@@ -1,16 +1,19 @@
-{{#each this}}
-<li class="category__list-item glide__slide js-category-li">
-    <div class='category__list-item-img-wrapper'>
-        <img class="category__list-item-img" src="{{images}}" alt="item" data-id={{id}}>
-    </div>
-    <div class="category__list-item-info">
-        <p class="category__list-item-name" data-id={{id}}>
-            {{name}}
-        </p>
-        <p class="category__list-item-price" data-id={{id}}>
-            {{price}}
-            <span class="category__list-item-price-suffix">&#8372;</span>
-        </p>
-    </div>
-</li>
-{{/each}}
+<p class="search__result">Search result</p>
+<ul class="search__container container">
+    {{#each this}}
+    <li class="category__list-item glide__slide">
+        <div class='category__list-item-img-wrapper'>
+            <img class="category__list-item-img" src="{{images.[0]}}" alt="item" data-id={{id}}>
+        </div>
+        <div class="category__list-item-info">
+            <p class="category__list-item-name" data-id={{id}}>
+                {{name}}
+            </p>
+            <p class="category__list-item-price" data-id={{id}}>
+                {{price}}
+                <span class="category__list-item-price-suffix">&#8372;</span>
+            </p>
+        </div>
+    </li>
+    {{/each}}
+</ul>
