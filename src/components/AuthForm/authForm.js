@@ -8,7 +8,7 @@ const getAuthForm = () => {
         placeholder="E-mail"
         required
       />
-      <p class="errorEmail error"> <br> </p>
+      <p class="errorEmail error"></p>
       <input
         name="password"
         type="password"
@@ -16,7 +16,7 @@ const getAuthForm = () => {
         placeholder="Password"
         required
       />
-      <p class="errorPassword error"> </p>
+      <p class="errorPassword error"></p>
       <div class="buttons">
         <button class="login btn">Log in</button>
         <button class="registration btn">New account</button>
