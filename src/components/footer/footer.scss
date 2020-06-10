@@ -1,0 +1,53 @@
+@import '../../css/mixins.scss';
+.footer {
+  min-height: 120px;
+  font-family: 'MontserratRegular', sans-serif;
+  color: rgba($color: #fafafa, $alpha: 0.38);
+  line-height: 1.2;
+  font-size: 12px;
+
+  @include for-phone-only {
+    padding-top: 38px;
+  }
+  @include for-tablet-up {
+    min-height: 135px;
+    padding-top: 60px;
+  }
+  @include for-desktop-up {
+    min-height: 135px;
+    padding-top: 60px;
+  }
+
+  &__info {
+    &-r1 {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      margin-right: 12px;
+    }
+    &-r1 span {
+      margin-right: 12px;
+    }
+
+    @include for-phone-only {
+      &-r1 {
+        margin-bottom: 20px;
+      }
+      }
+    @include for-tablet-up {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+    @include for-desktop-up {
+    }
+    //   // .br:after {
+    //   //   content: '';
+    //   //   border-right: 1px solid color rgba($color: #fafafa, $alpha: 0.4);
+    //   //   height: 100%;
+    //   //   position: absolute;
+    //   //   right: 0;
+    //   // }
+  }
+  // cursor: pointer;
+}

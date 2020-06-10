@@ -1,4 +1,13 @@
+.modalAuthForm {
+  width: 100%;
+}
+
+.modalVisible {
+  display: none;
+}
+
 .modalWindow {
+  width: 310px;
   font-family: 'MontserratSemiBold';
   padding-top: 48px;
   font-size: 10px;
@@ -7,6 +16,17 @@
   padding-right: 16px;
   background-color: white;
   padding-bottom: 40px;
+  position: relative;
+}
+
+.closeModalWindow {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
 }
 
 .text {
@@ -42,7 +62,7 @@
 .facebookSvg {
   position: absolute;
   top: 14px;
-  right: 115px;
+  right: 117px;
 }
 
 .spanAuth {
@@ -56,7 +76,7 @@
 }
 
 .input {
-  width: 246px;
+  width: 100%;
   height: 60px;
   margin-bottom: 10px;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
@@ -71,9 +91,9 @@
 }
 
 .error {
-  margin-bottom: 10px;
   color: red;
-  padding-left: 10px;
+  text-indent: 10px;
+  height: 25px;
 }
 
 .passwordInput {
@@ -86,7 +106,7 @@
 }
 
 .btn {
-  width: 112px;
+  width: 45%;
   height: 50px;
   background-color: white;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
@@ -106,6 +126,7 @@
 }
 
 @media (min-width: 768px) {
+
   .modalWindow {
     width: 524px;
     height: 512px;
@@ -124,8 +145,12 @@
   }
 
   .input {
-    margin-bottom: 15px;
+    // margin-bottom: 30px;
     width: 422px;
+  }
+
+  .error {
+    height: 30px;
   }
 
   .btn {
@@ -137,7 +162,4 @@
     margin-bottom: 20px;
   }
 
-  .error {
-    margin-bottom: 15px;
-  }
 }

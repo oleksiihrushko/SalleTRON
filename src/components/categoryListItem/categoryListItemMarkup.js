@@ -44,14 +44,12 @@ const markup = {
     return `
         <h3 class='category__name'>${capitalize(`${category}`)}</h3>
         <button class="category__btn category__btn-see-all" data-btnseeall=${category}>See all</button>
-
-        <div class="glide">
+        <div class="glide" data-glide=${category}>
           <div data-glide-el="track" class="glide__track">
               <div class="category__list glide__slides" data-category=${category}>
               ${itemMarkup}
               </div>
           </div>
-
           <div class="glide__arrows" data-glide-el="controls">
               <button button class = "glide__arrow glide__arrow--left prev" data-glide-dir="<">
                   <svg class="svg-arrow" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background: new 0 0 477.175 477.175;" xml:space="preserve"> 
@@ -64,7 +62,6 @@ const markup = {
                   </svg>
               </button>
           </div>
-
           <div class="glide__bullets" data-glide-el="controls[nav]">
               ${categoryItems
         .map(
@@ -73,7 +70,6 @@ const markup = {
         )
         .join('')}
           </div> 
-
         </div>
   
   `;
