@@ -5,6 +5,16 @@
   width: 100vw;
 }
 
+.modalSignInAlert {
+  @include font(15px, 100px, 500);
+  font-family: 'MontserratRegular', sans-serif;
+  letter-spacing: 1, 08px;
+  height: 100px;
+  width: 250px;
+  background-color: white;
+  text-align: center;
+}
+
 .btnBack {
   background: none;
   border: none;
@@ -23,7 +33,6 @@
   color: #000000;
   text-align: left;
   padding-bottom: 10px;
-
 }
 
 .modal__code {
