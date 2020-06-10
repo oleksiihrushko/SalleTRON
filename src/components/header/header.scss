@@ -25,7 +25,7 @@
     @include for-tablet-up {
       display: flex;
       flex-wrap: wrap;
-      }
+    }
     @include for-desktop-up {
       vertical-align: top;
     }
@@ -62,7 +62,7 @@
       padding: 10px 0;
       position: absolute;
       width: 100vw;
-      top: 177px;
+      top: 232px;
       left: 0;
       background-color: #121d2e;
       z-index: 5;
@@ -122,10 +122,10 @@
       border: 1px solid #fff;
       background-image: url('../../components/header/img/icons8-search-50.png');
       background-size: 25px;
-      background-position: 370px;
+      background-position: 330px;
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
-      width: 405px;
+      width: 370px;
       height: 44px;
     }
     @include for-desktop-up {
@@ -162,6 +162,13 @@
       color: rgba($color: #fafafa, $alpha: 0.2);
       text-align: center;
       position: relative;
+    }
+    &__form-login:after {
+      content: '';
+      border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
+      height: 100%;
+      position: absolute;
+      right: 0;
     }
     &__form-register:after {
       @include for-tablet-up {
@@ -251,12 +258,6 @@
   }
 }
 
-.activeStatus {
-  fill: var(--color-decor);
-  color: var(--color-decor);
-  transition: all 0.3s ease-in-out;
-}
-
 .buttonFilter {
   margin-right: 20px;
   @include for-tablet-up {
@@ -273,7 +274,6 @@
     margin-right: 30px;
   }
 }
-
 
 .filterIsActiveForTablet {
   @include for-tablet-only {
@@ -305,13 +305,6 @@
   }
 }
 
-.header__form-login:after {
-  content: '';
-  border-right: 1px solid rgba($color: #fafafa, $alpha: 0.2);
-  height: 100%;
-  position: absolute;
-  right: 0;
-}
 .js-navigationButtons {
   display: block;
   margin-bottom: 32px;
@@ -327,4 +320,26 @@
   border: none;
   color: rgba($color: #fafafa, $alpha: 0.2);
   padding: 0 11px;
+}
+// --- searchBar.hbs ---
+.search {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  &__result {
+    font-family: 'montserratBold';
+    font-size: 24px;
+    letter-spacing: 0.32px;
+    line-height: 20px;
+    text-align: center;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
 }

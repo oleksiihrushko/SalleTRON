@@ -1,3 +1,4 @@
+import './services/loader/loader.scss';
 import './css/styles.scss';
 import './components/newAdvModal/newAdvModal';
 import './services/api';

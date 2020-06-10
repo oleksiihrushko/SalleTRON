@@ -35,7 +35,7 @@
         <p class="logo_text">SalleTron</p>
       </a>
       <!-- search -->
-      <input class="header__search" type="search" name="headerInput">
+      <input class="header__search" type="input" name="headerInput">
       <!-- login -->
       <form class="header__form">
         <!-- <button class="header__form-register" type="button" name="register">Registration</button> -->
@@ -46,7 +46,7 @@
       <button class="header__advertise" type="button" name="newAdv">Place advertisement</button>
       <!-- filter/reset -->
       <div class="header__filters">
-        <button class="header__filters-btn buttonFilter">
+        <button class="header__filters-btn  buttonFilter" data-button = "filterbutton">
           <svg class="header__filters-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24">
             <path d="M0 0h24v24H0z" fill="none" />
@@ -105,6 +105,10 @@
       </div>
     </div>
 
+    <!-- Loader -->
+    <div class="spinner">
+      <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
   </main>
   <footer class="footer"></footer>
 </body>
