@@ -26,7 +26,6 @@ const authFormLogic = () => {
       errorPassword.textContent = 'Password must be more than 5 symbols!';
     }
     e.currentTarget.reset();
-    
 
     if (
       valueEmail.includes('@') &&
@@ -36,7 +35,6 @@ const authFormLogic = () => {
     ) {
       errorEmail.textContent = '';
       errorPassword.textContent = '';
-
     }
   }
 };

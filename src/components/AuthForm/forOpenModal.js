@@ -19,11 +19,9 @@ const openModal = () => {
 	      </g>
         </svg>
       </button>
-
     <p class="textGoogle text">
       For authorization you can use the Google or Facebook Account:
     </p>
-
     <div class="buttonsAuth">
       <button class="googleBtn authBtn" id='google'>
         <svg class="googleSvg" enable-background="new 0 0 512 512" height="20" viewBox="0 0 512 512"
@@ -36,7 +34,6 @@ const openModal = () => {
           <span class="spanAuth">Facebook</span>
       </button>
     </div>
-
     <p class="textAuth text">Or enter with e-mail and password:</p>
       ${getAuthForm()}
     </div>`;
