@@ -7,14 +7,12 @@ import { addButtonListeners } from '../authentication/refs';
 
 function showModal() {
   const instance = basicLightbox.create(
-    `<div>
-      <div class="modal">${openModal()}</div>
-    </div>`,
+    `<div class="modalAuthForm">${openModal()}</div>`,
   );
 
   instance.show();
   authFormLogic();
-  addButtonListeners();
+  addButtonListeners(instance);
 
   document
     .querySelector('.closeModalWindow')
