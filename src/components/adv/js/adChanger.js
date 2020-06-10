@@ -31,6 +31,7 @@ export const adChange = () => {
       'src',
       renderServices.allGoods[numElemIn].images[0],
     );
+    newAdElem.dataset.id = renderServices.allGoods[numElemIn].id;
     newAdElemName.textContent = renderServices.allGoods[numElemIn].name;
     newAdElemPrice.textContent = renderServices.allGoods[numElemIn].price;
   }, 10000);

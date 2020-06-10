@@ -7,9 +7,7 @@ import { addButtonListeners } from '../authentication/refs';
 
 function showModal() {
   const instance = basicLightbox.create(
-    `<div>
-      <div class="modal">${openModal()}</div>
-    </div>`,
+    `<div class="modalAuthForm">${openModal()}</div>`,
   );
 
   instance.show();
@@ -23,5 +21,6 @@ function showModal() {
 
 const loginModal = document.querySelector('.header__form-login');
 loginModal.addEventListener('click', showModal);
+// console.log(registrationModal);
 
 export default showModal;

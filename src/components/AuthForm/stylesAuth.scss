@@ -1,8 +1,13 @@
+.modalAuthForm {
+  width: 100%;
+}
+
 .modalVisible {
   display: none;
 }
 
 .modalWindow {
+  width: 310px;
   font-family: 'MontserratSemiBold';
   padding-top: 48px;
   font-size: 10px;
@@ -101,7 +106,7 @@
 }
 
 .btn {
-  width: 142px;
+  width: 45%;
   height: 50px;
   background-color: white;
   border: 1.5px solid var(--color-adv-secondary-bgrnd);
@@ -121,6 +126,7 @@
 }
 
 @media (min-width: 768px) {
+
   .modalWindow {
     width: 524px;
     height: 512px;
