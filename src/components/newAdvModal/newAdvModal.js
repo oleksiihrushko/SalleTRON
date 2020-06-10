@@ -1,8 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import apiServices from '../../services/api';
 import './stylesForm.scss';
 
-const btnOpenModel = document.querySelector(".btcAdv");
+const btnOpenModel = document.querySelector(".header__advertise");
 btnOpenModel.addEventListener("click", newOpenModel);
 function newOpenModel () {
   
@@ -42,13 +43,13 @@ const instance = basicLightbox.create(
         <p class="new-adv-modal-form-categories-p">Category</p>
 
         <select name="form-categories" class="new-adv-modal-form-categories">
-          <option>Property</option>
-          <option>Transport</option>
-          <option>Job</option>
-          <option>Business services</option>
-          <option>Leisure and sport</option>
-          <option>Give free</option>
-          <option>Exchange</option>
+          <option>property</option>
+          <option>transport</option>
+          <option>job</option>
+          <option>services</option>
+          <option>sport</option>
+          <option>free</option>
+          <option>change</option>
         </select>
 
         <p class="new-adv-modal-form-cash-p">Price</p>
@@ -68,7 +69,7 @@ const instance = basicLightbox.create(
           type="tel"
           name="phone"
           required
-          placeholder="+38 (0--) --- -- --"
+          placeholder="Phone"
           minlength="12"
         />
   
@@ -96,7 +97,7 @@ imgMarkup += `
 </li>`;
 
 }
-console.log(document.querySelector(".ul-img-lable"))
+// console.log(document.querySelector(".ul-img-lable"))
 document.querySelector(".ul-img-lable").insertAdjacentHTML('beforeend',imgMarkup);
 let img;      
 const listImg = document.querySelector(".ul-img-lable");
@@ -123,12 +124,15 @@ if (e.target.nodeName === "LABEL") {
   }
  }
 }
+
 const prodNameOff = document.querySelector(".new-adv-modal-form-name");
 const prodDescriptOff = document.querySelector(".new-adv-modal-form-product-descriptions");
+const prodPhoneOff = document.querySelector(".new-adv-modal-form-phone");
 const placeholderOFF = () => {
     if (window.innerWidth > 768) {
         prodNameOff.setAttribute("placeholder", "");
         prodDescriptOff.setAttribute("placeholder", "");
+        prodPhoneOff.setAttribute("placeholder", "");
         return;
       }
 }
@@ -156,23 +160,30 @@ const img3 = document.querySelector(".import-img-3");
 const img4 = document.querySelector(".import-img-4");
 const img5 = document.querySelector(".import-img-5");
 const img6 = document.querySelector(".import-img-6");
+// const submitBtnAdv = document.querySelector(".new-adv-modal-form-btn");
+// submitBtnAdv.addEventListener('click',checkValue);
 checkForm.addEventListener('submit', checkValue);
-console.log(checkForm)
+// console.log(checkForm)
 
 const submitBtn = {
-      name : null,
-      description : null,
-      categories : null,
-      price : null,
-      phone : null,
-      img1 : null,
-      img2 : null,
-      img3 : null,
-      img4 : null,
-      img5 : null,
-      img6 : null, 
+      // name : null,
+      // description : null,
+      // categories : null,
+      // price : null,
+      // phone : null,
+      // img1 : null,
+      // img2 : null,
+      // img3 : null,
+      // img4 : null,
+      // img5 : null,
+      // img6 : null, 
+      categories: '',
+      description: '',
+      images: [],
+      name: '',
+      price: 0,
   }
-
+// console.log(submitBtn);
 function checkValue (e) {
     e.preventDefault();
     const valueForm = e.currentTarget.elements;
@@ -180,24 +191,25 @@ function checkValue (e) {
     submitBtn.description = inputDescriptions.value;
     submitBtn.categories = inputCategories.value;
     submitBtn.price = inputPrice.value;
-    submitBtn.phone = inputPhone.value;
-    submitBtn.img1 = img1.getAttribute("src");
-    submitBtn.img2 = img2.getAttribute("src");
-    submitBtn.img3 = img3.getAttribute("src");
-    submitBtn.img4 = img4.getAttribute("src");
-    submitBtn.img5 = img5.getAttribute("src");
-    submitBtn.img6 = img6.getAttribute("src");
-    
- }
-
- const closeBtn = document.querySelector('.new-adv-modal-close-btn');
+    // submitBtn.phone = inputPhone.value;
+    submitBtn.images = [img1.getAttribute("src"), img2.getAttribute("src"), img3.getAttribute("src"),
+    img4.getAttribute("src"), img5.getAttribute("src"), img6.getAttribute("src")];
+    // submitBtn.img2 = [img1.getAttribute("src")];
+    // submitBtn.img3 = img3.getAttribute("src");
+    // submitBtn.img4 = img4.getAttribute("src");
+    // submitBtn.img5 = img5.getAttribute("src");
+    // submitBtn.img6 = img6.getAttribute("src");
+    apiServices.addProduct(submitBtn);
+    // console.log(e.currentTarget)
+    e.currentTarget.reset();
+  }
+  
+  const closeBtn = document.querySelector('.new-adv-modal-close-btn');
   closeBtn.addEventListener('click', closeModalHandler);
   window.addEventListener('keydown', closeModalHandler);
-
+  
   function closeModalHandler(e) {
     (e.code === 'Escape' || e.target === closeBtn) && instance.close();
-
-    window.removeEventListener('keydown', closeModalHandler);
-    closeBtn.removeEventListener('click', closeModalHandler);
   }
 }
+

@@ -20,6 +20,7 @@
     margin-bottom: 25px;
     text-align: center;
     font-size: 18px;
+    line-height: 1.2;
     margin-top: 45px;
     @include for-tablet-up {
         margin-bottom: 38px;
@@ -30,9 +31,6 @@
         line-height: 22px; 
         margin-top: 0px;
     }
-    @include for-desktop-up {
-
-    }
 }
 
 .new-adv-modal-form-name {
@@ -42,8 +40,8 @@
     padding-left: 16px;
     border: solid 1px;
     font-family: 'MontserratSemiBold', sans-serif; 
-    font-size: normal;
-    line-height: 14px;
+    font-size: 17px;
+    line-height: 1.2;
     
     @include for-tablet-up {
         margin-bottom: 18px;
@@ -61,8 +59,9 @@
     padding-left: 16px;
     border: solid 1px;
     font-family: 'MontserratSemiBold', sans-serif; 
-    font-size: normal;
-    line-height: 14px;
+    font-size: 17px;
+    line-height: 1.2;
+   
     @include for-tablet-up {
         margin-bottom: 18px;
         width: 460px;  
@@ -79,8 +78,9 @@
     padding-left: 16px;
     border: solid 1px;
     font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;
+    font-size: 17px;
+    line-height: 1.2;
+        
     @include for-tablet-up {
         margin-bottom: 18px;
         width: 460px;   
@@ -97,8 +97,8 @@
     padding-left: 16px;
     border: solid 1px;
     font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;
+    font-size: 17px;
+    line-height: 1.2;
     @include for-tablet-up {
         margin-bottom: 18px;
         width: 460px; 
@@ -115,8 +115,8 @@
     padding-left: 16px;
     border: solid 1px;
     font-family: 'MontserratSemiBold', sans-serif; 
-    font-size: normal;
-    line-height: 14px;
+    font-size: 17px;
+    line-height: 1.2;
     @include for-tablet-up {
         margin-bottom: 37px;
         width: 460px;   
@@ -136,11 +136,21 @@
         height: 60px;
         width: 295px;
         margin-left: 165px;
+
     }  
     @include for-desktop-up {
         width: 294px;
-    }   
+    }  
+    &:hover,
+    &:focus {
+        background-color: rgb(233, 93, 0);
+        transform: translateY(1px) scale(1.05);
+        transition: all 0.3s ease-in-out;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      } 
 }
+
 
 .off-text-input {
     display: none;
@@ -159,7 +169,7 @@
         display: block;
         height: 56px;
         width: 69px;
-        margin-right: 9px;
+        margin-right: 7px;
         margin-bottom: 16px;
     }
     @include for-desktop-up {
@@ -168,12 +178,12 @@
         margin-right: 18px;
     }        
 }
+
 .new-adv-modal-form-addimg-plus {
     background-image: url(./img/plus.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 15px;
-
 }
 
 .new-adv-modal-form-name-p{
@@ -182,8 +192,8 @@
         display: inline-block;
         margin-right: 47px;
         font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;
+        font-size: 17px;
+        line-height: 1.2;
     }
 }
 
@@ -191,10 +201,10 @@
     display: none;
     @include for-tablet-up {
         display: inline-block;
-        margin-right: 2px;  
+        margin-right: 1px;  
         font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;    
-        line-height: 14px; 
+        font-size: 17px;    
+        line-height: 1.2; 
     }
 }
 
@@ -202,10 +212,10 @@
     display: none;
     @include for-tablet-up {
         display: inline-block;
-        margin-right: 90px;
+        margin-right: 95px;
         font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;
+        font-size: 17px;    
+        line-height: 1.2; 
     }
 }
 
@@ -213,10 +223,10 @@
     display: none;
     @include for-tablet-up {
         display: inline-block;
-        margin-right: 123px;
+        margin-right: 131px;
         font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;       
+        font-size: 17px;    
+        line-height: 1.2;        
     }
 }
 
@@ -224,14 +234,16 @@
     display: none;
     @include for-tablet-up {
         display: inline-block;
-        margin-right: 110px;
+        margin-right: 118px;
         font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;  
+        font-size: 17px;    
+        line-height: 1.2;  
     }
     @include for-desktop-up {
         margin-right: 110px;
-
+    }
+    @include for-desktop-up {
+        margin-right: 118px;
     }
 }
 
@@ -239,10 +251,10 @@
     display: none;
     @include for-tablet-up {
         display: inline-block;
-        margin-right: 120px;
+        margin-right: 127px;
         font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;
-        line-height: 14px;
+        font-size: 17px;    
+        line-height: 1.2; 
         padding-top: 23px;
     }
 }
@@ -252,6 +264,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .import-img {
     pointer-events: none;
 }
@@ -259,6 +272,7 @@
 .new-adv-modal-form-diseibl-img {
     pointer-events: none;
 }
+
 .new-adv-modal-form-addimg1 {
     pointer-events: initial;
     background-image: url(./img/plus.svg);
