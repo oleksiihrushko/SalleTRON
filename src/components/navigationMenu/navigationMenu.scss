@@ -12,6 +12,7 @@
   @include for-tablet-only {
     justify-content: center;
     padding: 20px 20px;
+    padding-top: 10px;
   }
 }
 
@@ -21,7 +22,7 @@
   padding: 9px 15px;
   letter-spacing: 1px;
   font-size: 12px;
-  line-height: 8px;
+  line-height: 9px;
   border: 1px solid rgb(206, 210, 209);
   opacity: 0.2;
   border-radius: 40px;
@@ -47,7 +48,11 @@
 }
 
 .elementIsActive {
-  border-color: #ff6b08;
+  border-color: #00a2ff;
   color: #ff6b08;
   opacity: 1;
+  border: 0;
+  font-weight: 600;
+  text-shadow: 10px 10px 20px rgb(0, 160, 253), -10px 10px 20px rgb(0, 140, 255),
+    -10px -10px 20px rgb(0, 153, 255), 10px -10px 20px rgb(0, 195, 255);
 }
