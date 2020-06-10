@@ -1,0 +1,144 @@
+.basket {
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  width: 280px;
+  margin: 0 auto;
+  max-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  overflow: scroll;
+  overflow-x:hidden;
+  
+  @media (min-width: 768px) {
+    width: 690px;
+    max-height: 90vh;
+  }
+  
+  @media (min-width: 1280px) {
+    width: 960px;
+  }
+}
+
+.basket__item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  font-family: MontserratRegular;
+  border-radius: 7px;
+  border: 2px solid rgba(0,0,0,0.3);
+  padding: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.basketModal {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,0.6);
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.basketModal-show {
+  display: block;
+}
+
+.basket__image {
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+
+  @media (min-width: 1280px) {
+    margin: 0;
+  }
+}
+
+.basket__name{
+  font-size: 15px;
+  margin-bottom: 8px;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    max-width: 300px;
+    overflow: hidden;
+    padding-left: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 400px;
+  }
+}
+
+.basket__price{
+  font-size: 15px;
+
+  &::before {
+    content: "Цена: ";
+    display: inline-block;
+    margin-right: 5px;
+    font-family: MontserratRegular;
+  }
+
+  @media (min-width: 768px) {
+    position: relative;
+    top: 60px;
+  }
+
+  @media (min-width: 1280px) {
+    top: 0;
+  }
+}
+
+.decrement ,
+.increment {
+  width: 20px;
+}
+
+.quantity {
+  @media (min-width: 768px) {
+    position: relative;
+    left: 68px;
+  }
+
+  @media (min-width: 1280px) {
+    left: 0;
+  }
+}
+
+.item__quantity{
+  display: inline-block;
+}
+
+.basket__itemDelete{
+  position: absolute;
+  line-height: 15px;
+  top: 4px;
+  right: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.basket__total {
+  line-height: 22px;
+
+  &::before {
+    content: "Всего: ";
+    display: inline-block;
+  }
+}
+
+.basket__clear {
+  justify-content: right;
+  margin-left: auto;
+}

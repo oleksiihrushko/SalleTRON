@@ -3,6 +3,8 @@
 @import './mixins.scss';
 @import './variables.scss';
 
+@import '../components/basket/basket.scss';
+
 html {
   box-sizing: border-box;
 }
@@ -84,4 +86,14 @@ button:focus {
 
 h1 {
   @include font(14px, 20px, 400);
+}
+
+.header__logo-img {
+  width: 100px;
+  position: relative;
+  top: -10px;
+  left: 10px;
+}
+.logo_text {
+  color: orange;
 }

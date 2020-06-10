@@ -39,12 +39,11 @@
   font-family: 'MontserratBold', sans-serif;
   letter-spacing: 0.36px;
   color: var(--color-decor);
-  padding-bottom: 125px;
+  padding-bottom: 32px;
 }
 
-.glidebullets {
-  padding-top: 20px;
-  padding-bottom: 115px;
+.glideItemModal {
+  margin-bottom: 114px;
   text-align: center;
 }
 
@@ -193,6 +192,10 @@
     margin-top: 15px;
   }
 
+  .modal__price {
+    padding-bottom: 125px;
+  }
+
   .itemModal__slider {
     display: none;
   }
@@ -219,7 +222,7 @@
     height: 76px;
   }
 
-  .glidebullets {
+  .glideItemModal {
     display: none;
   }
 
