@@ -43,6 +43,7 @@ const instance = basicLightbox.create(
         <p class="new-adv-modal-form-categories-p">Category</p>
 
         <select name="form-categories" class="new-adv-modal-form-categories">
+          <option>electronics</option>
           <option>property</option>
           <option>transport</option>
           <option>job</option>
@@ -60,6 +61,7 @@ const instance = basicLightbox.create(
         name="name"
         required
         placeholder="0.00 UAH"
+        minlength="1"
         />
          
         <p class="new-adv-modal-form-phone-p">Phone</p>
@@ -70,10 +72,10 @@ const instance = basicLightbox.create(
           name="phone"
           required
           placeholder="Phone"
-          minlength="12"
+          minlength="8"
         />
   
-        <div class="new-adv-modal-form-btn-div">
+        <div class="new-adv-modal-form-btn-div  button">
         <button
         class="new-adv-modal-form-btn"
         type="submit"
@@ -160,56 +162,76 @@ const img3 = document.querySelector(".import-img-3");
 const img4 = document.querySelector(".import-img-4");
 const img5 = document.querySelector(".import-img-5");
 const img6 = document.querySelector(".import-img-6");
-// const submitBtnAdv = document.querySelector(".new-adv-modal-form-btn");
 // submitBtnAdv.addEventListener('click',checkValue);
 checkForm.addEventListener('submit', checkValue);
 // console.log(checkForm)
 
 const submitBtn = {
-      // name : null,
-      // description : null,
-      // categories : null,
-      // price : null,
-      // phone : null,
-      // img1 : null,
-      // img2 : null,
-      // img3 : null,
-      // img4 : null,
-      // img5 : null,
-      // img6 : null, 
-      categories: '',
-      description: '',
-      images: [],
-      name: '',
-      price: 0,
-  }
+  // name : null,
+  // description : null,
+  // categories : null,
+  // price : null,
+  // phone : null,
+  // img1 : null,
+  // img2 : null,
+  // img3 : null,
+  // img4 : null,
+  // img5 : null,
+  // img6 : null, 
+  categories: '',
+  description: '',
+  images: [],
+  name: '',
+  price: 0,
+}
 // console.log(submitBtn);
 function checkValue (e) {
-    e.preventDefault();
-    const valueForm = e.currentTarget.elements;
-    submitBtn.name = inputName.value;
-    submitBtn.description = inputDescriptions.value;
-    submitBtn.categories = inputCategories.value;
-    submitBtn.price = inputPrice.value;
-    // submitBtn.phone = inputPhone.value;
-    submitBtn.images = [img1.getAttribute("src"), img2.getAttribute("src"), img3.getAttribute("src"),
-    img4.getAttribute("src"), img5.getAttribute("src"), img6.getAttribute("src")];
-    // submitBtn.img2 = [img1.getAttribute("src")];
-    // submitBtn.img3 = img3.getAttribute("src");
-    // submitBtn.img4 = img4.getAttribute("src");
-    // submitBtn.img5 = img5.getAttribute("src");
-    // submitBtn.img6 = img6.getAttribute("src");
-    apiServices.addProduct(submitBtn);
-    // console.log(e.currentTarget)
-    e.currentTarget.reset();
-  }
-  
-  const closeBtn = document.querySelector('.new-adv-modal-close-btn');
-  closeBtn.addEventListener('click', closeModalHandler);
-  window.addEventListener('keydown', closeModalHandler);
-  
-  function closeModalHandler(e) {
-    (e.code === 'Escape' || e.target === closeBtn) && instance.close();
-  }
+  e.preventDefault();
+  const valueForm = e.currentTarget.elements;
+  submitBtn.name = inputName.value;
+  submitBtn.description = inputDescriptions.value;
+  submitBtn.categories = inputCategories.value;
+  submitBtn.price = inputPrice.value;
+  // submitBtn.phone = inputPhone.value;
+  submitBtn.images = [img1.getAttribute("src"), img2.getAttribute("src"), img3.getAttribute("src"),
+  img4.getAttribute("src"), img5.getAttribute("src"), img6.getAttribute("src")];
+  // submitBtn.img2 = [img1.getAttribute("src")];
+  // submitBtn.img3 = img3.getAttribute("src");
+  // submitBtn.img4 = img4.getAttribute("src");
+  // submitBtn.img5 = img5.getAttribute("src");
+  // submitBtn.img6 = img6.getAttribute("src");
+  apiServices.addProduct(submitBtn);
+  // console.log(e.currentTarget)
+  e.currentTarget.reset();
+  closeModalHandler(e);
 }
 
+const submitBtnAdv = document.querySelector(".new-adv-modal-form-btn")
+submitBtnAdv.addEventListener('click', closeModalHandler);
+const closeBtn = document.querySelector('.new-adv-modal-close-btn');
+closeBtn.addEventListener('click', closeModalHandler);
+window.addEventListener('keydown', closeModalHandler);
+
+function closeModalHandler(e) {
+  (e.code === 'Escape' || e.target === closeBtn || (e.target === submitBtnAdv && 
+    inputName.validity.valid === true && inputDescriptions.validity.valid === true
+    && inputPrice.validity.valid === true && inputPhone.validity.valid === true)) && instance.close();
+  // (e.target === submitBtnAdv && submitBtnAdv ===)
+
+}
+// inputName.validity.valid === true
+// inputDescriptions.validity.valid === true
+// inputPrice.validity.valid === true
+// inputPhone.validity.valid === true
+}
+
+// function  checkValueValid()  {
+//   inputV1 = document.querySelector(".new-adv-modal-form-name");
+//   inputV2 = document.querySelector(".new-adv-modal-form-product-descriptions");
+//   inputV3 = document.querySelector(".new-adv-modal-form-cash");
+//   inputV4 = document.querySelector(".new-adv-modal-form-phone");
+//   if(inputV1 === (inputV1.e)
+ 
+
+// }
+// console.log(111)

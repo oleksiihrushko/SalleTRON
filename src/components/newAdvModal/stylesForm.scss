@@ -22,12 +22,12 @@
     font-size: 18px;
     line-height: 1.2;
     margin-top: 45px;
+    font-family: 'MontserratSemiBold', sans-serif; 
+    font-size: normal;    
     @include for-tablet-up {
         margin-bottom: 38px;
         font-size: 22px;
         text-align: left;
-        font-family: 'MontserratSemiBold', sans-serif; 
-        font-size: normal;    
         line-height: 22px; 
         margin-top: 0px;
     }
@@ -132,6 +132,8 @@
     background-color: #ff6b08;
     color: white;
     margin-bottom: 45px;
+    font-family: 'MontserratSemiBold', sans-serif; 
+    font-size: 17px;
     @include for-tablet-up {
         height: 60px;
         width: 295px;
@@ -151,58 +153,6 @@
     //   }       
 }
 
-.new-adv-modal-form-btn {
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-}
-.new-adv-modal-form-btn:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -2px;
-    left:-2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
-}
-
-.new-adv-modal-form-btn:active {
-    color: #000
-}
-.new-adv-modal-form-btn:active:after {
-    background: transparent;
-}
-.new-adv-modal-form-btn:hover:before {
-    opacity: 1;
-}
-.new-adv-modal-form-btn:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #ff6b08;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-}
-@keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
-}
 
 
 
@@ -374,4 +324,36 @@
     @include for-desktop-up {
        top : 8px;
     }
+  }
+
+  .new-adv-modal-form-name:focus:valid {
+    border: 2px solid green;
+  }
+  
+  .new-adv-modal-form-name:required:focus:invalid {
+    border: 2px solid red;
+  }
+
+  .new-adv-modal-form-product-descriptions:focus:valid {
+    border: 2px solid green;
+  }
+  
+  .new-adv-modal-form-product-descriptions:focus:invalid {
+    border: 2px solid red;
+  }
+
+  .new-adv-modal-form-cash:focus:valid {
+    border: 2px solid green;
+  }
+  
+  .new-adv-modal-form-cash:focus:invalid {
+    border: 2px solid red;
+  }
+
+  .new-adv-modal-form-phone:focus:valid {
+    border: 2px solid green;
+  }
+
+  .new-adv-modal-form-phone:focus:invalid {
+    border: 2px solid red;
   }
