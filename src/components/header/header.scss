@@ -13,7 +13,7 @@
   }
   @include for-desktop-up {
     padding-top: 35px;
-    padding-bottom: 35px;
+    padding-bottom: 20px;
   }
   // --- header__nav ---
   &__nav {
@@ -62,7 +62,7 @@
       padding: 10px 0;
       position: absolute;
       width: 100vw;
-      top: 232px;
+      top: 169px;
       left: 0;
       background-color: #121d2e;
       z-index: 5;
@@ -80,28 +80,68 @@
   }
   // --- header__logo ---
   &__logo {
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 600s;
-    padding: 15px 0;
-    display: block;
+    position: relative;
     color: var(--color-secondary-texts);
-
+    @include for-phone-only {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    @include for-tablet-only {
+      margin-bottom: 15px;
+      width: 30%;
+      margin-right: 25%;
+    }
     @include for-tablet-up {
       display: block;
       color: var(--color-secondary-texts);
       order: -1;
     }
-    @include for-tablet-only {
-      margin-bottom: 15px;
-      width: 25%;
-      margin-right: 20%;
-    }
     @include for-desktop-up {
       width: 82px;
       height: 44px;
       text-align: center;
-      margin-right: 20px;
+      margin-right: 50px;
+    }
+    &-img {
+      @include for-phone-only {
+        position: absolute;
+        z-index: 5;
+        width: 40px;
+        top: -20px;
+        left: -18px;
+      }
+      @include for-tablet-only {
+        position: absolute;
+        width: 25%;
+        top: -35px;
+        left: -5px;
+      }
+      @include for-desktop-up {
+        position: absolute;
+        width: 55px;
+        top: -23px;
+        left: 50px;
+      }
+    }
+    &-text {
+      @include font(14px, 20px, 400);
+      color: var(--color-secondary-texts);
+      @include for-phone-only {
+        display: none;
+      }
+      @include for-tablet-only {
+        position: absolute;
+        font-size: 21px;
+        top: -7px;
+        left: 50px;
+      }
+      @include for-desktop-up {
+        position: absolute;
+        font-size: 21px;
+        top: 37px;
+        left: 31px;
+      }
     }
   }
   // --- header__search input ---
@@ -130,11 +170,11 @@
     }
     @include for-desktop-up {
       order: 0;
-      margin-right: 226px;
+      margin-right: 330px;
     }
     &:focus {
       @include for-phone-only {
-        width: 100px;
+        width: 150px;
         transition: width 0.4s ease-in-out;
         border-bottom: 1px solid var(--color-secondary-texts);
       }
@@ -181,15 +221,35 @@
     }
     &:hover {
       @include for-tablet-up {
+        font-weight: bold;
         color: var(--color-decor);
-        transition: all 0.4s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        text-shadow: 10px 10px 15px rgb(0, 160, 253),
+          -10px 10px 15px rgb(0, 140, 255), -10px -10px 15px rgb(0, 153, 255),
+          10px -10px 15px rgb(0, 195, 255);
       }
     }
   }
   // --- header__advertise btn ---
   &__advertise {
     @include for-phone-only {
-      display: none;
+      font-size: 0px;
+      z-index: 5;
+      display: block;
+      position: fixed;
+
+      bottom: 3vh;
+      right: 3vh;
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 50%;
+      background-color: var(--color-decor);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+      background-image: url('./img/cross.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 15px;
     }
     @include for-tablet-up {
       font-family: 'MontserratBold', sans-serif;
@@ -341,5 +401,84 @@
     display: block;
     margin: 0 auto;
     width: 100%;
+  }
+}
+
+@include for-tablet-up {
+  .glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #000;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 5px;
+  }
+
+  .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 5px;
+  }
+
+  .glow-on-hover:active {
+    color: #000;
+  }
+
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+
+  .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-decor);
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+  }
+
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
   }
 }
