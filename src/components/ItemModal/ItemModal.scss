@@ -158,6 +158,11 @@
   padding-bottom: 26px;
 }
 
+.modal__content-text-wrapper {
+  height: 195px;
+  overflow: hidden;
+}
+
 .modal__content-text-item {
   color: #000000;
   padding-bottom: 60px;
@@ -179,11 +184,11 @@
 }
 
 .modal__img {
-max-width: 280px;
-max-height: 308px;
-position: relative;
-top: 50%;
-transform: translateY(-50%);
+  max-width: 280px;
+  max-height: 308px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 // @mixin for-phone-only {
@@ -271,7 +276,7 @@ transform: translateY(-50%);
 // @media (min-width: 768px) and (max-width: 1279px) {
 // }
 
-// @mixin for-desktop-up 
+// @mixin for-desktop-up
 @media (min-width: 1280px) {
   .itemModal__MainImageWrapper {
     width: 407px;
@@ -281,7 +286,6 @@ transform: translateY(-50%);
   .itemModal__MainImage {
     max-width: 407px;
     max-height: 450px;
-
   }
 
   .modal {
