@@ -31,7 +31,8 @@
               <ul class="modal__list glide__slides">
                 {{#each images}}
                 <li class="modal__list-item">
-                  <img class="modal__img" src="{{this}}" alt="" width="280" height="308">
+                  <img class="modal__img" src="{{this}}" alt="">
+                  {{!-- <img class="modal__img" src="{{this}}" alt="" width="280" height="308"> --}}
                 </li>
                 {{/each}}
               </ul>
@@ -49,7 +50,7 @@
         {{!-- <button class="modal__color-blue"></button>
       <button class="modal__color-turquoise"></button>
       <p class="modal__color-item">бирюзовый</p> --}}
-        <button class="modal__buyItem" type="submit">buy</button>
+        <button class="modal__buyItem  buttonHover" type="submit">buy</button>
 
         <div class="modal__share">
           <span class="modal__favorites">Add to Favorites</span>
@@ -71,7 +72,9 @@
 
         </div>
         <p class="modal__content">Description</p>
-        <p class="modal__content-text">{{description}}</p>
+        <div class="modal__content-text-wrapper">
+          <p class="modal__content-text">{{description}}</p>
+        </div>
       </div>
     </div>
   </div>

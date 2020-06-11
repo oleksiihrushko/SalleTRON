@@ -9,6 +9,7 @@ const burgerMenu = document.querySelector('.header__burgerMenu');
 const filterBtn = document.querySelector('.buttonFilter');
 const searchBar = document.querySelector('.header__search');
 const categoryList = document.querySelector('.categoryList');
+const spinner = document.querySelector('.spinner');
 
 hamburger.addEventListener('click', toggleBurger);
 filterBtn.addEventListener('click', toggleTabletFilter);
@@ -34,6 +35,8 @@ function toggleTabletFilter(e) {
 }
 // ---------------------------------------------------------------------------
 async function searchCategory(e) {
+  spinner.classList.add('spinner__show');
+
   const inputValue = e.target.value;
   let isFound = false;
   categoryList.innerHTML = '';
@@ -48,10 +51,12 @@ async function searchCategory(e) {
       inputValue.length >= 3
     ) {
       apiServices.getProductsByCategory(category).then(res => {
-        console.log(res);
+        // console.log(res);
         categoryList.insertAdjacentHTML('beforeend', searchBarHbs(res));
       });
       isFound = true;
+      spinner.classList.remove('spinner__show');
+
       return;
     }
   });
@@ -67,6 +72,8 @@ async function searchCategory(e) {
           searchBarHbs(filteredProducts),
         );
       }
+      spinner.classList.remove('spinner__show');
+
       return;
     });
   }
