@@ -8,6 +8,7 @@ import openItemModal from '../ItemModal/ItemModal';
 import './categoryListItem.scss';
 
 const categoryList = document.querySelector('.categoryList');
+const spinner = document.querySelector('.spinner');
 
 categoryList.addEventListener('click', e => {
   if (e.target.nodeName === 'IMG' || e.target.nodeName === 'P') {
@@ -16,6 +17,8 @@ categoryList.addEventListener('click', e => {
 });
 
 export async function getCategoryListItem(category) {
+  spinner.classList.add('spinner__show');
+
   try {
     const categoryItems = await apiServices.getProductsByCategory(category);
 
@@ -41,6 +44,8 @@ export async function getCategoryListItem(category) {
       categoryItems,
     );
     getSlider();
+
+    spinner.classList.remove('spinner__show');
 
     categoryContainer.addEventListener('click', seeAllProducts);
 

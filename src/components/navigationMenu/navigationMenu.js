@@ -11,6 +11,7 @@ import searchBarHbs from '../header/searchBar.hbs';
 
 const navigationFilter = document.querySelector('.header__burgerMenu');
 const categoryList = document.querySelector('.categoryList');
+const spinner = document.querySelector('.spinner');
 
 let categories = [];
 
@@ -30,19 +31,22 @@ api.getCategoriesList().then(data => {
 
   const navigationFilterList = document.querySelector('.navigationFilterList');
   navigationFilterList.addEventListener('click', e => {
+    spinner.classList.add('spinner__show');
+
     if (e.target.nodeName !== 'LI') return;
 
     const activeCategory = navigationFilterList.querySelector(
-      '.elementIsActive'
+      '.elementIsActive',
     );
     if (activeCategory) {
       activeCategory.classList.remove('elementIsActive');
       e.target.classList.add('elementIsActive');
-    } 
+    }
     e.target.classList.add('elementIsActive');
     categoryList.innerHTML = '';
     api.getProductsByCategory(e.target.innerHTML).then(res => {
       categoryList.innerHTML = searchBarHbs(res);
+      spinner.classList.remove('spinner__show');
     });
   });
 });
@@ -52,9 +56,7 @@ api.getCategoriesList().then(data => {
 const navigationButtonRestore = document.querySelector('.buttonRestore');
 navigationButtonRestore.addEventListener('click', e => {
   categoryList.innerHTML = '';
-  const activeCategory = document.querySelector(
-    '.elementIsActive'
-  );
+  const activeCategory = document.querySelector('.elementIsActive');
   activeCategory.classList.remove('elementIsActive');
   categoriesCount.count = 0;
   checkForStartOfData();
