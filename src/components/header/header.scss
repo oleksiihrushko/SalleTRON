@@ -250,7 +250,6 @@
     }
     @include for-tablet-up {
       font-family: 'MontserratBold', sans-serif;
-      font-weight: 600;
       font-size: 14px;
       letter-spacing: 20;
       line-height: 21px;
@@ -263,13 +262,13 @@
     @include for-tablet-only {
       margin-bottom: 15px;
     }
-    &:hover {
-      background-color: rgb(233, 93, 0);
-      transform: translateY(1px) scale(1.01);
-      transition: all 0.3s ease-in-out;
-      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-    }
+    // &:hover {
+    //   background-color: rgb(233, 93, 0);
+    //   transform: translateY(1px) scale(1.01);
+    //   transition: all 0.3s ease-in-out;
+    //   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    //   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    // }
   }
   // --- header__filters ---
   &__filters {
@@ -398,5 +397,42 @@
     display: block;
     margin: 0 auto;
     width: 100%;
+  }
+}
+
+.buttonHover {
+  @include for-tablet-up {
+    font-family: 'MontserratBold', sans-serif;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(255, 102, 0);
+      z-index: -2;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: darken(#ffa600, 15%);
+      transition: all 0.5s ease-in-out;
+      z-index: -1;
+    }
+    &:hover {
+      color: #fff;
+      &:before {
+        width: 100%;
+      }
+    }
   }
 }

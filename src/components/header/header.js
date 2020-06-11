@@ -48,7 +48,7 @@ async function searchCategory(e) {
       inputValue.length >= 3
     ) {
       apiServices.getProductsByCategory(category).then(res => {
-        console.log(res);
+        // console.log(res);
         categoryList.insertAdjacentHTML('beforeend', searchBarHbs(res));
       });
       isFound = true;
