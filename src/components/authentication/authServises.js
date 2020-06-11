@@ -7,14 +7,24 @@ import apiServices from '../../services/api';
 logOut();
 hideMenue();
 // =======================DATA=======================
+// export const firebaseConfig = {
+//   apiKey: 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o',
+//   authDomain: 'salletronbase.firebaseapp.com',
+//   databaseURL: 'https://salletronbase.firebaseio.com',
+//   projectId: 'salletronbase',
+//   storageBucket: 'salletronbase.appspot.com',
+//   messagingSenderId: '555686357871',
+//   appId: '1:555686357871:web:7845e33c12341a4949969a',
+// };
 export const firebaseConfig = {
-  apiKey: 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o',
-  authDomain: 'salletronbase.firebaseapp.com',
-  databaseURL: 'https://salletronbase.firebaseio.com',
-  projectId: 'salletronbase',
-  storageBucket: 'salletronbase.appspot.com',
-  messagingSenderId: '555686357871',
-  appId: '1:555686357871:web:7845e33c12341a4949969a',
+  /////////////////// salletron2
+  apiKey: 'AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms',
+  authDomain: 'salletronbase2.firebaseapp.com',
+  databaseURL: 'https://salletronbase2.firebaseio.com',
+  projectId: 'salletronbase2',
+  storageBucket: 'salletronbase2.appspot.com',
+  messagingSenderId: '361358250407',
+  appId: '1:361358250407:web:bf32d6d4972f46156ee682',
 };
 //=======================user========================
 const user = {
@@ -74,9 +84,9 @@ const fetch = async action => {
 };
 //===========/API==============
 const submitData = async () => {
-  // fetch('signUp'); 
-  const result = await apiServices.signUpUser(user)
-  
+  // fetch('signUp');
+  const result = await apiServices.signUpUser(user);
+
   if (result.statusCheck.status === 200) {
     console.log(result);
     stateOfAuth.instance.close();
@@ -88,8 +98,8 @@ const submitData = async () => {
 };
 const checkData = async () => {
   // apiServices.signInUser(user)
-  const result = await apiServices.signInUser(user)
-  
+  const result = await apiServices.signInUser(user);
+
   if (result.statusCheck.status === 200) {
     console.log(result);
     stateOfAuth.instance.close();

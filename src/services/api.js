@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; ////////saletron1
-// axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com';      ////////saletron2
+// axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; ////////saletron1
+axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; ////////saletron2
 
-const apiKey = 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o'; ////////saletron1
-// const apiKey = 'AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms';              ////////saletron2
+// const apiKey = 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o'; ////////saletron1
+const apiKey = 'AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms'; ////////saletron2
 
 const convertData = data => {
   const [values] = Object.values(data.data);

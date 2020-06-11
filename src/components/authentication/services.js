@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; /////saletron1
-// axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////saletron2
+// axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; /////saletron1
+axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////saletron2
 
 export const addToLocalStorage = async (token, userID) => {
   const databaseResponseId = await axios.get('/users.json');
