@@ -161,8 +161,8 @@
       background-color: #fff;
       border: 1px solid #fff;
       background-image: url('../../components/header/img/icons8-search-50.png');
-      background-size: 25px;
-      background-position: 330px;
+      background-size: 22px;
+      background-position: 336px;
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
       width: 370px;
@@ -221,6 +221,7 @@
     }
     &:hover {
       @include for-tablet-up {
+        font-weight: bold;
         color: var(--color-decor);
         transition: all 0.4s ease-in-out;
       }
@@ -264,7 +265,7 @@
     }
     &:hover {
       background-color: rgb(233, 93, 0);
-      transform: translateY(1px) scale(1.05);
+      transform: translateY(1px) scale(1.01);
       transition: all 0.3s ease-in-out;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
