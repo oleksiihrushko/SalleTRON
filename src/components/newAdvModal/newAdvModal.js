@@ -75,9 +75,9 @@ const instance = basicLightbox.create(
           minlength="8"
         />
   
-        <div class="new-adv-modal-form-btn-div  buttonHover">
+        <div class="new-adv-modal-form-btn-div">
         <button
-        class="new-adv-modal-form-btn"
+        class="new-adv-modal-form-btn  buttonHover"
         type="submit"
         >
         Submit
