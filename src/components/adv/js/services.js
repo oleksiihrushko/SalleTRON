@@ -74,7 +74,7 @@ export const renderServices = {
         <p class="adv__price">${item.price}</p>
       </div>
     </div>
-    <button class="adv__buyBtn">Buy</button>
+    <button class="adv__buyBtn buttonHover">Buy</button>
         </li>`,
         )
         .join('');
@@ -112,7 +112,7 @@ export const renderServices = {
           <p class="adv__currency">uah</p>
           <p class="adv__price">${array[0].price}</p>
         </div>
-        <button class="adv__buyBtn">Buy</button>
+        <button class="adv__buyBtn buttonHover">Buy</button>
       </div>
     </li>`;
 
