@@ -40,6 +40,7 @@
   &:hover,
   &:focus {
     transform: translateY(1px) scale(1.05);
+    font-weight: bold;
     transition: all 0.3s ease-in-out;
     border-color: #ff6b08;
     color: #ff6b08;
@@ -48,11 +49,10 @@
 }
 
 .elementIsActive {
-  border-color: #00a2ff;
+  font-weight: bold;
+  border-color: #ff6b08;
   color: #ff6b08;
   opacity: 1;
-  border: 0;
   font-weight: 600;
-  text-shadow: 10px 10px 20px rgb(0, 160, 253), -10px 10px 20px rgb(0, 140, 255),
-    -10px -10px 20px rgb(0, 153, 255), 10px -10px 20px rgb(0, 195, 255);
+  transform: translateY(1px) scale(1.05);
 }

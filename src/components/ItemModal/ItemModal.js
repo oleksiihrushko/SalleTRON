@@ -7,6 +7,7 @@ import ItemModalHbs from './ItemModal.hbs';
 import tabletItemPictureMarkup from './tabletItemPictureMarkup.hbs';
 import apiService from '../../services/api';
 import * as basicLightbox from 'basiclightbox';
+const spinner = document.querySelector('.spinner');
 
 // apiService.signUpUser({
 //   email:'master-321111@i.ua',
@@ -18,6 +19,8 @@ import * as basicLightbox from 'basiclightbox';
 //   password: '111111'
 // })
 const openItemModal = id => {
+  spinner.classList.add('spinner__show');
+
   apiService.getProductById(id).then(data => {
     const glide = new Glide('.glideItemModal', {
       type: 'carousel',
@@ -35,6 +38,7 @@ const openItemModal = id => {
     );
 
     instance.show();
+    spinner.classList.remove('spinner__show');
 
     const favoriteBtn = document.querySelector('.modal__share-item-heart-cvg');
     if (

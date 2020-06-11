@@ -6,7 +6,8 @@ import axios from 'axios';
 import { stateOfAuth } from './refs';
 // import { firebaseConfig } from './authServises';
 
-// axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
+axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
+// axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com';     /////////////////// salletron2
 
 //======Login with Google and FB===========================================
 export const firebaseConfig = {
@@ -18,6 +19,16 @@ export const firebaseConfig = {
   messagingSenderId: '555686357871',
   appId: '1:555686357871:web:7845e33c12341a4949969a',
 };
+
+// export const firebaseConfig = {                         /////////////////// salletron2
+//   apiKey: "AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms",
+//   authDomain: "salletronbase2.firebaseapp.com",
+//   databaseURL: "https://salletronbase2.firebaseio.com",
+//   projectId: "salletronbase2",
+//   storageBucket: "salletronbase2.appspot.com",
+//   messagingSenderId: "361358250407",
+//   appId: "1:361358250407:web:bf32d6d4972f46156ee682"
+// };
 
 firebase.initializeApp(firebaseConfig);
 // console.log(firebaseConfig);

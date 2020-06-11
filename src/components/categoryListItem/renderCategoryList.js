@@ -18,7 +18,7 @@ export function paginationCategore(num) {
     }
 
     categoriesCount.count += num;
-    spinner.classList.remove('spinner__show');
+    // spinner.classList.remove('spinner__show');
   });
 }
 

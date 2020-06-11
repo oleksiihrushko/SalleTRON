@@ -158,6 +158,11 @@
   padding-bottom: 26px;
 }
 
+.modal__content-text-wrapper {
+  height: 195px;
+  overflow: hidden;
+}
+
 .modal__content-text-item {
   color: #000000;
   padding-bottom: 60px;
@@ -176,6 +181,14 @@
 
 .tablet_picture {
   display: none;
+}
+
+.modal__img {
+  max-width: 280px;
+  max-height: 308px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 // @mixin for-phone-only {
@@ -222,13 +235,31 @@
     display: none;
   }
 
+  .itemModal__MainImageWrapper {
+    width: 324px;
+    height: 374px;
+    // position: relative;
+    // top: 50%;
+    // transform: translateY(-50%);
+  }
+
   .itemModal__MainImage {
-    width: 342px;
-    height: 380px;
+    // width: 342px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 324px;
+    max-height: 374px;
   }
 
   .itemSliderPicture {
-    height: 53px;
+    // height: 53px;
+    max-width: 53px;
+    max-height: 53px;
+    // height: 100%;
+    // width: 100%;
   }
 
   .glideItemModal {
@@ -245,8 +276,18 @@
 // @media (min-width: 768px) and (max-width: 1279px) {
 // }
 
-// @mixin for-desktop-up 
+// @mixin for-desktop-up
 @media (min-width: 1280px) {
+  .itemModal__MainImageWrapper {
+    width: 407px;
+    height: 450px;
+  }
+
+  .itemModal__MainImage {
+    max-width: 407px;
+    max-height: 450px;
+  }
+
   .modal {
     width: 1025px;
     height: 675px;
@@ -261,7 +302,7 @@
   }
 
   .btnClose {
-    left: 470px;
+    left: 415px;
     margin-top: 53px;
   }
 
