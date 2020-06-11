@@ -1,5 +1,7 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
+
+axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; /////saletron1
+// axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////saletron2
 
 export const addToLocalStorage = async (token, userID) => {
   const databaseResponseId = await axios.get('/users.json');
@@ -7,7 +9,7 @@ export const addToLocalStorage = async (token, userID) => {
 
   const result = res.find(user => user[1].id === userID);
   console.log(result);
-  
+
   const userFavorites = await axios.get(`/users/${result[0]}/favorites.json`);
 
   localStorage.setItem(
