@@ -7,7 +7,8 @@ import { stateOfAuth } from './refs';
 // import { firebaseConfig } from './authServises';
 
 // axios.defaults.baseURL = 'https://salletronbase.firebaseio.com';
-axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////////////////// salletron2
+axios.defaults.baseURL = 'https://saletrontest.firebaseio.com';
+// axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////////////////// salletron2
 
 //======Login with Google and FB===========================================
 // export const firebaseConfig = {
@@ -21,15 +22,25 @@ axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; //////////////
 // };
 
 export const firebaseConfig = {
-  /////////////////// salletron2
-  apiKey: 'AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms',
-  authDomain: 'salletronbase2.firebaseapp.com',
-  databaseURL: 'https://salletronbase2.firebaseio.com',
-  projectId: 'salletronbase2',
-  storageBucket: 'salletronbase2.appspot.com',
-  messagingSenderId: '361358250407',
-  appId: '1:361358250407:web:bf32d6d4972f46156ee682',
+  apiKey: 'AIzaSyDGixM-3-XeusqOkskuLtpiQQP2BLo-jPs',
+  authDomain: 'saletrontest.firebaseapp.com',
+  databaseURL: 'https://saletrontest.firebaseio.com',
+  projectId: 'saletrontest',
+  storageBucket: 'saletrontest.appspot.com',
+  messagingSenderId: '733293305057',
+  appId: '1:733293305057:web:295b4d8a33b980caa26ba0',
 };
+
+// export const firebaseConfig = {
+//   /////////////////// salletron2
+//   apiKey: 'AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms',
+//   authDomain: 'salletronbase2.firebaseapp.com',
+//   databaseURL: 'https://salletronbase2.firebaseio.com',
+//   projectId: 'salletronbase2',
+//   storageBucket: 'salletronbase2.appspot.com',
+//   messagingSenderId: '361358250407',
+//   appId: '1:361358250407:web:bf32d6d4972f46156ee682',
+// };
 
 firebase.initializeApp(firebaseConfig);
 // console.log(firebaseConfig);
@@ -77,7 +88,8 @@ async function signInLogic(provider) {
       if (getUsers.data === null) {
         const createNewUser = await axios.post(
           // `https://salletronbase.firebaseio.com/users.json?auth=${token}`,
-          `https://salletronbase2.firebaseio.com/users.json?auth=${token}`,
+          `https://saletrontest.firebaseio.com/users.json?auth=${token}`,
+          // `https://salletronbase2.firebaseio.com/users.json?auth=${token}`,
           { ...userData },
         );
         setTOlocalStorage(createNewUser.data.name, token);
@@ -94,7 +106,8 @@ async function signInLogic(provider) {
         if (userExist === undefined) {
           const createNewUser = await axios.post(
             // `https://salletronbase.firebaseio.com/users.json?auth=${token}`,
-            `https://salletronbase2.firebaseio.com/users.json?auth=${token}`,
+            `https://saletrontest.firebaseio.com/users.json?auth=${token}`,
+            // `https://salletronbase2.firebaseio.com/users.json?auth=${token}`,
             { ...userData },
           );
           setTOlocalStorage(createNewUser.data.name, token);

@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; ////////saletron1
-axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; ////////saletron2
+axios.defaults.baseURL = 'https://saletrontest.firebaseio.com';
 
-// const apiKey = 'AIzaSyDM4b8GRIsIe7_30Fx8kj3A7uV0dBkEs-o'; ////////saletron1
-const apiKey = 'AIzaSyAF75bnc1myWaxBxlXxIhwbzEq3lTQjjms'; ////////saletron2
+const apiKey = 'AIzaSyDGixM-3-XeusqOkskuLtpiQQP2BLo-jPs';
 
 const convertData = data => {
   const [values] = Object.values(data.data);
@@ -34,20 +32,9 @@ const getId = () => {
   return JSON.parse(localStorage.getItem('user')).id;
 };
 
-// const user = {
-//   email: '',
-//   password:'',
-// }
-
-// const product = {
-//   categories: '', // инпут селект
-//   description: '',
-//   images: [''],
-//   name: '',
-//   price: 0,
-// }
-
 const apiServices = {
+  productsArr: [],
+
   // проверка того, что пользователь аутентифицирован
   isAuth() {
     return JSON.parse(localStorage.getItem('user')) ? true : false;
@@ -153,20 +140,6 @@ const apiServices = {
     return authStatus;
   },
 
-  // // найти юзера по id
-  // async getUser() {
-  //   try {
-  //     const users = await axios.get('/users.json');
-  //     const values = Object.values(users.data);
-  //     return values.find(user => user.id ===
-  //       (JSON.parse(localStorage.getItem('user')).id));
-
-  //   } catch (error) {
-  //     console.log(error);
-  //     return;
-  //   }
-  // },
-
   // добавление товара в favorites
   addUserFavorite(id) {
     const favorites = JSON.parse(localStorage.getItem('user')).favorites;
@@ -242,45 +215,24 @@ const apiServices = {
   async getProducts() {
     try {
       const response = await axios('/products.json');
-      return transformedData(response.data);
+      this.productsArr = transformedData(response.data);
     } catch (error) {
       console.log(error);
       return;
     }
   },
 
-  // получить массив товаров по категориям, возвращает массив объктов с товарами
-  async getProductsByCategory(category) {
-    try {
-      const result = await this.getProducts();
-      const filteredResult = result.filter(
-        item => item.categories === category,
-      );
-      return filteredResult;
-    } catch (error) {
-      console.log(error);
-      return;
-    }
+  getProductsByCategory(category) {
+    console.log('this.productsArr', this.productsArr);
+    const filtredProducts = this.productsArr.filter(
+      item => item.categories === category,
+    );
+    return filtredProducts;
   },
 
-  // получить товар по id, возвращает объект конкретного товара
-  async getProductById(id) {
-    try {
-      const result = await this.getProducts();
-      const filteredResult = result.find(item => item.id === id);
-      return filteredResult;
-    } catch (error) {
-      console.log(error);
-      return;
-    }
+  getProductById(id) {
+    return this.productsArr.find(item => item.id === id);
   },
 };
 
 export default apiServices;
-
-// apiServices.signUpUser({
-//   // email: 'master-3210@i.ua',
-//   password: '111111',
-// });
-// apiServices.addUserFavorite('-M8zgqzxq0ZHiAo3xxzY');
-// apiServices.addUserFavorite('-M8zjIwtAEnNsbT7pTqa');

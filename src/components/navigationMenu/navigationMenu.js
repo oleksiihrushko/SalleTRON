@@ -44,10 +44,9 @@ api.getCategoriesList().then(data => {
     }
     e.target.classList.add('elementIsActive');
     categoryList.innerHTML = '';
-    api.getProductsByCategory(e.target.innerHTML).then(res => {
-      categoryList.innerHTML = searchBarHbs(res);
-      spinner.classList.remove('spinner__show');
-    });
+    const res = api.getProductsByCategory(e.target.innerHTML);
+    categoryList.innerHTML = searchBarHbs(res);
+    spinner.classList.remove('spinner__show');
   });
 });
 

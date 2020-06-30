@@ -16,97 +16,88 @@ categoryList.addEventListener('click', e => {
   }
 });
 
-export async function getCategoryListItem(category) {
+export function getCategoryListItem(category) {
   spinner.classList.add('spinner__show');
 
-  try {
-    const categoryItems = await apiServices.getProductsByCategory(category);
+  const categoryItems = apiServices.getProductsByCategory(category);
 
-    const products = {
-      visible: 12,
-    };
+  const products = {
+    visible: 12,
+  };
 
-    const itemMarkup = categoryItems.reduce((acc, item) => {
-      acc += markup.getItemMarkup(item);
-      return acc;
-    }, '');
+  const itemMarkup = categoryItems.reduce((acc, item) => {
+    acc += markup.getItemMarkup(item);
+    return acc;
+  }, '');
 
-    categoryList.insertAdjacentHTML(
-      'beforeend',
-      markup.mainMarkup(category, itemMarkup, categoryItems),
-    );
-    const categoryContainer = document.querySelector(
-      `[data-replace=${category}]`,
-    );
-    categoryContainer.innerHTML = markup.withSlider(
-      category,
-      itemMarkup,
-      categoryItems,
-    );
-    getSlider();
+  categoryList.insertAdjacentHTML(
+    'beforeend',
+    markup.mainMarkup(category, itemMarkup, categoryItems),
+  );
+  const categoryContainer = document.querySelector(
+    `[data-replace=${category}]`,
+  );
+  categoryContainer.innerHTML = markup.withSlider(
+    category,
+    itemMarkup,
+    categoryItems,
+  );
+  getSlider();
 
-    spinner.classList.remove('spinner__show');
+  categoryContainer.addEventListener('click', seeAllProducts);
 
-    categoryContainer.addEventListener('click', seeAllProducts);
+  function seeAllProducts(e) {
+    if (e.target.dataset.btnseeall === `${category}`) {
+      const categoryCont = document.querySelector(
+        `[data-replace=${e.target.dataset.btnseeall}]`,
+      );
+      categoryCont.innerHTML = markup.withoutSlider(e.target.dataset.btnseeall);
 
-    function seeAllProducts(e) {
-      if (e.target.dataset.btnseeall === `${category}`) {
-        const categoryCont = document.querySelector(
-          `[data-replace=${e.target.dataset.btnseeall}]`,
+      const categoryContent = document.querySelector(
+        `[data-content=${e.target.dataset.btnseeall}]`,
+      );
+      categoryContent.innerHTML = innerMarkup(
+        categoryItems,
+        0,
+        products.visible,
+      );
+
+      const loadMoreBtn = document.querySelector(
+        `[data-loadmore=${e.target.dataset.btnseeall}]`,
+      );
+      loadMoreBtn.addEventListener('click', loadMoreProducts);
+      endOfCategoryHandler(categoryItems, loadMoreBtn, products);
+
+      function loadMoreProducts() {
+        loadMoreBtn.classList.add('button--loading');
+
+        const addedProducts = innerMarkup(
+          categoryItems,
+          products.visible,
+          products.visible + 12,
         );
-        categoryCont.innerHTML = markup.withoutSlider(
-          e.target.dataset.btnseeall,
-        );
+        products.visible += 12;
 
         const categoryContent = document.querySelector(
           `[data-content=${e.target.dataset.btnseeall}]`,
         );
-        categoryContent.innerHTML = innerMarkup(
-          categoryItems,
-          0,
-          products.visible,
-        );
-
-        const loadMoreBtn = document.querySelector(
-          `[data-loadmore=${e.target.dataset.btnseeall}]`,
-        );
-        loadMoreBtn.addEventListener('click', loadMoreProducts);
+        categoryContent.insertAdjacentHTML('beforeend', addedProducts);
+        loadMoreBtn.classList.remove('button--loading');
         endOfCategoryHandler(categoryItems, loadMoreBtn, products);
-
-        function loadMoreProducts() {
-          loadMoreBtn.classList.add('button--loading');
-
-          const addedProducts = innerMarkup(
-            categoryItems,
-            products.visible,
-            products.visible + 12,
-          );
-          products.visible += 12;
-
-          const categoryContent = document.querySelector(
-            `[data-content=${e.target.dataset.btnseeall}]`,
-          );
-          categoryContent.insertAdjacentHTML('beforeend', addedProducts);
-          loadMoreBtn.classList.remove('button--loading');
-          endOfCategoryHandler(categoryItems, loadMoreBtn, products);
-        }
-      }
-
-      if (e.target.dataset.btnseeless === `${category}`) {
-        const categoryCont = document.querySelector(
-          `[data-replace=${e.target.dataset.btnseeless}]`,
-        );
-        categoryCont.innerHTML = markup.withSlider(
-          e.target.dataset.btnseeless,
-          itemMarkup,
-          categoryItems,
-        );
-        getSlider();
       }
     }
-  } catch (error) {
-    console.log(error);
-    return;
+
+    if (e.target.dataset.btnseeless === `${category}`) {
+      const categoryCont = document.querySelector(
+        `[data-replace=${e.target.dataset.btnseeless}]`,
+      );
+      categoryCont.innerHTML = markup.withSlider(
+        e.target.dataset.btnseeless,
+        itemMarkup,
+        categoryItems,
+      );
+      getSlider();
+    }
   }
 }
 

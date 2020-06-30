@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://salletronbase.firebaseio.com'; /////saletron1
-axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////saletron2
+// axios.defaults.baseURL = 'https://salletronbase2.firebaseio.com'; /////saletron2
+axios.defaults.baseURL = 'https://saletrontest.firebaseio.com';
 
 export const addToLocalStorage = async (token, userID) => {
   const databaseResponseId = await axios.get('/users.json');
@@ -32,9 +33,11 @@ export const addToLocalStorage = async (token, userID) => {
 };
 
 export const logErrors = error => {
-  console.error(error);
-  console.dir(error.response.data.error);
-  console.error(error.response.data.error.message);
+  if (error) {
+    console.error(error);
+    console.dir(error.response.data.error);
+    console.error(error.response.data.error.message);
+  }
 };
 
 export function hideMenue() {

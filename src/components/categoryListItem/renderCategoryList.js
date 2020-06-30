@@ -18,11 +18,10 @@ export function paginationCategore(num) {
     }
 
     categoriesCount.count += num;
-    // spinner.classList.remove('spinner__show');
+    spinner.classList.remove('spinner__show');
   });
 }
 
-paginationCategore(2);
 renderBtn.addEventListener('click', paginationCategore1);
 
 function paginationCategore1() {

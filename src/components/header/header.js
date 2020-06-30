@@ -50,10 +50,11 @@ async function searchCategory(e) {
       category.toLowerCase().includes(inputValue.toLowerCase()) &&
       inputValue.length >= 3
     ) {
-      apiServices.getProductsByCategory(category).then(res => {
-        // console.log(res);
-        categoryList.insertAdjacentHTML('beforeend', searchBarHbs(res));
-      });
+      categoryList.insertAdjacentHTML(
+        'beforeend',
+        searchBarHbs(apiServices.productsArr),
+      );
+
       isFound = true;
       spinner.classList.remove('spinner__show');
 
